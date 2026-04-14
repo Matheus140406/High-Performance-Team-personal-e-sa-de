@@ -1778,22 +1778,36 @@
 
 </html>
 
+<script>
+// Aguarda o DOM carregar completamente para garantir que o botão exista
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const btn = document.getElementById('btn-pacote');
 
-<script src="..." defer>
-    function enviarWhatsapp() {
-        const btn = document.getElementById('btn-pacote');
-        btn.classList.add('active');
+    if (btn) {
+        // Adiciona o evento de clique diretamente pelo JS
+        btn.addEventListener('click', () => {
+            
+            // 1. Inicia a animação CSS (os braços 💪)
+            btn.classList.add('active');
 
-        const telefone = "556186351036";
-        const mensagem = encodeURIComponent("Olá, me interessei neste plano do pacote no valor de R$530,00. Pode me passar mais informações de como funciona?");
-        const url = `https://wa.me/${telefone}?text=${mensagem}`;
+            // 2. Configura os dados do WhatsApp
+            const telefone = "556186351036";
+            const mensagem = encodeURIComponent("Olá, me interessei neste plano do pacote. Pode me passar mais informações de como ele funciona?");
+            const url = `https://wa.me/${telefone}?text=${mensagem}`;
 
-        setTimeout(() => {
-            window.open(url, '_blank');
-            btn.classList.remove('active');
-        }, 600);
+            // 3. Aguarda a animação terminar (600ms) para abrir o link
+            setTimeout(() => {
+                window.open(url, '_blank');
+                
+                // 4. Reseta o botão para o estado original
+                btn.classList.remove('active');
+            }, 600);
+        });
+    } else {
+        console.error("Erro: O botão com ID 'btn-pacote' não foi encontrado na página.");
     }
-
+});
     document.addEventListener('DOMContentLoaded', () => {
 
         const selectArea = document.getElementById('area');
