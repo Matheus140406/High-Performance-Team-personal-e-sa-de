@@ -1,1786 +1,361 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High-Performance Team</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="High-Performance Team — Treino, Nutrição e Saúde integrados. Emagreça ou ganhe massa com acompanhamento profissional online em Brasília/DF.">
+  <meta name="keywords" content="personal trainer online, nutricionista, saúde, emagrecer, ganhar massa, Brasília, DF">
+  <meta property="og:title" content="High-Performance Team — Alta Performance">
+  <meta property="og:description" content="Treino, nutrição e saúde integrados para acelerar seus resultados.">
+  <title>High-Performance Team | Personal Trainer, Nutrição e Saúde</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    :root {
-        --primary-red: #ff0000;
-        --text-gray: #e0e0e0;
-        --hover-white: #ffffff;
-    }
-
-    a,
-    a:visited,
-    a:hover,
-    a:active {
-        text-decoration: none !important;
-    }
-
-    .header {
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(10px);
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        border-bottom: 1px solid #ffffff;
-    }
-
-    .header__container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px;
-    }
-
-    .logo {
-        color: #fff;
-        font-size: 1.2rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .logo span {
-        color: var(--primary-red);
-    }
-
-    .nav-list {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        gap: 30px;
-        margin: 0;
-    }
-
-    .nav-link {
-        text-decoration: none;
-        color: var(--text-gray);
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        position: relative;
-        padding: 5px 0;
-    }
-
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        transform: translateX(-50%);
-        width: 0;
-        height: 2px;
-        background-color: var(--primary-red);
-        transition: width 0.3s ease;
-    }
-
-    .nav-link:hover {
-        color: #fff;
-    }
-
-    .nav-link:hover::after {
-        width: 100%;
-    }
-
-    .nav-link--button {
-        background: var(--primary-red);
-        color: #fff !important;
-        padding: 8px 20px !important;
-        border-radius: 50px;
-        font-weight: 700;
-    }
-
-    .nav-link--button:hover {
-        background: #cc0000;
-        transform: scale(1.2);
-        box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-    }
-
-    .nav-link--button::after {
-        display: none;
-
-    }
-
-    /*HERO*/
-    .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-            url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070') no-repeat center center/cover;
-        color: #ffffff;
-        padding-top: 80px;
-    }
-
-    .hero .container {
-        max-width: 900px;
-        padding: 0 20px;
-    }
-
-    .hero h2 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-        line-height: 1.1;
-        letter-spacing: -1px;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-        color: var(--text-gray);
-        margin-bottom: 40px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .hero-buttons a:first-child {
-        background-color: var(--primary-red);
-        color: #fff;
-        padding: 15px 40px;
-        border-radius: 5px;
-        font-weight: 700;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-        border: 2px solid var(--primary-red);
-    }
-
-    .hero-buttons a:first-child:hover {
-        background-color: transparent;
-        color: #fff;
-    }
-
-    .hero-buttons a:last-child {
-        background-color: transparent;
-        color: #fff;
-        padding: 15px 40px;
-        border-radius: 5px;
-        font-weight: 700;
-        text-transform: uppercase;
-        border: 2px solid #fff;
-        transition: all 0.3s ease;
-    }
-
-    .hero-buttons a:last-child:hover {
-        background-color: #fff;
-        color: #000;
-    }
-
-
-    /*serviços*/
-
-    .servicos {
-        padding: 100px 20px;
-        background-color: #0a0a0a;
-        text-align: center;
-    }
-
-    .servicos h2 {
-        color: #fff;
-        font-size: 2.5rem;
-        margin-bottom: 50px;
-        text-transform: uppercase;
-    }
-
-    .servicos-cards {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-        flex-wrap: wrap;
-    }
-
-    .card {
-        background: #151515;
-        padding: 40px 30px;
-        border-radius: 10px;
-        border: 1px solid #333;
-        flex: 1;
-        min-width: 280px;
-        max-width: 350px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        cursor: pointer;
-    }
-
-    .card h3 {
-        color: var(--primary-red);
-        margin-bottom: 15px;
-        font-size: 1.5rem;
-    }
-
-    .card p {
-        color: var(--text-gray);
-        line-height: 1.6;
-    }
-
-    .servicos-cards:hover .card {
-        opacity: 0.3;
-        transform: scale(0.95);
-    }
-
-    .servicos-cards .card:hover {
-        opacity: 1 !important;
-        transform: translateY(-20px) scale(1.05);
-        border-color: var(--primary-red);
-        box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
-    }
-
-    @media (max-width: 1024px) {
-        .servicos {
-            padding: 60px 15px;
-        }
-
-        .servicos-cards {
-            gap: 20px;
-        }
-
-        .card {
-            max-width: 100%;
-            flex: 1 1 calc(50% - 20px);
-        }
-
-        .servicos-cards:hover .card {
-            opacity: 1;
-            transform: none;
-        }
-
-        .servicos-cards .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-red);
-        }
-    }
-
-    @media (max-width: 600px) {
-        .card {
-            flex: 1 1 100%;
-            padding: 30px 20px;
-        }
-
-        .servicos h2 {
-            margin-bottom: 30px;
-        }
-    }
-
-    /*planos e nosso trio*/
-
-    .team-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        max-width: 1400px;
-        margin: 0 auto;
-        height: 500px;
-        padding: 20px;
-        box-sizing: border-box;
-        overflow: hidden;
-    }
-
-    .team-card {
-        position: relative;
-        flex: 1;
-        min-width: 70px;
-        height: 100%;
-        border-radius: 20px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
-        filter: grayscale(1) brightness(0.5);
-    }
-
-    .team-card:hover {
-        flex: 7;
-        filter: grayscale(0) brightness(1);
-    }
-
-    .card-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 10%;
-        display: block;
-        transition: transform 0.5s ease;
-    }
-
-    .team-card:hover .card-img {
-        transform: scale(1.05);
-    }
-
-    .card-2 .card-img {
-        object-position: 50% 10%;
-    }
-
-    .card-3 .card-img {
-        object-position: 50% 10%;
-    }
-
-    /*Pacote dourado*/
-
-    /* 1. Resetando o Container Principal para fluxo vertical */
-    .secao-servicos-container {
-        display: flex;
-        flex-direction: column;
-        /* FORÇA UM ITEM EMBAIXO DO OUTRO */
-        align-items: center;
-        /* Centraliza tudo horizontalmente */
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 60px 20px;
-        position: relative;
-        overflow: visible;
-        /* Garante que nada corte o botão */
-    }
-
-    /* 2. O Container das Fotos - (Ajuste o gap conforme necessário para as suas fotos) */
-    .team-photos-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        /* Permite pular linha no celular */
-        gap: 30px;
-        margin-bottom: 50px;
-        /* Cria o espaço entre as fotos e o botão */
-        width: 100%;
-        z-index: 1;
-    }
-
-    /* 3. O Botão com Visual Dourado e Animação 💪 */
-    .package-btn {
-        display: inline-flex !important;
-        /* inline-flex para centralizar respeitando a margem */
-        align-items: center;
-        justify-content: space-between;
-        width: 95%;
-        /* Responsivo por padrão */
-        max-width: 720px;
-        /* Largura máxima confortável para o desktop */
-        min-height: 90px;
-        padding: 15px 35px;
-        /* Fundo escuro conforme a imagem original */
-        background: #2a2a2a;
-        /* Uma variação do preto/cinza escuro */
-        background: linear-gradient(135deg, #222 0%, #333 100%);
-        /* Contorno Dourado Principal */
-        border: 2px solid #ffcc00;
-        /* Dourado/Amarelo */
-        border-radius: 12px;
-        color: white;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        font-family: 'Montserrat', 'Arial', sans-serif;
-        /* Use a fonte do seu site aqui */
-        z-index: 10;
-        margin: 0 auto;
-        /* Centralização automática */
-    }
-
-    /* Sombra opcional para profundidade (como na imagem) */
-    .package-btn:hover {
-        box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
-        /* Brilho dourado sutil no hover */
-        border-color: #ffd700;
-        /* Dourado mais intenso no hover */
-    }
-
-    /* Conteúdo interno do Botão */
-    .btn-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        z-index: 2;
-    }
-
-    .text-group {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-    }
-
-    .package-name {
-        font-size: 1.15rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: #fff;
-    }
-
-    .package-desc {
-        font-size: 0.85rem;
-        opacity: 0.8;
-    }
-
-    .price-group {
-        display: flex;
-        align-items: center;
-    }
-
-    .price {
-        font-size: 1.35rem;
-        font-weight: 800;
-        color: #ffcc00;
-        /* Preço também em dourado */
-    }
-
-    /* 4. Os Bracinhos (Invisíveis até o clique) */
-    .arm {
-        font-size: 2.8rem;
-        position: absolute;
-        opacity: 0;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        z-index: 1;
-    }
-
-    .arm-left {
-        left: -70px;
-        transform: rotate(-25deg);
-    }
-
-    .arm-right {
-        right: -70px;
-        transform: rotate(25deg) scaleX(-1);
-    }
-
-    /* Estado Ativo (Ao clicar) */
-    .package-btn.active .arm-left {
-        left: 20px;
-        opacity: 1;
-    }
-
-    .package-btn.active .arm-right {
-        right: 20px;
-        opacity: 1;
-    }
-
-    .package-btn.active .btn-content {
-        opacity: 0.1;
-    }
-
-    /* 5. Responsividade Específica */
-    @media (max-width: 480px) {
-        .package-btn {
-            flex-direction: column;
-            padding: 20px 15px;
-            text-align: center;
-            min-height: 120px;
-        }
-
-        .btn-content {
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .text-group {
-            text-align: center;
-        }
-
-        .price {
-            font-size: 1.25rem;
-        }
-    }
-
-    .team-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /*teste de animação em 3D e reação*/
-    /* Configurações Gerais do Card */
-    .card-container {
-        position: relative;
-        width: 100%;
-        max-width: 300px;
-        height: 400px;
-        margin: 20px auto;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .card-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-
-    .card-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: center;
-        transform: translateY(100%);
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .card-container:hover .card-overlay,
-    .card-container:active .card-overlay {
-        transform: translateY(0);
-    }
-
-    .card-container:hover .card-image {
-        transform: scale(1.1);
-    }
-
-    .card-overlay h2 {
-        font-size: 1.4rem;
-        margin-bottom: 10px;
-        color: #00d4ff;
-    }
-
-    .card-overlay p {
-        font-size: 1rem;
-        margin: 5px 0;
-        line-height: 1.4;
-    }
-
-    .card-overlay strong {
-        color: #fff;
-    }
-
-    .team-section {
-        background-color: #000;
-        padding: 60px 0;
-        overflow: hidden;
-    }
-
-    .team-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        max-width: 1200px;
-        margin: 0 auto;
-        height: 480px;
-        padding: 20px;
-    }
-
-    .team-card {
-        position: relative;
-        flex: 1;
-        height: 100%;
-        border-radius: 20px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        filter: grayscale(1) brightness(0.5);
-    }
-
-    .team-card:hover {
-        flex: 3;
-        filter: grayscale(0) brightness(1);
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
-    }
-
-    .team-container:hover .team-card:not(:hover) {
-        flex: 0.8;
-        filter: grayscale(1) brightness(0.3);
-    }
-
-    .card-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s ease;
-    }
-
-    .team-card:hover .card-img {
-        transform: scale(1.05);
-    }
-
-    /* Conteúdo Lateral */
-    .card-content-lateral {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 40px;
-        box-sizing: border-box;
-        opacity: 0;
-        transform: translateX(-20px);
-        transition: all 0.4s ease;
-        transition-delay: 0.2s;
-    }
-
-    .team-card:hover .card-content-lateral {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    .tag {
-        align-self: flex-start;
-        padding: 4px 12px;
-        border-radius: 4px;
-        font-size: 10px;
-        font-weight: bold;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-        letter-spacing: 1px;
-    }
-
-    [data-area="saude"] .tag {
-        background-color: #007bff;
-    }
-
-    [data-area="nutricao"] .tag {
-        background-color: #28a745;
-    }
-
-    [data-area="personal"] .tag {
-        background-color: #ff0000;
-    }
-
-    .card-content-lateral h3 {
-        color: #fff;
-        font-size: 2rem;
-        margin: 5px 0;
-        text-transform: uppercase;
-    }
-
-    .extra-content p {
-        color: #ddd;
-        margin: 3px 0;
-        font-size: 0.9rem;
-    }
-
-    .price {
-        font-weight: bold;
-        color: #fff !important;
-        font-size: 1.1rem !important;
-        margin-top: 10px !important;
-    }
-
-    @media (max-width: 768px) {
-        .team-container {
-            flex-direction: column;
-            height: auto;
-        }
-
-        .team-card {
-            width: 100%;
-            height: 350px;
-            flex: none !important;
-            margin-bottom: 15px;
-            filter: grayscale(0) brightness(1);
-        }
-
-        .card-content-lateral {
-            opacity: 1;
-            transform: translateX(0);
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        }
-    }
-
-    .team-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        max-width: 1300px;
-        margin: 0 auto;
-        height: 500px;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    /* Base do Card */
-    .team-card {
-        position: relative;
-        flex: 1;
-        min-width: 80px;
-        height: 100%;
-        border-radius: 20px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1),
-            filter 0.5s ease;
-        filter: grayscale(1) brightness(0.4);
-    }
-
-    /* Estado de Expansão (Hover) */
-    .team-card:hover {
-        flex: 5;
-        filter: grayscale(0) brightness(1);
-    }
-
-    /* Ajuste para imagens dentro do card */
-    .team-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.7s ease;
-    }
-
-    /* Card em Destaque */
-    .team-card:hover {
-        flex: 5;
-        filter: grayscale(0) brightness(1);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    .card-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s ease;
-        /* Remova o object-position daqui para não dar conflito */
-    }
-
-    /* Ajuste específico para o Card 1 (Geovana) */
-    .team-card.card-1 .card-img {
-        object-position: center 30%;
-    }
-
-    .card-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top;
-        display: block;
-        transition: transform 0.6s ease;
-    }
-
-    .card-img {
-        object-position: center 20%;
-        /* Tente 15%, 20% ou 25% até enquadrar o rosto */
-    }
-
-
-    /* Conteúdo Lateral - Ajuste de posicionamento */
-    .card-content-lateral {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 40px;
-        box-sizing: border-box;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.4s ease, transform 0.4s ease;
-        transform: translateX(-20px);
-    }
-
-    .team-card:hover .card-content-lateral {
-        opacity: 1;
-        transform: translateX(0);
-        transition-delay: 0.3s;
-    }
-
-    /*Pratica*/
-
-    :root {
-        --preto-profundo: #0a0a0a;
-        --preto-suave: #1a1a1a;
-        --vermelho-vibrante: #e63946;
-        --vermelho-dark: #b91d2a;
-        --branco-gelo: #f4f4f4;
-        --cinza-texto: #a0a0a0;
-        --transicao: all 0.3s ease-in-out;
-    }
-
-    #ciencia-pratica {
-        background-color: var(--preto-profundo);
-        color: var(--branco-gelo);
-        padding: 80px 20px;
-        font-family: 'Inter', sans-serif;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    #ciencia-pratica h2 {
-        font-size: 2.5rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
-    }
-
-    #ciencia-pratica h2::after {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 4px;
-        background: var(--vermelho-vibrante);
-        margin: 15px auto;
-    }
-
-    #ciencia-pratica p {
-        color: var(--cinza-texto);
-        font-size: 1.1rem;
-        margin-bottom: 50px;
-    }
-
-    .galeria-moderna {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        margin-bottom: 60px;
-    }
-
-    .foto {
-        position: relative;
-        overflow: hidden;
-        border-radius: 8px;
-        height: 400px;
-    }
-
-    .foto img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(40%);
-        transition: var(--transicao);
-    }
-
-    .foto:hover img {
-        filter: grayscale(0%);
-        transform: scale(1.05);
-    }
-
-    .foto::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(230, 57, 70, 0.4), transparent);
-        z-index: 1;
-        opacity: 0;
-        transition: var(--transicao);
-    }
-
-    .foto:hover::before {
-        opacity: 1;
-    }
-
-    .grid-especialistas {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-    }
-
-    .card-info {
-        background: var(--preto-suave);
-        border: 1px solid #333;
-        border-radius: 12px;
-        padding: 0 0 30px 0;
-        overflow: hidden;
-        cursor: pointer;
-        transition: var(--transicao);
-        position: relative;
-    }
-
-    .card-info:hover {
-        border-color: var(--vermelho-vibrante);
-        transform: translateY(-10px);
-        box-shadow: 0 10px 30px rgba(230, 57, 70, 0.1);
-    }
-
-    .card-info img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-bottom: 3px solid var(--vermelho-vibrante);
-    }
-
-    .card-info h3 {
-        margin: 20px 0 10px;
-        color: var(--vermelho-vibrante);
-        font-size: 1.4rem;
-    }
-
-    .detalhes {
-        padding: 0 20px;
-    }
-
-    .detalhes p {
-        font-size: 0.95rem;
-        margin-bottom: 15px;
-        color: var(--branco-gelo);
-    }
-
-    .detalhes ul {
-        list-style: none;
-        padding: 0;
-        text-align: left;
-        display: inline-block;
-    }
-
-    .detalhes li {
-        font-size: 0.85rem;
-        color: var(--cinza-texto);
-        margin-bottom: 8px;
-        display: flex;
-        align-items: center;
-    }
-
-    .detalhes li::before {
-        content: '→';
-        color: var(--vermelho-vibrante);
-        margin-right: 10px;
-        font-weight: bold;
-    }
-
-    .planos h2 {
-        color: #ffffff;
-        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        letter-spacing: 2px;
-    }
-
-    /* Sobre */
-    .sobre {
-        background-color: #0a0a0a;
-        padding: 100px 20px;
-        color: #ffffff;
-        font-family: 'Inter', sans-serif;
-    }
-
-    .sobre .container {
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-
-    .sobre-header {
-        margin-bottom: 50px;
-        text-align: center;
-    }
-
-    .tagline {
-        color: #e63946;
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 3px;
-        font-size: 0.9rem;
-        display: block;
-        margin-bottom: 15px;
-    }
-
-    .sobre-header h2 {
-        font-size: 2.8rem;
-        line-height: 1.2;
-        font-weight: 800;
-        background: linear-gradient(90deg, #ffffff, #888888);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        -webkit-text-fill-color: transparent;
-        -webkit-font-smoothing: antialiased;
-    }
-
-    .sobre-content {
-        text-align: center;
-    }
-
-    .sobre-content p {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        color: #cccccc;
-        margin-bottom: 40px;
-    }
-
-    .sobre-content strong {
-        color: #e63946;
-        font-weight: 600;
-    }
-
-    .pilares-trio {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        margin: 60px 0;
-    }
-
-    .pilar {
-        background: #151515;
-        padding: 40px 25px;
-        border-radius: 4px;
-        border-left: 2px solid #e63946;
-        transition: all 0.4s ease;
-        text-align: left;
-    }
-
-    .pilar:hover {
-        background: #1a1a1a;
-        transform: scale(1.03);
-        box-shadow: 0 10px 40px rgba(230, 57, 70, 0.05);
-    }
-
-    .pilar strong {
-        display: block;
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-        color: #ffffff;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .pilar p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        color: #888;
-        margin-bottom: 0;
-    }
-
-
-    .final-text {
-        font-style: italic;
-        border-top: 1px solid #333;
-        padding-top: 40px;
-        max-width: 800px;
-        margin: 0 auto;
-        color: #aaaaaa !important;
-    }
-
-    .pilares-trio {
-        grid-template-columns: 1fr;
-    }
-
-    .sobre-header h2 {
-        font-size: 2rem;
-    }
-
-    .pilar {
-        text-align: center;
-        border-left: none;
-        border-bottom: 2px solid #e63946;
-    }
-
-    /* final do footer mais caixa de mensagem*/
-    .contato {
-        background-color: #050505;
-        padding: 120px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 60px;
-    }
-
-    .contato form {
-        background: linear-gradient(145deg, #121212, #0a0a0a);
-        padding: 60px;
-        border-radius: 30px;
-        width: 100%;
-        max-width: 550px;
-        border: 1px solid rgba(230, 57, 70, 0.2);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8),
-            0 0 15px rgba(230, 57, 70, 0.05);
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .contato input,
-    .contato select,
-    .contato textarea {
-        background-color: #1a1a1a;
-        border: 1px solid #333;
-        border-radius: 12px;
-        padding: 18px 25px;
-        color: #fff;
-        font-size: 1rem;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .contato input:focus,
-    .contato select:focus,
-    .contato textarea:focus {
-        outline: none;
-        border-color: #e63946;
-        background-color: #222;
-        box-shadow: 0 0 10px rgba(230, 57, 70, 0.3);
-        transform: translateY(-2px);
-    }
-
-    .contato button {
-        background: linear-gradient(90deg, #e63946, #ff4d5a);
-        color: #fff;
-        border: none;
-        padding: 20px;
-        border-radius: 50px;
-        font-size: 1.1rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        cursor: pointer;
-        box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
-        transition: all 0.3s ease;
-        margin-top: 15px;
-    }
-
-    .contato button:hover {
-        transform: scale(1.03) translateY(-3px);
-        box-shadow: 0 15px 30px rgba(230, 57, 70, 0.5);
-        filter: brightness(1.1);
-    }
-
-    /* FOOTER ORGANIZADO */
-    .footer {
-        width: 100%;
-        text-align: center;
-        padding: 40px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer p {
-        color: #555;
-        font-size: 0.9rem;
-        font-weight: 300;
-    }
-
-
-    .contato form {
-        transition: all 0.5s ease;
-        border: 1px solid #333;
-    }
-
-    .contato form.status-personal {
-        border-color: #ff0000;
-        box-shadow: 0 0 30px rgba(255, 0, 0, 0.2), inset 0 0 15px rgba(255, 0, 0, 0.1);
-    }
-
-    .contato form.status-personal button {
-        background: linear-gradient(90deg, #ff0000, #ff4d4d);
-        box-shadow: 0 5px 20px rgba(255, 0, 0, 0.5);
-    }
-
-    .contato form.status-nutricao {
-        border-color: #00ff88;
-        box-shadow: 0 0 30px rgba(0, 255, 136, 0.2), inset 0 0 15px rgba(0, 255, 136, 0.1);
-    }
-
-    .contato form.status-nutricao button {
-        background: linear-gradient(90deg, #00ff88, #00bd65);
-        box-shadow: 0 5px 20px rgba(0, 255, 136, 0.5);
-    }
-
-    .contato form.status-saude {
-        border-color: #00d9ff;
-        box-shadow: 0 0 30px rgba(0, 217, 255, 0.2), inset 0 0 15px rgba(0, 217, 255, 0.1);
-    }
-
-    .contato form.status-saude button {
-        background: linear-gradient(90deg, #00d9ff, #0088ff);
-        box-shadow: 0 5px 20px rgba(0, 217, 255, 0.5);
-    }
-
-    select option {
-        background-color: #1a1a1a;
-        color: #fff;
-    }
-
-
-    /* ============================================================
-   RESPONSIVIDADE COMPLET
-   ============================================================ */
-
-    @media screen and (max-width: 1024px) {
-        .hero h2 {
-            font-size: 2.8rem;
-        }
-
-        .planos-cards {
-            gap: 20px;
-        }
-
-        .plano {
-            width: 45%;
-            min-height: auto;
-        }
-    }
-
-    @media screen and (max-width: 768px) {
-
-        .header__container {
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .nav-list {
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .nav-link {
-            font-size: 0.8rem;
-        }
-
-        .hero h2 {
-            font-size: 2.2rem;
-        }
-
-        .hero-buttons {
-            flex-direction: column;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .pilares-trio {
-            grid-template-columns: 1fr;
-        }
-
-        .planos-cards,
-        .servicos-cards {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .plano,
-        .card {
-            width: 100%;
-            max-width: 400px;
-            min-height: auto;
-        }
-
-        .plano:hover {
-            transform: translateY(-10px);
-        }
-    }
-
-    @media screen and (max-width: 640px) {
-        .header__container {
-            padding: 10px;
-        }
-
-        .logo {
-            font-size: 1rem;
-        }
-
-        .nav-list {
-            gap: 10px;
-        }
-
-        .hero h2 {
-            font-size: 1.8rem;
-        }
-
-        #ciencia-pratica h2,
-        .servicos h2,
-        .planos h2 {
-            font-size: 1.8rem;
-        }
-
-        .contato form {
-            padding: 30px 20px;
-            border-radius: 15px;
-        }
-
-        .contato button {
-            padding: 15px;
-            font-size: 1rem;
-        }
-
-        .preco span {
-            font-size: 2rem;
-        }
-    }
-
-    @media screen and (max-width: 380px) {
-        .nav-list {
-            display: none;
-        }
-    }
-
-    /* ============================================================
-   CORRECaO DEFINITIVA PARA MOBILE (Abaixo de 768px)
-   ============================================================ */
-    @media screen and (max-width: 768px) {
-
-        html,
-        body {
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        .nav-list {
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            padding: 10px 0;
-        }
-
-        .nav-link {
-            font-size: 0.75rem;
-            padding: 5px;
-        }
-
-        .hero h2 {
-            font-size: 1.8rem !important;
-            word-wrap: break-word;
-        }
-
-        .servicos-cards,
-        .planos-cards,
-        .grid-especialistas,
-        .pilares-trio {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            gap: 20px !important;
-        }
-
-        .card,
-        .plano,
-        .card-info,
-        .pilar {
-            width: 100% !important;
-            max-width: 100% !important;
-            min-width: 0 !important;
-            flex: none !important;
-            margin-bottom: 15px;
-        }
-
-        .plano:hover {
-            transform: scale(1.02) !important;
-        }
-
-        .plano.destaque {
-            min-height: auto !important;
-        }
-
-        .galeria-moderna {
-            grid-template-columns: 1fr !important;
-        }
-
-        .foto {
-            height: 250px;
-        }
-
-        .contato form {
-            padding: 25px 15px !important;
-            width: 100% !important;
-            border-radius: 15px;
-        }
-
-        .contato input,
-        .contato select,
-        .contato textarea {
-            font-size: 16px !important;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .hero h2 {
-            font-size: 1.5rem !important;
-        }
-
-        .preco span {
-            font-size: 1.8rem !important;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .team-container {
-            flex-direction: column;
-            height: auto;
-            padding: 10px;
-            gap: 20px;
-        }
-
-        .team-card {
-            width: 100%;
-            min-height: 300px;
-            flex: none;
-        }
-
-        .team-card:hover {
-            flex: none;
-            transform: scale(1.02);
-        }
-
-        .card-img {
-            object-position: center 20%;
-        }
-
-        .card-content {
-            padding: 20px;
-        }
-    }
-
-    @media screen and (max-width: 768px) {
-        .header__container {
-            flex-direction: column;
-            padding: 15px 10px;
-        }
-
-        .nav-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            /* Cria uma grade 3x2 */
-            gap: 10px;
-            width: 100%;
-            margin-top: 15px;
-        }
-
-        .nav-link {
-            font-size: 0.7rem;
-            text-align: center;
-            padding: 8px 2px;
-        }
-
-        .nav-link--button {
-            grid-column: span 3;
-            /* Botão Contato ocupa a linha toda */
-            margin-top: 5px;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .hero h2 {
-            font-size: 1.8rem !important;
-            padding: 0 10px;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            padding: 0 15px;
-        }
-
-        .hero-buttons {
-            padding: 0 20px;
-        }
-    }
-
-    @media screen and (max-width: 768px) {
-        .team-container {
-            flex-direction: column;
-            height: auto;
-            /* Remove a altura fixa de 500px */
-            gap: 25px;
-        }
-
-        .team-card {
-            width: 100%;
-            height: 400px;
-            flex: none !important;
-            filter: grayscale(0) brightness(1);
-        }
-
-        .card-img {
-            object-position: center 10%;
-        }
-
-        .card-content-lateral {
-            opacity: 1 !important;
-            transform: none !important;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 30%, transparent 100%);
-            padding: 20px;
-        }
-    }
-</style>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <body>
-    <!-- HEADER -->
-    <section class="home" id="home" style="background-image: url('fundo.jpg');"></section>
-    <header class="header">
-        <div class="container header__container">
-            <a href="#home" class="header__logo-link">
-                <h1 class="logo">High-Performance <span>Team</span></h1>
-            </a>
 
-            <nav class="navbar" aria-label="Navegação principal">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link active">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#servicos" class="nav-link">Serviços</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#sobre" class="nav-link">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#ciencia-pratica" class="nav-link">Resultados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#nosso-trio" class="nav-link">Nosso Trio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contato" class="nav-link nav-link--button">Contato</a>
-                    </li>
-                </ul>
-            </nav>
+  <!-- HEADER -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#home" class="logo">High-Performance <span>Team</span></a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#home"    class="nav-link">Home</a></li>
+          <li><a href="#equipe"  class="nav-link">Equipe</a></li>
+          <li><a href="#planos"  class="nav-link">Planos</a></li>
+          <li><a href="#sobre"   class="nav-link">Sobre</a></li>
+          <li><a href="#contato" class="nav-link nav-cta">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <img src="gymman.jpg" alt="Treino de alta performance" class="hero-img">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+    <div class="container hero-content">
+      <p class="eyebrow">Brasília · DF — Alta Performance</p>
+      <h1 class="hero-title">
+        Emagreça.<br>
+        Ganhe massa.<br>
+        <span>Evolua.</span>
+      </h1>
+      <p class="hero-sub">Sem precisar de personal presencial. Com acompanhamento profissional real, resultado vem de método — não de sorte.</p>
+      <div class="hero-btns">
+        <a href="#planos"  class="btn btn-primary">Ver Planos</a>
+        <a href="#contato" class="btn btn-ghost">Falar no WhatsApp</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n" data-target="200">0</span><span class="stat-plus">+</span><p>Alunos Ativos</p></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n" data-target="3">0</span><p>Especialistas</p></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n" data-target="98">0</span><span class="stat-plus">%</span><p>Satisfação</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="sobre" class="sec sec-alt">
+    <div class="container">
+      <p class="sec-eye">Por que nos escolher</p>
+      <h2 class="sec-title">Resultado de verdade tem método</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🏋️</div>
+          <h3>Treino Personalizado</h3>
+          <p>Plano criado para o seu corpo, objetivo e rotina. Nada genérico.</p>
         </div>
-    </header>
-
-    <!-- HERO -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h2>Treino, Nutrição e Saúde em Alta Performance</h2>
-            <p>Transformando corpos e elevando vidas através de metodologia inteligente.</p>
-
-            <div class="hero-buttons">
-                <a href="#contato">Começar Agora</a>
-                <a href="#contato">Falar com Especialista</a>
-            </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📊</div>
+          <h3>Ajustes Constantes</h3>
+          <p>Evoluiu? Seu treino evolui junto. Acompanhamento contínuo.</p>
         </div>
-    </section>
-
-    <!-- SERVIÇOS -->
-    <section id="servicos" class="servicos">
-        <div class="container">
-
-            <h2>Nossos Serviços</h2>
-
-            <div class="servicos-cards">
-
-                <article class="card">
-                    <h3>Treinamento Personalizado</h3>
-                    <p>Programas focados em emagrecimento, hipertrofia e performance.</p>
-                </article>
-
-                <article class="card">
-                    <h3>Nutrição Estratégica</h3>
-                    <p>Planos alimentares adaptados à sua rotina.</p>
-                </article>
-
-                <article class="card">
-                    <h3>Saúde Integrada</h3>
-                    <p>Avaliações, acompanhamento e prevenção.</p>
-                </article>
-
-            </div>
-
+        <div class="benefit-card">
+          <div class="benefit-icon">💬</div>
+          <h3>Suporte Direto</h3>
+          <p>Tire dúvidas pelo WhatsApp com o profissional que te acompanha.</p>
         </div>
-    </section>
+        <div class="benefit-card">
+          <div class="benefit-icon">🥗</div>
+          <h3>Nutrição Integrada</h3>
+          <p>Alimentação alinhada ao treino para potencializar os resultados.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🩺</div>
+          <h3>Saúde em Foco</h3>
+          <p>Médica especialista para cuidar da sua saúde de perto.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📈</div>
+          <h3>Resultados Reais</h3>
+          <p>Metodologia comprovada com centenas de alunos transformados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- PLANOS e Cards -->
-    <section class="team-section">
-        <div class="team-container" id="nosso-trio">
+  <!-- EQUIPE -->
+  <section id="equipe" class="sec">
+    <div class="container">
+      <p class="sec-eye">Quem cuida de você</p>
+      <h2 class="sec-title">Nossa Equipe</h2>
+      <div class="team-grid">
 
-            <div class="team-card card-1" data-area="saude" onclick="selecionarProfissional('saude')">
-                <img loading="lazy" src="Geovana Sousa Macedo.jpeg" alt="Geovana Sousa" class="card-img">
-                <div class="card-content-lateral">
-                    <span class="tag">Saúde</span>
-                    <h3>Geovana Sousa</h3>
-                    <div class="extra-content">
-                        <p>CRM DF: 34698</p>
-                        <p>Atendimento Online</p>
-                        <p class="price">R$ 280,00</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Geovanna -->
+        <div class="prof-card">
+          <div class="prof-img-wrap">
+            <img src="geovanasousamacedo.jpeg" alt="Geovanna Sousa — Médica" class="prof-img">
+            <div class="prof-badge saude">SAÚDE</div>
+          </div>
+          <div class="prof-body">
+            <h3 class="prof-name">Geovanna Sousa</h3>
+            <p class="prof-reg">CRM DF: 34698</p>
+            <p class="prof-price">R$ 280,00</p>
+            <p class="prof-desc">Consulta médica com foco em saúde funcional, hormônios e performance.</p>
+            <button class="btn btn-ghost btn-sm" onclick="selecionarProfissional('saude','Geovanna Sousa','R$ 280,00')">Agendar Consulta</button>
+          </div>
+        </div>
 
-            <div class="team-card" data-area="nutricao" onclick="selecionarProfissional('nutricao')">
-                <img loading="lazy" src="Fernanda.jpeg" alt="Fernanda Nutri" class="card-img">
-                <div class="card-content-lateral">
-                    <span class="tag">Nutrição</span>
-                    <h3>Fernanda Nutri</h3>
-                    <div class="extra-content">
-                        <p>CRN: 15044</p>
-                        <p>Plano Personalizado</p>
-                        <p class="price">R$ 230,00</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Fernanda -->
+        <div class="prof-card">
+          <div class="prof-img-wrap">
+            <img src="fernanda.jpeg" alt="Fernanda — Nutricionista" class="prof-img">
+            <div class="prof-badge nutri">NUTRIÇÃO</div>
+          </div>
+          <div class="prof-body">
+            <h3 class="prof-name">Fernanda</h3>
+            <p class="prof-reg">CRN: 15044</p>
+            <p class="prof-price">R$ 230,00</p>
+            <p class="prof-desc">Plano alimentar individualizado para emagrecer, ganhar massa ou melhorar a saúde.</p>
+            <button class="btn btn-ghost btn-sm" onclick="selecionarProfissional('nutricao','Fernanda','R$ 230,00')">Agendar Consulta</button>
+          </div>
+        </div>
 
-            <div class="team-card" data-area="personal" onclick="selecionarProfissional('personal')">
-                <img loading="lazy" src="Fernando a.jpeg" alt="Fernando Albert" class="card-img">
-                <div class="card-content-lateral">
-                    <span class="tag">Performance</span>
-                    <h3>Fernando Albert</h3>
-                    <div class="extra-content">
-                        <p>CREF: 019533-G/DF</p>
-                        <p>Consultoria VIP</p>
-                        <p class="price">R$ 99,90</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Fernando -->
+        <div class="prof-card">
+          <div class="prof-img-wrap">
+            <img src="fernando-albert.jpeg" alt="Fernando Albert — Personal Trainer" class="prof-img">
+            <div class="prof-badge performance">PERFORMANCE</div>
+          </div>
+          <div class="prof-body">
+            <h3 class="prof-name">Fernando Albert</h3>
+            <p class="prof-reg">CREF: 019533-G/DF</p>
+            <p class="prof-price prof-price-tag">Planos a partir de R$ 79,90</p>
+            <p class="prof-desc">Personal trainer online com planos individualizados para você ganhar massa ou emagrecer sem precisar de um profissional presencial.</p>
+            <a href="#planos" class="btn btn-primary btn-sm">Ver Planos ↓</a>
+          </div>
+        </div>
 
-        </div> <button class="package-btn" id="btn-pacote" onclick="enviarWhatsapp()">
-            <span class="arm arm-left">💪</span>
+      </div>
+    </div>
+  </section>
 
-            <div class="btn-content">
-                <div class="text-group">
-                    <span class="package-name">Plano Performance Premium</span>
-                    <span class="package-desc">Treino Online + Consultoria</span>
-                </div>
-            </div>
+  <!-- PLANOS -->
+  <section id="planos" class="sec sec-alt">
+    <div class="container">
+      <p class="sec-eye">Personal Trainer Online</p>
+      <h2 class="sec-title">Escolha seu Plano</h2>
 
-            <span class="arm arm-right">💪</span>
-        </button>
+      <div class="fern-wrap">
+        <div class="fern-img-wrap">
+          <img src="fernando-albert.jpeg" alt="Fernando Albert" class="fern-img">
+        </div>
+        <div class="fern-bio">
+          <span class="fern-tag">PERFORMANCE · CREF 019533-G/DF</span>
+          <h3 class="fern-name">Fernando Albert</h3>
+          <p class="fern-sub">Personal Trainer Especializado</p>
+          <p class="fern-desc">Ganhe massa muscular ou emagreça com um plano 100% personalizado criado por personal trainer qualificado — sem precisar contratar um profissional presencial. Resultado com método, acompanhamento real e suporte direto.</p>
+        </div>
+      </div>
 
-    </section>
-    </section>
+      <div class="plans-grid plans-grid-3">
 
+        <!-- PLANO BASE -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <h3 class="plan-name">Plano Base</h3>
+            <p class="plan-quote">"Comece a treinar com método. Sem achismo, sem treino genérico da internet."</p>
+          </div>
+          <ul class="plan-items">
+            <li>Treino estruturado para seu objetivo</li>
+            <li>Orientações gerais de execução</li>
+            <li>Check-in mensal de progresso</li>
+          </ul>
+          <div class="plan-price-wrap">
+            <p class="plan-price">R$ 79,90<span>/mês</span></p>
+          </div>
+          <button class="btn btn-ghost btn-full" onclick="enviarWhatsPlano('Base','R$ 79,90')">Contratar Plano Base</button>
+        </div>
 
-    <!-- RESULTADOS -->
-    <section id="ciencia-pratica" class="resultados">
-        <div class="container">
-            <h2>A Ciência na Prática</h2>
-            <p>Onde o planejamento estratégico do nosso trio se transforma em mudança estética e funcional.</p>
+        <!-- PLANO PREMIUM -->
+        <div class="plan-card featured">
+          <div class="plan-badge">MAIS ESCOLHIDO</div>
+          <div class="plan-header">
+            <h3 class="plan-name">Plano Premium</h3>
+            <p class="plan-quote">"Resultado de verdade: treino ajustado mensalmente, com personal te acompanhando de perto."</p>
+          </div>
+          <ul class="plan-items">
+            <li>Treino 100% personalizado</li>
+            <li>Ajustes mensais conforme evolução</li>
+            <li>Contato direto pelo WhatsApp</li>
+            <li>Feedback de execução dos exercícios</li>
+            <li>Acompanhamento próximo e contínuo</li>
+          </ul>
+          <div class="plan-price-wrap">
+            <p class="plan-price">R$ 149,90<span>/mês</span></p>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="enviarWhatsPlano('Premium','R$ 149,90')">Contratar Plano Premium</button>
+        </div>
 
-            <div class="grid-especialistas">
+        <!-- PLANO VIP -->
+        <div class="plan-card vip">
+          <div class="plan-badge plan-badge-vip">VIP · EQUIPE COMPLETA</div>
+          <div class="plan-header">
+            <h3 class="plan-name">Plano VIP</h3>
+            <p class="plan-quote">"O máximo que você pode ter: Personal Trainer, Nutricionista e Médica cuidando de você."</p>
+          </div>
+          <ul class="plan-items">
+            <li>Tudo do Plano Premium</li>
+            <li>Consulta com Nutricionista Fernanda</li>
+            <li>Consulta médica com Geovanna Sousa</li>
+            <li>Plano alimentar integrado ao treino</li>
+            <li>Acompanhamento multidisciplinar completo</li>
+            <li>Suporte prioritário via WhatsApp</li>
+          </ul>
+          <div class="plan-price-wrap">
+            <p class="plan-price plan-price-vip">R$ 529,90<span>/mês</span></p>
+          </div>
+          <button class="btn btn-vip btn-full" onclick="enviarWhatsPlano('VIP','R$ 529,90')">Contratar Plano VIP</button>
+        </div>
 
-                <div class="card-info" onclick="void(0)">
-                    <img loading="lazy" src="gym man.jpg" alt="Personal Trainer">
-                    <h3>Personal Trainer</h3>
+      </div>
+    </div>
+  </section>
 
-                    <div class="detalhes">
-                        <p>Prescrição de treino inteligente baseada em biomecânica e fisiologia.</p>
-                        <ul>
-                            <li>Periodização Individualizada</li>
-                            <li>Correção Biomecânica</li>
-                            <li>Hipertrofia e Emagrecimento</li>
-                        </ul>
-                    </div>
-                </div>
+  <!-- DEPOIMENTOS -->
+  <section class="sec depoimentos">
+    <div class="container">
+      <p class="sec-eye">Resultados reais</p>
+      <h2 class="sec-title">O que dizem nossos alunos</h2>
+    </div>
+    <div class="reviews-track-wrap">
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Perdi 12kg em poucos meses com acompanhamento profissional de verdade. Método que funciona!"</p><p class="r-name">Carlos M.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Minha evolução foi muito maior do que imaginava. A equipe é incrível e muito atenciosa."</p><p class="r-name">Juliana S.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Atendimento excelente e resultados reais. Vale cada centavo investido."</p><p class="r-name">Rafael A.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Treinos simples de seguir e muito eficientes. Em 3 meses ganhei 5kg de massa muscular."</p><p class="r-name">Amanda R.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"A consultoria de nutrição mudou minha relação com a comida. Recomendo demais!"</p><p class="r-name">Thiago L.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Nunca pensei que conseguiria emagrecer sem academia presencial. O Fernando me provou o contrário."</p><p class="r-name">Patrícia M.</p></div>
+        <!-- duplicatas para loop infinito -->
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Perdi 12kg em poucos meses com acompanhamento profissional de verdade. Método que funciona!"</p><p class="r-name">Carlos M.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Minha evolução foi muito maior do que imaginava. A equipe é incrível e muito atenciosa."</p><p class="r-name">Juliana S.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Atendimento excelente e resultados reais. Vale cada centavo investido."</p><p class="r-name">Rafael A.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Treinos simples de seguir e muito eficientes. Em 3 meses ganhei 5kg de massa muscular."</p><p class="r-name">Amanda R.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"A consultoria de nutrição mudou minha relação com a comida. Recomendo demais!"</p><p class="r-name">Thiago L.</p></div>
+        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Nunca pensei que conseguiria emagrecer sem academia presencial. O Fernando me provou o contrário."</p><p class="r-name">Patrícia M.</p></div>
+      </div>
+    </div>
+  </section>
 
-                <div class="card-info" onclick="void(0)">
-                    <img loading="lazy" src="Nutrição.jpg" alt="Nutrição Esportiva">
-                    <h3>Nutrição Esportiva</h3>
+  <!-- CONTATO -->
+  <section id="contato" class="sec sec-alt contato">
+    <div class="container">
+      <p class="sec-eye">Fale conosco</p>
+      <h2 class="sec-title">Entre em Contato</h2>
+      <p class="sec-sub">Escolha a área e nos conte seu objetivo. Respondemos em até 24h pelo WhatsApp.</p>
 
-                    <div class="detalhes">
-                        <p>Estratégias alimentares que respeitam sua rotina.</p>
-                        <ul>
-                            <li>Planos Flexíveis</li>
-                            <li>Suplementação</li>
-                            <li>Reeducação Alimentar</li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="contato-form-center">
+        <div class="contato__form-wrap">
+          <div class="form-group">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" placeholder="Como podemos te chamar?">
+          </div>
+          <div class="form-group">
+            <label for="area">Área de interesse</label>
+            <select id="area" onchange="updateFormTheme(this.value)">
+              <option value="">Selecione uma área</option>
+              <option value="performance">⚡ Personal Trainer — Fernando Albert</option>
+              <option value="nutricao">🥗 Nutrição — Fernanda</option>
+              <option value="saude">🩺 Saúde — Geovanna Sousa</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Seu objetivo</label>
+            <textarea id="mensagem" rows="4" placeholder="Conte o que você quer alcançar..."></textarea>
+          </div>
+          <button id="btn-enviar" class="btn btn-primary btn-full" onclick="enviarWhats(event)">
+            Iniciar Consultoria via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <div class="card-info" onclick="void(0)">
-                    <img loading="lazy" src="fisioterapia.jpg" alt="Saúde e Performance">
-                    <h3>Saúde & Performance</h3>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p class="logo">High-Performance <span>Team</span></p>
+        <p class="footer-tagline">Treino, Nutrição e Saúde integrados<br>para resultados reais.</p>
+      </div>
+      <div class="footer-links">
+        <p class="footer-col-title">Navegação</p>
+        <a href="#home">Home</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#planos">Planos</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 High-Performance Team · Todos os direitos reservados · Brasília, DF</p>
+    </div>
+  </footer>
 
-                    <div class="detalhes">
-                        <p>Monitoramento clínico e prevenção de lesões.</p>
-                        <ul>
-                            <li>Bioimpedância</li>
-                            <li>Prevenção</li>
-                            <li>Longevidade</li>
-                        </ul>
-                    </div>
-                </div>
+  <script src="script.js"></script>
 
-            </div>
+  <!-- BANNER DE COOKIES -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <span class="cookie-icon">🍪</span>
+        <p>Usamos cookies para melhorar sua experiência e analisar o tráfego do site. Ao continuar navegando, você concorda com nossa <a href="#" class="cookie-link">Política de Privacidade</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-ghost btn-sm" onclick="recusarCookies()">Recusar</button>
+        <button class="btn btn-primary btn-sm" onclick="aceitarCookies()">Aceitar todos</button>
+      </div>
+    </div>
+  </div>
 
-            <!-- SOBRE -->
-            <section id="sobre" class="sobre">
-                <div class="container">
-                    <div class="sobre-header">
-                        <span class="tagline">Alta Performance & Bem-Estar</span>
-                        <h2>A união estratégica entre ciência e resultado.</h2>
-                    </div>
+  <script>
+    /* ---------- COOKIES ---------- */
+    (function() {
+      if (localStorage.getItem('cookie-consent')) {
+        document.getElementById('cookie-banner').style.display = 'none';
+      }
+    })();
 
-                    <div class="sobre-content">
-                        <p>
-                            Acreditamos que a verdadeira transformação acontece na intersecção entre o movimento, a
-                            nutrição e o
-                            equilíbrio clínico. Por isso, consolidamos um <strong>trio de especialistas</strong> focado
-                            em uma
-                            abordagem 360º:
-                        </p>
+    function aceitarCookies() {
+      localStorage.setItem('cookie-consent', 'accepted');
+      fecharCookieBanner();
+    }
 
-                        <div class="pilares-trio">
-                            <div class="pilar">
-                                <strong>Treinamento Especializado</strong>
-                                <p>Metodologias personalizadas para o seu biotipo e objetivos.</p>
-                            </div>
-                            <div class="pilar">
-                                <strong>Estratégia Nutricional</strong>
-                                <p>Alimentação inteligente como combustível para sua evolução.</p>
-                            </div>
-                            <div class="pilar">
-                                <strong>Suporte à Saúde</strong>
-                                <p>Acompanhamento técnico para garantir longevidade e segurança.</p>
-                            </div>
-                        </div>
+    function recusarCookies() {
+      localStorage.setItem('cookie-consent', 'declined');
+      fecharCookieBanner();
+    }
 
-                        <p class="final-text">
-                            Nossa missão é substituir o amadorismo por <strong>protocolos baseados em
-                                evidências</strong>. Aqui,
-                            o seu progresso não é fruto do acaso, mas de um planejamento integrado onde cada detalhe do
-                            seu
-                            corpo é compreendido e otimizado.
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <!-- CONTATO -->
-            <section id="contato" class="contato">
-
-                <form onsubmit="enviarWhats(event)">
-
-                    <input type="text" id="nome" placeholder="Seu nome" required>
-
-                    <select id="area" required>
-                        <option value="">Selecione o atendimento</option>
-                        <option value="personal">Personal Trainer</option>
-                        <option value="nutricao">Nutrição</option>
-                        <option value="saude">Saúde</option>
-                    </select>
-
-                    <textarea id="mensagem" placeholder="Descreva seu objetivo" required></textarea>
-
-                    <button type="submit">Falar no WhatsApp</button>
-
-                </form>
-                <!-- FOOTER -->
-                <footer class="footer">
-                    <p>© 2026 High-Performance Team - Todos os direitos reservados.</p>
-                </footer>
+    function fecharCookieBanner() {
+      const banner = document.getElementById('cookie-banner');
+      banner.classList.add('cookie-hide');
+      setTimeout(() => banner.style.display = 'none', 400);
+    }
+  </script>
 </body>
-
-</html>
-
-<script>
-    let vmE = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : global, vmi = Object['defineProperty'], vmy = Object['create'], vmj = Object['getOwnPropertyDescriptor'], vml = Object['getOwnPropertyNames'], vmq = Object['getOwnPropertySymbols'], vmR = Object['setPrototypeOf'], vmt = Object['getPrototypeOf'], vmx = Function['prototype']['call'], vmk = Function['prototype']['apply'], vmF = Reflect['apply'], vmO = WeakMap['prototype']['set'], vmG = WeakMap['prototype']['get'], vmg = WeakMap['prototype']['has'], vmc = WeakSet['prototype']['add'], vmh = WeakSet['prototype']['has'], vmH_6ed288 = vmE['vmH_6ed288'] || (vmE['vmH_6ed288'] = {}); const vmJ_19d68c = (function () { let M = ['AQEACQAAAAQUCAx3aW5kb3cICG9wZW4IGF8weDUxY2VhZiQkMQgMX2JsYW5rBAIIEl8weDQ4YjhmZggSY2xhc3NMaXN0CAxyZW1vdmUIDGFjdGl2ZQQBMKoDpAOWAQiMAaYDNjYANjYAbgamA4wBCIwBADY2AG4GBAAEAAQAAAQBBAIAAAQDAAAEBAQCAAQFBAYABAcECAAABAkEAQA=', 'AQEAAQAABh4IEl8weDQ4YjhmZggSY2xhc3NMaXN0CAZhZGQIDGFjdGl2ZQQBCBg1NTYxODYzNTEwMzYIxAFPbMOhLCBtZSBpbnRlcmVzc2VpIG5lc3RlIHBsYW5vIGRvIHBhY290ZS4gUG9kZSBtZSBwYXNzYXIgbWFpcyBpbmZvcm1hw6fDtWVzIGRlIGNvbW8gZWxlIGZ1bmNpb25hPwgkZW5jb2RlVVJJQ29tcG9uZW50CBxodHRwczovL3dhLm1lLwgMP3RleHQ9CBhfMHg1MWNlYWYkJDEEAAVYAggUc2V0VGltZW91dAQCSKoDpAOmA4wBCIwBADY2AG4GAA4AlgEAbA4ADDoUABQMOhSyAwDIAQCWAQBsBgQABAAEAAQBAAQCBAMAAAQEBAEABAUEAAQGBAcEBAQBBAEECAQAAAAECQAEAQAABAoECwAEDAQNBA4EAgA=', 'AQAIAQAAAhgIEl8weDQ4YjhmZggQZG9jdW1lbnQIHGdldEVsZW1lbnRCeUlkCBRidG4tcGFjb3RlBAEIIGFkZEV2ZW50TGlzdGVuZXIICmNsaWNrBAEEAggOY29uc29sZQgKZXJyb3IIhAFFcnJvOiBPIGJvdMOjbyBjb20gSUQgJ2J0bi1wYWNvdGUnIG7Do28gZm9pIGVuY29udHJhZG8gbmEgcMOhZ2luYS5OpAO0A5YBCIwBADY2AG6yA6YDaKYDCIwBADY2AMgBNjYAbgZklgEIjAEANjYAbgasAwJwBAAEAAQBAAQCBAMAAAQEBAEEAAQAAAQAAAQFBAYAAAQHAAAABAgEAgAABAkABAoECwAABAQEAQAEAAAABBg2NEg=', 'AQAICQAAAgQWCBJfMHhiNDQ4NTUIEmNsYXNzTGlzdAgMcmVtb3ZlCB5zdGF0dXMtcGVyc29uYWwIHnN0YXR1cy1udXRyaWNhbwgYc3RhdHVzLXNhdWRlBAMICnZhbHVlCAZhZGQIDnN0YXR1cy0EAUiqAwQApAMEAKYDBACMAQQBCACMAQQCAAQDNgA2AAAEBDYANgAABAU2ADYAAAQGbgQDBgDAAgCMAQQHDgQADAQAaACmAwQAjAEEAQgAjAEECAAECQwEADoAFAA2ADYAAAQKbgQBBgACLEg=', 'AQEICQAAAAQeCAx3aW5kb3cIDnNjcm9sbFkEMggSXzB4M2ZhMjM4CBJjbGFzc0xpc3QIBmFkZAggaGVhZGVyLS1zY3JvbGxlZAQBCApzdHlsZQgmcmdiYSg1LCA1LCA1LCAwLjk4KQgeYmFja2dyb3VuZENvbG9yCAxyZW1vdmUILHJnYmEoMTAsIDEwLCAxMCwgMC45NSkCCBJfMHg0YmI4MWNUBAAEAAQABAEEAgAABAMEBAAEBQQGAAAEBwQBAAQDBAgECQQKAAAEAwQEAAQLBAYAAAQHBAEABAMECAQMBAoABA0ABA4AqgOkA5YBjAEAXGimA4wBCIwBADY2AG4GpgOMAQCOAQZkpgOMAQiMAQA2NgBuBqYDjAEAjgEGAAioAwYEDC4sTA==', 'AQEIAQAAAAwIEl8weDRiYjgxYwgMd2luZG93CCpyZXF1ZXN0QW5pbWF0aW9uRnJhbWUEBAQBAyYEAKoDBACkAwQApgMAQABoBAGWAQAIBAKMAQQDAADIAQA2ADYEBAAEAW4ABgQFAAAIBACoAwAGAggm', 'AQAICQACAgQcCBxwcmV2ZW50RGVmYXVsdAQACBBkb2N1bWVudAgacXVlcnlTZWxlY3RvcggYZ2V0QXR0cmlidXRlCAhocmVmBAEIDHdpbmRvdwgQc2Nyb2xsVG8IEm9mZnNldFRvcARQCAZ0b3AIDHNtb290aAgQYmVoYXZpb3JYqgMEAKQDBAAQBAAIAIwBBAAABAFuBAAGAJYBBAIIAIwBBAPAAgAIAIwBBAQABAU2ADYAAAQGbgQBNgA2AAAEBm4EAQ4EAQwEAWgAlgEEBwgAjAEECJoBAAgADAQBjAEECQAEChYApgEECwgAAAQMpgEEDTYANgAABAZuBAEGAAIyWA==', 'AQEACQACAAQICCBhZGRFdmVudExpc3RlbmVyCApjbGljawQGBAIeqgMEAKQDBAAQBAAIAIwBBAAABAE2ADYAAAQCyAEANgA2AAAEA24EAgYA', 'AQEACQACCgQgCBJfMHg0ODYyMjIIKmdldEJvdW5kaW5nQ2xpZW50UmVjdAQACA5jbGllbnRYCAhsZWZ0CA5jbGllbnRZCAZ0b3AIDGhlaWdodAQCBAoICndpZHRoCApzdHlsZQg4cGVyc3BlY3RpdmUoMTAwMHB4KSByb3RhdGVYKAgaZGVnKSByb3RhdGVZKAgsZGVnKSB0cmFuc2xhdGVZKC0xMHB4KQgSdHJhbnNmb3JtagQABAAEAAAEAQQCBAAEAQQABAMEAQQEAAQCBAAEBQQBBAYABAMEAQQHBAgABAMABAkABAQEAgQBBAoECAAABAkABAUEAAQLBAwEBAAABA0ABAUAAAQOAAQPAKoDpAOmAwiMAQBuDhCMAQyMARYOEIwBDIwBFg4MjAEAGgwWABoODAyMAQAaFgAaDqYDjAEADDoUABQMOhQAFI4BBg==', 'AQEACQAAAAQICBJfMHg0ODYyMjIICnN0eWxlCHpwZXJzcGVjdGl2ZSgxMDAwcHgpIHJvdGF0ZVgoMGRlZykgcm90YXRlWSgwZGVnKSB0cmFuc2xhdGVZKDApCBJ0cmFuc2Zvcm0OBAAEAAQABAEEAgQDAKoDpAOmA4wBAI4BBg==', 'AQEAAQACAA4IEl8weDQ4NjIyMgggYWRkRXZlbnRMaXN0ZW5lcggSbW91c2Vtb3ZlBAgEAggUbW91c2VsZWF2ZQQJPgQAqgMEAKQDBAAQBACuAwAGBACmAwAIBAGMAQQCAAA2ADYEAwAAyAEANgA2BAQABAJuAAYEAKYDAAgEAYwBBAUAADYANgQGAADIAQA2ADYEBAAEAm4ABg==', 'AQEICQACAAQUCBxpc0ludGVyc2VjdGluZwgMdGFyZ2V0CApzdHlsZQgCMQgOb3BhY2l0eQgadHJhbnNsYXRlWSgwKQgSdHJhbnNmb3JtCBJfMHgzYzE1NGQIEnVub2JzZXJ2ZQQBNqoDpAMQjAFoEIwBjAEAjgEGEIwBjAEAjgEGpgMIjAEQjAE2NgBuBgQABAAEAAQAAAQABAEEAgQDBAQABAAEAQQCBAUEBgAEBwAECAQABAEAAAQJBAEAAgg2', 'AQEACQACAAQGCA5mb3JFYWNoBAsEARiqA6QDEAiMAQDIATY2AG4GBAAEAAQAAAQABAEAAAAEAgQBAA==', 'AQEACQACAAQUCApzdHlsZQgCMAgOb3BhY2l0eQggdHJhbnNsYXRlWSgzMHB4KQgSdHJhbnNmb3JtCCJhbGwgMC42cyBlYXNlLW91dAgUdHJhbnNpdGlvbggSXzB4M2MxNTRkCA5vYnNlcnZlBAE0BAAEAAQABAAEAQQCAAQABAAEAwQEAAQABAAEBQQGAAQHAAQIBAAAAAQJBAEAqgOkAxCMAQCOAQYQjAEAjgEGEIwBAI4BBqYDCIwBEDY2AG4G', 'AQAIAQAADD4IEl8weGI0NDg1NQgSXzB4M2ZhMjM4CBJfMHg0YmI4MWMIEl8weDNjMTU0ZAgQZG9jdW1lbnQIHGdldEVsZW1lbnRCeUlkCAhhcmVhBAEIGnF1ZXJ5U2VsZWN0b3IIGi5jb250YXRvIGZvcm0IDi5oZWFkZXIIIGFkZEV2ZW50TGlzdGVuZXIIDGNoYW5nZQQDBAICCAx3aW5kb3cIDHNjcm9sbAQFCCBxdWVyeVNlbGVjdG9yQWxsCBhhW2hyZWZePSIjIl0IDmZvckVhY2gEBwgMLnBsYW5vBAoIKEludGVyc2VjdGlvbk9ic2VydmVyBAwHmpmZmZmZuT8IEnRocmVzaG9sZAg0LnRlYW0tY2FyZCwgLnBsYW5vLCAucGlsYXIEDYoCpAO0A7QDtAO0A5YBCIwBADY2AG4OlgEIjAEANjYAbrIDlgEIjAEANjYAbrIDDAhoBqYDaAwIjAEANjYAyAE2NgBuBgCuA5YBCIwBADY2AMgBNjYAbgaWAQiMAQA2NgBuCIwBAMgBNjYAbgaWAQiMAQA2NgBuDgwIjAEAyAE2NgBuBrQDlgEAyAGaAQgApgEA0AGyA5YBCIwBADY2AG4IjAEAyAE2NgBuBqwDAnAEAAQABAEEAgQDBAQABAUEBgAABAcEAQQABAQABAgECQAABAcEAQQABAQABAgECgAABAcEAQQBBAAAAAAEAAAEAAAECwQMAAAEDQAAAAQOBAIABA8EAgQQAAQLBBEAAAQSAAAABA4EAgAEBAAEEwQUAAAEBwQBAAQVBBYAAAAEBwQBAAQEAAQTBBcAAAQHBAEEBAQEAAQVBBgAAAAEBwQBAAQDBBkEGgAAAAQbBBwEDgQCBAMEBAAEEwQdAAAEBwQBAAQVBB4AAAAEBwQBAAQAAAAEREpKZg==', 'AQAIAQACBiYIEGRvY3VtZW50CBxnZXRFbGVtZW50QnlJZAgIYXJlYQQBCAhub21lCA5jb250YXRvCAp2YWx1ZQgaZGlzcGF0Y2hFdmVudAgKRXZlbnQIDGNoYW5nZQgMd2luZG93CBBzY3JvbGxUbwgSb2Zmc2V0VG9wBFAIBnRvcAgMc21vb3RoCBBiZWhhdmlvcggKZm9jdXMEAJYBlgEIjAEANjYAbg6WAQiMAQA2NgBuDpYBCIwBADY2AG4ODGgMEI4BBgwIjAGWAQAA0AE2NgBuBgxolgEIjAGaAQgMjAEAFqYBCACmATY2AG4GDGgMCIwBAG4GAnAEAAAEAQQCAAAEAwQBBAEEAAAEAQQEAAAEAwQBBAIEAAAEAQQFAAAEAwQBBAMEAQAEAQQABAYABAEABAcECAQJBAMEAQAABAMEAQAEAwAECgAECwAABAMEDAQNAAQOAAQPBBAAAAQDBAEABAIABAIABBEEEgQAAAAABjiSAVyCAYQBkgE=', 'AQAIAQACDj4IHHByZXZlbnREZWZhdWx0BAAIEGRvY3VtZW50CBxnZXRFbGVtZW50QnlJZAgIbm9tZQQBCAp2YWx1ZQgIYXJlYQgQbWVuc2FnZW0IGjU1NjE5OTE0NjMzNzUIAm4IGERyYS4gR2VvdmFuYQgCcAgKc2F1ZGUIGDU1NjE5MTg4NzYxNAgcTnV0cmkgRmVybmFuZGEIEG51dHJpY2FvCBg1NTYxODYzNTEwMzYIIlBlcnNvbmFsIEZlcm5hbmRvCBBwZXJzb25hbAgKT2zDoSAIHCEgTWV1IG5vbWUgw6kgCGouIEdvc3RhcmlhIGRlIGFnZW5kYXIgdW0gYXRlbmRpbWVudG8uJTBBJTBBT2JqZXRpdm86IAgMd2luZG93CAhvcGVuCBxodHRwczovL3dhLm1lLwgMP3RleHQ9CAxfYmxhbmsEAghcUG9yIGZhdm9yLCBzZWxlY2lvbmUgdW1hIMOhcmVhIGRlIGF0ZW5kaW1lbnRvLggKYWxlcnT0AQQAAAQABAEEAAAEAgAEAwQEAAAEBQQBBAYEAQQCAAQDBAcAAAQFBAEEBgQCBAIABAMECAAABAUEAQQGBAMAAAAABAkECgAECwQMBA0AAAAEDgQKAAQPBAwEEAAAAAQRBAoABBIEDAQTBAQEBAQCAAAEBAQCAAAECgQFAAQMBAYABBQEBgAABBUABAEAAAQWAAQDAAAEBwQXAAQYBBkEBQAABBoABAcAAAAABBsAAAQcBAIAAAQdBB4EBQQBAAAAEAiMAQBuBpYBCIwBADY2AG6MAQ6WAQiMAQA2NgBujAEOlgEIjAEANjYAbowBDpoBCJoBCACmAQgApgGmAQiaAQgApgEIAKYBpgEImgEIAKYBCACmAaYBDgwMkAFoDAyQAQiMAQ4IjAEOBgAMOhQAFAw6FAAUDDoUDpYBCIwBAAw6FAAUDDoUNjYANjYAbgZkAJYBAGwGAnAEiAHmAeQB8AE='], v = { '0': 0x168, '1': 0xd1, '2': 0x151, '3': 0x3d, '4': 0x66, '5': 0x14c, '6': 0x1d8, '7': 0x165, '8': 0x81, '9': 0x17d, '10': 0xb7, '11': 0x12d, '12': 0x2e, '13': 0x4f, '14': 0x9d, '15': 0x8b, '16': 0x5b, '17': 0x1ea, '18': 0x1aa, '19': 0x71, '20': 0x33, '21': 0x26, '22': 0xfe, '23': 0x11a, '24': 0xd, '25': 0x1fa, '26': 0x40, '27': 0x68, '28': 0x15, '29': 0x15b, '32': 0x191, '40': 0x2f, '41': 0x28, '42': 0x136, '43': 0x194, '44': 0x132, '45': 0x8e, '46': 0x10e, '47': 0x181, '50': 0xfd, '51': 0xa9, '52': 0x7d, '53': 0x8, '54': 0x1bb, '55': 0xef, '56': 0x1ed, '57': 0x92, '58': 0x1ad, '59': 0x1d1, '60': 0x1f6, '61': 0x57, '62': 0x69, '63': 0x1b4, '64': 0x15c, '65': 0x49, '70': 0x65, '71': 0x104, '72': 0x1c0, '73': 0x17f, '74': 0x17e, '75': 0x133, '76': 0xbd, '77': 0x147, '78': 0xa1, '79': 0x1dd, '80': 0x164, '81': 0x124, '82': 0x2d, '83': 0x91, '84': 0x125, '90': 0xfa, '91': 0x166, '92': 0x67, '93': 0xab, '94': 0xf6, '95': 0x2c, '100': 0x2, '101': 0x1eb, '102': 0x128, '103': 0x1a2, '104': 0x1d, '105': 0x175, '106': 0x1a3, '107': 0xc7, '110': 0xb8, '111': 0x17a, '112': 0x95, '120': 0x1b9, '121': 0x77, '122': 0x142, '123': 0x159, '124': 0x1e2, '125': 0x1ee, '126': 0x190, '127': 0x84, '128': 0xec, '129': 0x1ce, '130': 0x105, '131': 0x1af, '132': 0x1b6, '140': 0x86, '141': 0xa4, '142': 0x162, '143': 0x1b3, '144': 0x3b, '145': 0x14, '146': 0x1ef, '147': 0x1a, '148': 0x143, '149': 0x9, '150': 0xf7, '151': 0x7, '152': 0x1c6, '153': 0x121, '154': 0x87, '155': 0x6b, '156': 0xdb, '157': 0xd3, '158': 0x1e0, '160': 0xd8, '161': 0xc5, '162': 0x158, '163': 0x1ac, '164': 0xa, '165': 0xc8, '166': 0x18b, '167': 0xa0, '168': 0x108, '169': 0x148, '180': 0x103, '181': 0x1cf, '182': 0x53, '183': 0x1c9, '184': 0x13, '185': 0x177, '200': 0x10b, '201': 0x110, '202': 0xd0, '210': 0xb2, '211': 0x7b, '212': 0x127, '213': 0xc9, '214': 0x37, '215': 0x88, '216': 0x9b, '217': 0x154, '218': 0x78, '219': 0x15e, '220': 0x1b8, '221': 0x180, '250': 0xa5, '251': 0xe0, '252': 0x5f, '253': 0x102, '254': 0x29, '255': 0x192, '256': 0x1f3, '257': 0x13a, '258': 0x19e, '259': 0x1c8, '260': 0x13f, '261': 0xa7, '270': 0x1e5, '271': 0x140 }; const s = 0x1, o = 0x2, J = 0x3, H = 0x4, P = 0x78, V = 0x79, E = 0x7a, a = typeof 0x0n, K = [], i = function () { throw new TypeError('\x27caller\x27,\x20\x27callee\x27,\x20and\x20\x27arguments\x27\x20properties\x20may\x20not\x20be\x20accessed\x20on\x20strict\x20mode\x20functions\x20or\x20the\x20arguments\x20objects\x20for\x20calls\x20to\x20them'); }; Object['preventExtensions'](i); let y = new WeakSet(), j = new WeakSet(), l = new WeakMap(); function q(pO, pG, pg) { try { vmi(pO, pG, pg); } catch (pc) { } } function R(pO, pG) { let pg = new Array(pG), pc = ![]; for (let pm = pG - 0x1; pm >= 0x0; pm--) { let pe = pO(); pe && typeof pe === 'object' && vmh['call'](y, pe) ? (pc = !![], pg[pm] = pe) : pg[pm] = pe; } if (!pc) return pg; let ph = []; for (let pI = 0x0; pI < pG; pI++) { let pA = pg[pI]; if (pA && typeof pA === 'object' && vmh['call'](y, pA)) { let pN = pA['value']; if (Array['isArray'](pN)) { for (let pZ = 0x0; pZ < pN['length']; pZ++)ph['push'](pN[pZ]); } } else ph['push'](pA); } return ph; } function t(pO) { let pG = []; for (let pg in pO) { pG['push'](pg); } return pG; } function x(pO) { return Array['prototype']['slice']['call'](pO); } function k(pO) { return typeof pO === 'function' && pO['prototype'] ? pO['prototype'] : pO; } function F(pO) { if (typeof pO === 'function') return vmt(pO); let pG = vmt(pO), pg = pG && vmj(pG, 'constructor'), pc = pg && pg['value'], ph = pc && typeof pc === 'function' && (pc['prototype'] === pG || vmt(pc['prototype']) === vmt(pG)); if (ph) return vmt(pG); return pG; } function O(pO, pG) { let pg = pO; while (pg !== null) { let pc = vmj(pg, pG); if (pc) return { 'desc': pc, 'proto': pg }; pg = vmt(pg); } return { 'desc': null, 'proto': pO }; } function G(pO, pG) { if (!pO['_$twDigJ']) return; pG in pO['_$twDigJ'] && delete pO['_$twDigJ'][pG]; let pg = pG['indexOf']('$$'); if (pg !== -0x1) { let pc = pG['substring'](0x0, pg); pc in pO['_$twDigJ'] && delete pO['_$twDigJ'][pc]; } } function g(pO, pG) { let pg = pO; while (pg) { G(pg, pG), pg = pg['_$D0DSfu']; } } function c() { return !vmH_6ed288['_$YlOG0c'] && (vmH_6ed288['_$YlOG0c'] = new Map()), vmH_6ed288['_$YlOG0c']; } function h() { return vmH_6ed288['_$YlOG0c'] || null; } function m(pO, pG, pg) { if (pO[0x7] === undefined || !pg) return; let pc = pO[0x1][pO[0x7]]; !pG['_$AqrBpj'] && (pG['_$AqrBpj'] = vmy(null)), pG['_$AqrBpj'][pc] = pg, pO[0x9] && (!pG['_$HWOTIH'] && (pG['_$HWOTIH'] = vmy(null)), pG['_$HWOTIH'][pc] = !![]), q(pg, 'name', { 'value': pc, 'writable': ![], 'enumerable': ![], 'configurable': !![] }); } function I(pO) { return '_$8qEJSf' + pO['substring'](0x1) + '_$Vm4aMC'; } function A(pO) { return '_$8zWQSa' + pO['substring'](0x1) + '_$vbpBip'; } function N(pO, pG, pg, pc, ph) { let pm; return pc ? pm = function pe() { let pI = new.target !== undefined ? new.target : vmH_6ed288['_$qimC1Q']; return pO(pG, arguments, pg, pm, pI, this === ph ? undefined : this); } : pm = function pI() { let pA = new.target !== undefined ? new.target : vmH_6ed288['_$qimC1Q']; return pO(pG, arguments, pg, pm, pA, this); }, vmO['call'](l, pm, { 'b': pG, 'e': pg }), pm; } function Z(pO, pG, pg, pc, ph) { let pm; return pc ? pm = async function pe() { let pI = new.target !== undefined ? new.target : vmH_6ed288['_$qimC1Q']; return await pO(pG, arguments, pg, pm, pI, undefined, this === ph ? undefined : this); } : pm = async function pI() { let pA = new.target !== undefined ? new.target : vmH_6ed288['_$qimC1Q']; return await pO(pG, arguments, pg, pm, pA, undefined, this); }, pm; } function S(pO, pG, pg, pc, ph, pm) { let pe; return ph ? pe = function pI() { return pO(pG, arguments, pg, pe, undefined, this === pm ? undefined : this); } : pe = function pA() { return pO(pG, arguments, pg, pe, undefined, this); }, vmc['call'](pc, pe), pe; } function d(pO, pG, pg, pc) { let ph; return ph = { 'HdxrBC': (...pm) => { return pO(pG, pm, pg, ph, undefined, pc); } }['HdxrBC'], ph; } function Q(pO, pG, pg, pc) { let ph; return ph = { 'HdxrBC': async (...pm) => { return await pO(pG, pm, pg, ph, undefined, undefined, pc); } }['HdxrBC'], ph; } function f(pO, pG, pg, pc, ph) { let pm; return pc ? pm = { 'HdxrBC'() { let pe = new.target !== undefined ? new.target : vmH_6ed288['_$qimC1Q']; return pO(pG, arguments, pg, pm, pe, this === ph ? undefined : this); } }['HdxrBC'] : pm = { 'HdxrBC'() { let pe = new.target !== undefined ? new.target : vmH_6ed288['_$qimC1Q']; return pO(pG, arguments, pg, pm, pe, this); } }['HdxrBC'], vmO['call'](l, pm, { 'b': pG, 'e': pg }), pm; } function L(pO, pG, pg, pc, ph) { let pm; return pc ? pm = { async 'HdxrBC'() { let pe = new.target !== undefined ? new.target : vmH_6ed288['_$qimC1Q']; return await pO(pG, arguments, pg, pm, pe, undefined, this === ph ? undefined : this); } }['HdxrBC'] : pm = { async 'HdxrBC'() { let pe = new.target !== undefined ? new.target : vmH_6ed288['_$qimC1Q']; return await pO(pG, arguments, pg, pm, pe, undefined, this); } }['HdxrBC'], pm; } function u(pO, pG, pg, pc, ph, pm) { let pe = new Array(0x8), pI = 0x0, pA = new Array((pO[0xe] || 0x0) + (pO[0xf] || 0x0)), pN = 0x0, pZ = pO[0x1], pS = pO[0x11], pd = pO[0x8] || K, pQ = pO[0x2] || K, pf = pS['length'] >> 0x1, pL = (pO[0xe] * 0x1f ^ pO[0xf] * 0x11 ^ pf * 0xd ^ pZ['length'] * 0x7) >>> 0x0 & 0x3, pu, pr, pb; switch (pL) { case 0x1: pu = 0x1, pr = 0x0, pb = 0x1; break; case 0x2: pu = 0x0, pr = pf, pb = 0x0; break; case 0x3: pu = pf, pr = 0x0, pb = 0x0; break; default: pu = 0x0, pr = 0x1, pb = 0x1; break; }let pW = null, pY = null, pT = ![], pU = undefined, pC = ![], pn = 0x0, pB = ![], pz = 0x0, pX = !!pO[0xd], pD = !!pO[0x13], pw = !!pO[0xc], M0 = !!pO[0x5], M1 = pm, M2 = !!pO[0x3]; !pX && !M2 && (pm === undefined || pm === null) && (pm = vmE); let M3 = ME => { pe[pI++] = ME; }, M4 = () => pe[--pI], M5 = { ['_$AqrBpj']: null, ['_$ANa2YR']: null, ['_$twDigJ']: null, ['_$D0DSfu']: pg }; if (pG) { let ME = pO[0xe] || 0x0; for (let Ma = 0x0, MK = pG['length'] < ME ? pG['length'] : ME; Ma < MK; Ma++) { pA[Ma] = pG[Ma]; } } let M6 = (pX || !pD) && pG ? x(pG) : null, M7 = null, M8 = ![], M9 = pA['length'], Mp = null, MM = 0x0; M0 && (M5['_$twDigJ'] = vmy(null), M5['_$twDigJ']['__this__'] = !![]); m(pO, M5, pc); let Mv = { ['_$nB3bKs']: pX, ['_$0wqOjV']: pD, ['_$RZzLYA']: pw, ['_$7axwc2']: M0, ['_$bfJUlG']: M8, ['_$R7uRzh']: M1, ['_$gY77Sq']: M6, ['_$dEiGRa']: M5 }; while (pN < pf) { try { while (pN < pf) { let Mi = pS[pu + (pN << pb)], My = pS[pr + (pN << pb)]; var Ms, Mo, MJ, MH, MP, MV; !MH && (Mo = null, MJ = function () { for (let Mj = M9 - 0x1; Mj >= 0x0; Mj--) { pA[Mj] = Mp[--MM]; } M5 = Mp[--MM], Mv['_$dEiGRa'] = M5, M6 = Mp[--MM], Mv['_$gY77Sq'] = M6, M7 = Mp[--MM], pG = Mp[--MM], pI = Mp[--MM], pN = Mp[--MM], pe[pI++] = Ms, pN++; }, MH = function (Mj, Ml) { switch (Mj) { case 0x3c: { sl: { let Mq = pe[--pI]; if (Ml >= 0x0) { let MR = pZ[Ml]; !Mo['_$dEiGRa']['_$AqrBpj'] && (Mo['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mo['_$dEiGRa']['_$AqrBpj'][MR] = Mq; } pN++; } break; } case 0x16: { sq: { let Mt = pe[--pI], Mx = pe[--pI]; pe[pI++] = Mx ^ Mt, pN++; } break; } case 0x1d: { sR: { pe[pI - 0x1] = String(pe[pI - 0x1]), pN++; } break; } case 0xe: { st: { let Mk = pe[--pI], MF = pe[--pI]; pe[pI++] = MF % Mk, pN++; } break; } case 0x1b: { sx: { let MO = pe[pI - 0x3], MG = pe[pI - 0x2], Mg = pe[pI - 0x1]; pe[pI - 0x3] = MG, pe[pI - 0x2] = Mg, pe[pI - 0x1] = MO, pN++; } break; } case 0x20: { sk: { pe[pI - 0x1] = !pe[pI - 0x1], pN++; } break; } case 0x37: { sF: { let Mc = pe[--pI], Mh = pe[--pI], Mm = pe[--pI]; if (typeof Mh !== 'function') throw new TypeError(Mh + '\x20is\x20not\x20a\x20function'); let Me = vmH_6ed288['_$Azfz9O'], MI = Me && vmG['call'](Me, Mh), MA = vmH_6ed288['_$fL4xYQ']; MI && (vmH_6ed288['_$hnmqnk'] = !![], vmH_6ed288['_$fL4xYQ'] = MI); let MN; try { if (Mc === 0x0) MN = vmF(Mh, Mm, K); else { if (Mc === 0x1) { let MZ = pe[--pI]; MN = MZ && typeof MZ === 'object' && vmh['call'](y, MZ) ? vmF(Mh, Mm, MZ['value']) : vmF(Mh, Mm, [MZ]); } else MN = vmF(Mh, Mm, R(M4, Mc)); } pe[pI++] = MN; } finally { MI && (vmH_6ed288['_$hnmqnk'] = ![], vmH_6ed288['_$fL4xYQ'] = MA); } pN++; } break; } case 0x4e: { sO: { let MS = pe[--pI], Md = pZ[Ml]; MS === null || MS === undefined ? pe[pI++] = undefined : pe[pI++] = MS[Md], pN++; } break; } case 0x2d: { sG: { let MQ = pe[--pI], Mf = pe[--pI]; pe[pI++] = Mf <= MQ, pN++; } break; } case 0xb: { sg: { let ML = pe[--pI], Mu = pe[--pI]; pe[pI++] = Mu - ML, pN++; } break; } case 0x11: { sc: { let Mr = pe[--pI]; pe[pI++] = typeof Mr === a ? Mr - 0x1n : +Mr - 0x1, pN++; } break; } case 0x12: { sh: { let Mb = pe[--pI], MW = pe[--pI]; pe[pI++] = MW ** Mb, pN++; } break; } case 0x1a: { sm: { let MY = pe[--pI], MT = pe[--pI]; pe[pI++] = MT >>> MY, pN++; } break; } case 0x2b: { se: { let MU = pe[--pI], MC = pe[--pI]; pe[pI++] = MC !== MU, pN++; } break; } case 0x4: { sI: { let Mn = pe[pI - 0x1]; pe[pI++] = Mn, pN++; } break; } case 0x36: { sA: { let MB = pe[--pI], Mz = pe[--pI]; if (typeof Mz !== 'function') throw new TypeError(Mz + '\x20is\x20not\x20a\x20function'); let MX = vmH_6ed288['_$Azfz9O'], MD = !vmH_6ed288['_$fL4xYQ'] && !vmH_6ed288['_$qimC1Q'] && !(MX && vmG['call'](MX, Mz)) && vmG['call'](l, Mz); if (MD) { let v3 = MD['c'] || (MD['c'] = typeof MD['b'] === 'object' ? MD['b'] : px(MD['b'])); if (v3) { let v4; if (MB === 0x0) v4 = []; else { if (MB === 0x1) { let v6 = pe[--pI]; v4 = v6 && typeof v6 === 'object' && vmh['call'](y, v6) ? v6['value'] : [v6]; } else v4 = R(M4, MB); } let v5 = v3[0x0]; if (v5 && v3 === pO && !v3[0x2] && MD['e'] === pg) { !Mp && (Mp = []); Mp[MM++] = pN, Mp[MM++] = pI, Mp[MM++] = pG, Mp[MM++] = M7, Mp[MM++] = M6, Mp[MM++] = M5; for (let v7 = 0x0; v7 < M9; v7++) { Mp[MM++] = pA[v7]; } pG = v4, M7 = null; if (v3[0x13]) { M6 = null; let v8 = v3[0xe] || 0x0; for (let v9 = 0x0; v9 < v8 && v9 < v4['length']; v9++) { pA[v9] = v4[v9]; } for (let vp = v4['length'] < v8 ? v4['length'] : v8; vp < M9; vp++) { pA[vp] = undefined; } pN = v5; } else { M6 = x(v4), Mv['_$gY77Sq'] = M6; for (let vM = 0x0; vM < M9; vM++) { pA[vM] = undefined; } pN = 0x0; } break sA; } vmH_6ed288['_$hnmqnk'] ? vmH_6ed288['_$hnmqnk'] = ![] : vmH_6ed288['_$fL4xYQ'] = undefined; pe[pI++] = u(v3, v4, MD['e'], Mz, undefined, undefined), pN++; break sA; } } let Mw = vmH_6ed288['_$fL4xYQ'], v0 = vmH_6ed288['_$Azfz9O'], v1 = v0 && vmG['call'](v0, Mz); v1 ? (vmH_6ed288['_$hnmqnk'] = !![], vmH_6ed288['_$fL4xYQ'] = v1) : vmH_6ed288['_$fL4xYQ'] = undefined; let v2; try { if (MB === 0x0) v2 = Mz(); else { if (MB === 0x1) { let vv = pe[--pI]; v2 = vv && typeof vv === 'object' && vmh['call'](y, vv) ? vmF(Mz, undefined, vv['value']) : Mz(vv); } else v2 = vmF(Mz, undefined, R(M4, MB)); } pe[pI++] = v2; } finally { v1 && (vmH_6ed288['_$hnmqnk'] = ![]), vmH_6ed288['_$fL4xYQ'] = Mw; } pN++; } break; } case 0x38: { sN: { if (pW && pW['length'] > 0x0) { let vs = pW[pW['length'] - 0x1]; if (vs['_$cOufar'] !== undefined) { pT = !![], pU = pe[--pI], pN = vs['_$cOufar']; break sN; } } return pT && (pT = ![], pU = undefined), Ms = pe[--pI], 0x1; } break; } case 0x4a: { sZ: { let vo, vJ; Ml >= 0x0 ? (vJ = pe[--pI], vo = pZ[Ml]) : (vo = pe[--pI], vJ = pe[--pI]); let vH = delete vJ[vo]; if (Mo['_$nB3bKs'] && !vH) throw new TypeError('Cannot\x20delete\x20property\x20\x27' + String(vo) + '\x27\x20of\x20object'); pe[pI++] = vH, pN++; } break; } case 0x29: { sS: { let vP = pe[--pI], vV = pe[--pI]; pe[pI++] = vV != vP, pN++; } break; } case 0x1: { sd: { pe[pI++] = undefined, pN++; } break; } case 0x47: { sQ: { let vE = pe[--pI], va = pe[--pI], vK = pZ[Ml]; if (va === null || va === undefined) throw new TypeError('Cannot\x20set\x20property\x20\x27' + String(vK) + '\x27\x20of\x20' + va); if (Mo['_$nB3bKs']) { if (!Reflect['set'](va, vK, vE)) throw new TypeError('Cannot\x20assign\x20to\x20read\x20only\x20property\x20\x27' + String(vK) + '\x27\x20of\x20object'); } else va[vK] = vE; pe[pI++] = vE, pN++; } break; } case 0x4c: { sf: { let vi = pe[--pI], vy = pZ[Ml]; if (vmH_6ed288['_$skECeW'] && vy in vmH_6ed288['_$skECeW']) throw new ReferenceError('Cannot\x20access\x20\x27' + vy + '\x27\x20before\x20initialization'); let vj = !(vy in vmH_6ed288) && !(vy in vmE); vmH_6ed288[vy] = vi, vy in vmE && (vmE[vy] = vi), vj && (vmE[vy] = vi), pe[pI++] = vi, pN++; } break; } case 0xc: { sL: { let vl = pe[--pI], vq = pe[--pI]; pe[pI++] = vq * vl, pN++; } break; } case 0x15: { su: { let vR = pe[--pI], vt = pe[--pI]; pe[pI++] = vt | vR, pN++; } break; } case 0x2: { sr: { pe[pI++] = null, pN++; } break; } case 0x2a: { sb: { let vx = pe[--pI], vk = pe[--pI]; pe[pI++] = vk === vx, pN++; } break; } case 0x10: { sW: { let vF = pe[--pI]; pe[pI++] = typeof vF === a ? vF + 0x1n : +vF + 0x1, pN++; } break; } case 0x5: { sY: { let vO = pe[pI - 0x1]; pe[pI - 0x1] = pe[pI - 0x2], pe[pI - 0x2] = vO, pN++; } break; } case 0x32: { sT: { pN = pd[pN]; } break; } case 0x46: { sU: { let vG = pe[--pI], vg = pZ[Ml]; if (vG === null || vG === undefined) throw new TypeError('Cannot\x20read\x20property\x20\x27' + String(vg) + '\x27\x20of\x20' + vG); pe[pI++] = vG[vg], pN++; } break; } case 0x0: { sC: { pe[pI++] = pZ[Ml], pN++; } break; } case 0x3d: { sn: { if (pW && pW['length'] > 0x0) { let vc = pW[pW['length'] - 0x1]; vc['_$cOufar'] === pN && (vc['_$ba3Iop'] !== undefined && (pY = vc['_$ba3Iop']), pW['pop']()); } pN++; } break; } case 0x14: { sB: { let vh = pe[--pI], vm = pe[--pI]; pe[pI++] = vm & vh, pN++; } break; } case 0x17: { sz: { pe[pI - 0x1] = ~pe[pI - 0x1], pN++; } break; } case 0x48: { sX: { let ve = pe[--pI], vI = pe[--pI]; if (vI === null || vI === undefined) throw new TypeError('Cannot\x20read\x20property\x20\x27' + String(ve) + '\x27\x20of\x20' + vI); pe[pI++] = vI[ve], pN++; } break; } case 0x3a: { sD: { let vA = pQ[pN]; if (!pW) pW = []; pW['push']({ ['_$tSVosS']: vA[0x0] >= 0x0 ? vA[0x0] : undefined, ['_$cOufar']: vA[0x1] >= 0x0 ? vA[0x1] : undefined, ['_$W7TRiE']: vA[0x2] >= 0x0 ? vA[0x2] : undefined, ['_$ASmqGl']: pI }), pN++; } break; } case 0x9: { sw: { pG[Ml] = pe[--pI], pN++; } break; } case 0x3f: { o0: { let vN = pd[pN]; if (pW && pW['length'] > 0x0) { let vZ = pW[pW['length'] - 0x1]; if (vZ['_$cOufar'] !== undefined && vN >= vZ['_$W7TRiE']) { pC = !![], pn = vN, pN = vZ['_$cOufar']; break o0; } } pN = vN; } break; } case 0x53: { o1: { let vS = pe[--pI], vd = pe[--pI], vQ = pZ[Ml]; vmi(vd, vQ, { 'value': vS, 'writable': !![], 'enumerable': !![], 'configurable': !![] }), typeof vS === 'function' && (!vmH_6ed288['_$Azfz9O'] && (vmH_6ed288['_$Azfz9O'] = new WeakMap()), vmO['call'](vmH_6ed288['_$Azfz9O'], vS, vd)), pN++; } break; } case 0x34: { o2: { !pe[--pI] ? pN = pd[pN] : pN++; } break; } case 0x51: { o3: { let vf = pe[--pI], vL = pe[pI - 0x1]; vf !== null && vf !== undefined && Object['assign'](vL, vf), pN++; } break; } case 0x52: { o4: { let vu = pe[--pI], vr = pe[--pI]; vr === null || vr === undefined ? pe[pI++] = undefined : pe[pI++] = vr[vu], pN++; } break; } case 0x39: { o5: { throw pe[--pI]; } break; } case 0x3e: { o6: { if (pY !== null) { pT = ![], pC = ![], pB = ![]; let vb = pY; pY = null; throw vb; } if (pT) { if (pW && pW['length'] > 0x0) { let vY = pW[pW['length'] - 0x1]; if (vY['_$cOufar'] !== undefined) { pN = vY['_$cOufar']; break o6; } } let vW = pU; return pT = ![], pU = undefined, Ms = vW, 0x1; } if (pC) { if (pW && pW['length'] > 0x0) { let vU = pW[pW['length'] - 0x1]; if (vU['_$cOufar'] !== undefined) { pN = vU['_$cOufar']; break o6; } } let vT = pn; pC = ![], pn = 0x0, pN = vT; break o6; } if (pB) { if (pW && pW['length'] > 0x0) { let vn = pW[pW['length'] - 0x1]; if (vn['_$cOufar'] !== undefined) { pN = vn['_$cOufar']; break o6; } } let vC = pz; pB = ![], pz = 0x0, pN = vC; break o6; } pN++; } break; } case 0x2c: { o7: { let vB = pe[--pI], vz = pe[--pI]; pe[pI++] = vz < vB, pN++; } break; } case 0x40: { o8: { let vX = pd[pN]; if (pW && pW['length'] > 0x0) { let vD = pW[pW['length'] - 0x1]; if (vD['_$cOufar'] !== undefined && vX >= vD['_$W7TRiE']) { pB = !![], pz = vX, pN = vD['_$cOufar']; break o8; } } pN = vX; } break; } case 0x49: { o9: { let vw = pe[--pI], s0 = pe[--pI], s1 = pe[--pI]; if (s1 === null || s1 === undefined) throw new TypeError('Cannot\x20set\x20property\x20\x27' + String(s0) + '\x27\x20of\x20' + s1); if (Mo['_$nB3bKs']) { if (!Reflect['set'](s1, s0, vw)) throw new TypeError('Cannot\x20assign\x20to\x20read\x20only\x20property\x20\x27' + String(s0) + '\x27\x20of\x20object'); } else s1[s0] = vw; pe[pI++] = vw, pN++; } break; } case 0x13: { oM: { pe[pI - 0x1] = +pe[pI - 0x1], pN++; } break; } case 0xf: { ov: { pe[pI - 0x1] = -pe[pI - 0x1], pN++; } break; } case 0x7: { os: { pA[Ml] = pe[--pI], pN++; } break; } case 0x54: { oo: { let s2 = pe[--pI], s3 = pe[--pI], s4 = pe[--pI]; vmi(s4, s3, { 'value': s2, 'writable': !![], 'enumerable': !![], 'configurable': !![] }), typeof s2 === 'function' && (!vmH_6ed288['_$Azfz9O'] && (vmH_6ed288['_$Azfz9O'] = new WeakMap()), vmO['call'](vmH_6ed288['_$Azfz9O'], s2, s4)), pN++; } break; } case 0xa: { oJ: { let s5 = pe[--pI], s6 = pe[--pI]; pe[pI++] = s6 + s5, pN++; } break; } case 0x4d: { oH: { pe[pI++] = {}, pN++; } break; } case 0x2f: { oP: { let s7 = pe[--pI], s8 = pe[--pI]; pe[pI++] = s8 >= s7, pN++; } break; } case 0x28: { oV: { let s9 = pe[--pI], sp = pe[--pI]; pe[pI++] = sp == s9, pN++; } break; } case 0x4b: { oE: { let sM = pZ[Ml], sv; if (vmH_6ed288['_$skECeW'] && sM in vmH_6ed288['_$skECeW']) throw new ReferenceError('Cannot\x20access\x20\x27' + sM + '\x27\x20before\x20initialization'); if (sM in vmH_6ed288) sv = vmH_6ed288[sM]; else { if (sM in vmE) sv = vmE[sM]; else throw new ReferenceError(sM + '\x20is\x20not\x20defined'); } pe[pI++] = sv, pN++; } break; } case 0x8: { oa: { pe[pI++] = pG[Ml], pN++; } break; } case 0x3b: { oK: { pW['pop'](), pN++; } break; } case 0x1c: { oi: { let ss = pe[--pI]; pe[pI++] = typeof ss === a ? ss : +ss, pN++; } break; } case 0xd: { oy: { let so = pe[--pI], sJ = pe[--pI]; pe[pI++] = sJ / so, pN++; } break; } case 0x4f: { oj: { let sH = pe[--pI], sP = pe[--pI]; pe[pI++] = sP in sH, pN++; } break; } case 0x19: { ol: { let sV = pe[--pI], sE = pe[--pI]; pe[pI++] = sE >> sV, pN++; } break; } case 0x18: { oq: { let sa = pe[--pI], sK = pe[--pI]; pe[pI++] = sK << sa, pN++; } break; } case 0x2e: { oR: { let si = pe[--pI], sy = pe[--pI]; pe[pI++] = sy > si, pN++; } break; } case 0x35: { ot: { let sj = pe[--pI]; sj !== null && sj !== undefined ? pN = pd[pN] : pN++; } break; } case 0x6: { ox: { pe[pI++] = pA[Ml], pN++; } break; } case 0x3: { ok: { pe[--pI], pN++; } break; } case 0x33: { oF: { pe[--pI] ? pN = pd[pN] : pN++; } break; } } }, MP = function (Mj, Ml) { switch (Mj) { case 0x80: { on: { let MR = pe[--pI]; pe[pI++] = !!MR['done'], pN++; } break; } case 0x8f: { oB: { let Mt = pe[--pI], Mx = pe[--pI], Mk = pe[--pI], MF = F(Mk), MO = O(MF, Mx); MO['desc'] && MO['desc']['set'] ? MO['desc']['set']['call'](Mk, Mt) : Mk[Mx] = Mt, pe[pI++] = Mt, pN++; } break; } case 0xa3: { oz: { pe[--pI], pe[pI++] = undefined, pN++; } break; } case 0xb8: { oX: { let MG = pe[--pI], Mg = pe[--pI], Mc = pe[pI - 0x1]; vmi(Mc, Mg, { 'get': MG, 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0xa9: { oD: { let Mh = pe[--pI]; pe[pI++] = Symbol['keyFor'](Mh), pN++; } break; } case 0x7f: { ow: { let Mm = pe[--pI]; if (Mm == null) throw new TypeError('Cannot\x20iterate\x20over\x20' + Mm); let Me = Mm[Symbol['iterator']]; if (typeof Me !== 'function') throw new TypeError('Object\x20is\x20not\x20iterable'); pe[pI++] = vmF(Me, Mm, []), pN++; } break; } case 0x95: { J0: { let MI = pe[--pI], MA = pe[pI - 0x1], MN = pZ[Ml]; vmi(MA, MN, { 'set': MI, 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x9e: { J1: { let MZ = pe[--pI], MS = pe[--pI], Md = pZ[Ml], MQ = h(); if (MQ) { let Mu = 'set_' + Md, Mr = MQ['get'](Mu); if (Mr && vmg['call'](Mr, MS)) { let MW = vmG['call'](Mr, MS); MW['call'](MS, MZ), pe[pI++] = MZ, pN++; break J1; } let Mb = MQ['get'](Md); if (Mb && vmg['call'](Mb, MS)) { vmO['call'](Mb, MS, MZ), pe[pI++] = MZ, pN++; break J1; } } let Mf = '_$8zWQSa' + 'set_' + Md['substring'](0x1) + '_$vbpBip'; if (Mf in MS) { let MY = MS[Mf]; MY['call'](MS, MZ), pe[pI++] = MZ, pN++; break J1; } let ML = I(Md); if (ML in MS) { MS[ML] = MZ, pe[pI++] = MZ, pN++; break J1; } throw new TypeError('Cannot\x20write\x20private\x20member\x20' + Md + '\x20to\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); } break; } case 0x94: { J2: { let MT = pe[--pI], MU = pe[pI - 0x1], MC = pZ[Ml]; vmi(MU, MC, { 'get': MT, 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x9b: { J3: { let Mn = pe[--pI], MB = pZ[Ml]; if (Mn == null) { pe[pI++] = undefined, pN++; break J3; } let Mz = c(), MX = Mz['get'](MB); if (!MX || !vmg['call'](MX, Mn)) throw new TypeError('Cannot\x20read\x20private\x20member\x20' + MB + '\x20from\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); pe[pI++] = vmG['call'](MX, Mn), pN++; } break; } case 0x5e: { J4: { let MD = pe[--pI], Mw = pe[pI - 0x1]; if (Array['isArray'](MD)) Array['prototype']['push']['apply'](Mw, MD); else for (let v0 of MD) { Mw['push'](v0); } pN++; } break; } case 0x8e: { J5: { let v1 = pe[--pI], v2 = pe[--pI], v3 = vmH_6ed288['_$fL4xYQ'], v4 = v3 ? vmt(v3) : F(v2), v5 = O(v4, v1); if (v5['desc'] && v5['desc']['get']) { let v7 = v5['desc']['get']['call'](v2); pe[pI++] = v7, pN++; break J5; } if (v5['desc'] && v5['desc']['set'] && !('value' in v5['desc'])) { pe[pI++] = undefined, pN++; break J5; } let v6 = v5['proto'] ? v5['proto'][v1] : v4[v1]; if (typeof v6 === 'function') { let v8 = v5['proto'] || v4, v9 = v6['bind'](v2), vp = v6['constructor'] && v6['constructor']['name'], vM = vp === 'GeneratorFunction' || vp === 'AsyncFunction' || vp === 'AsyncGeneratorFunction'; !vM && (!vmH_6ed288['_$Azfz9O'] && (vmH_6ed288['_$Azfz9O'] = new WeakMap()), vmO['call'](vmH_6ed288['_$Azfz9O'], v9, v8)), pe[pI++] = v9; } else pe[pI++] = v6; pN++; } break; } case 0x8c: { J6: { let vv = pe[--pI], vs = pe[--pI], vo = Ml, vJ = function (vH, vP) { let vV = function () { if (vH) { vP && (vmH_6ed288['_$oyo4cq'] = vV); let vE = '_$qimC1Q' in vmH_6ed288; !vE && (vmH_6ed288['_$qimC1Q'] = new.target); try { let va = vH['apply'](this, x(arguments)); if (vP && va !== undefined && (typeof va !== 'object' || va === null)) throw new TypeError('Derived\x20constructors\x20may\x20only\x20return\x20object\x20or\x20undefined'); return va; } finally { vP && delete vmH_6ed288['_$oyo4cq'], !vE && delete vmH_6ed288['_$qimC1Q']; } } }; return vV; }(vs, vo); vv && vmi(vJ, 'name', { 'value': vv, 'configurable': !![] }), pe[pI++] = vJ, pN++; } break; } case 0xb9: { J7: { let vH = pe[--pI], vP = pe[--pI], vV = pe[pI - 0x1]; vmi(vV, vP, { 'set': vH, 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x92: { J8: { let vE = pe[--pI], va = pe[pI - 0x1], vK = pZ[Ml], vi = k(va); vmi(vi, vK, { 'set': vE, 'enumerable': vi === va, 'configurable': !![] }), pN++; } break; } case 0x83: { J9: { let vy = pe[--pI]; vy && typeof vy['return'] === 'function' ? pe[pI++] = Promise['resolve'](vy['return']()) : pe[pI++] = Promise['resolve'](), pN++; } break; } case 0x6e: { Jp: { pe[pI - 0x1] = typeof pe[pI - 0x1], pN++; } break; } case 0x5b: { JM: { let vj = pe[--pI], vl = pe[pI - 0x1]; vl['push'](vj), pN++; } break; } case 0x68: { Jv: { let vq = pe[--pI], vR = R(M4, vq), vt = pe[--pI]; if (typeof vt !== 'function') throw new TypeError(vt + '\x20is\x20not\x20a\x20constructor'); if (vmh['call'](j, vt)) throw new TypeError(vt['name'] + '\x20is\x20not\x20a\x20constructor'); let vx = vmH_6ed288['_$fL4xYQ']; vmH_6ed288['_$fL4xYQ'] = undefined; let vk; try { vk = Reflect['construct'](vt, vR); } finally { vmH_6ed288['_$fL4xYQ'] = vx; } pe[pI++] = vk, pN++; } break; } case 0xb5: { Js: { let vF = pe[--pI], vO = pe[--pI], vG = pe[pI - 0x1]; vmi(vG, vO, { 'value': vF, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x81: { Jo: { let vg = pe[--pI]; if (vg == null) throw new TypeError('Cannot\x20iterate\x20over\x20' + vg); let vc = vg[Symbol['asyncIterator']]; if (typeof vc === 'function') pe[pI++] = vc['call'](vg); else { let vh = vg[Symbol['iterator']]; if (typeof vh !== 'function') throw new TypeError('Object\x20is\x20not\x20async\x20iterable'); pe[pI++] = vh['call'](vg); } pN++; } break; } case 0x8d: { JJ: { let vm = pe[--pI], ve = pe[pI - 0x1]; if (vm === null) { vmR(ve['prototype'], null), vmR(ve, Function['prototype']), ve['_$oNQR0e'] = null, pN++; break JJ; } if (typeof vm !== 'function') throw new TypeError('Class\x20extends\x20value\x20' + String(vm) + '\x20is\x20not\x20a\x20constructor\x20or\x20null'); let vI = ![]; try { let vA = vmy(vm['prototype']), vN = vm['apply'](vA, []); vN !== undefined && vN !== vA && (vI = !![]); } catch (vZ) { vZ instanceof TypeError && (vZ['message']['includes']('\x27new\x27') || vZ['message']['includes']('constructor') || vZ['message']['includes']('Illegal\x20constructor')) && (vI = !![]); } if (vI) { let vS = ve, vd = vmH_6ed288, vQ = '_$qimC1Q', vf = '_$oyo4cq', vL = '_$xK3QkB'; function Mq(...vu) { let vr = vmy(vm['prototype']); vd[vL] = { 'parent': vm, 'newTarget': new.target || Mq }, vd[vf] = new.target || Mq; let vb = vQ in vd; !vb && (vd[vQ] = new.target); try { let vW = vS['apply'](vr, vu); vW !== undefined && typeof vW === 'object' && (vr = vW); } finally { delete vd[vL], delete vd[vf], !vb && delete vd[vQ]; } return vr; } Mq['prototype'] = vmy(vm['prototype']), Mq['prototype']['constructor'] = Mq, vmR(Mq, vm), vml(vS)['forEach'](function (vu) { vu !== 'prototype' && vu !== 'length' && vu !== 'name' && q(Mq, vu, vmj(vS, vu)); }); vS['prototype'] && (vml(vS['prototype'])['forEach'](function (vu) { vu !== 'constructor' && q(Mq['prototype'], vu, vmj(vS['prototype'], vu)); }), vmq(vS['prototype'])['forEach'](function (vu) { q(Mq['prototype'], vu, vmj(vS['prototype'], vu)); })); pe[--pI], pe[pI++] = Mq, Mq['_$oNQR0e'] = vm, pN++; break JJ; } vmR(ve['prototype'], vm['prototype']), vmR(ve, vm), ve['_$oNQR0e'] = vm, pN++; } break; } case 0x7c: { JH: { let vu = pe[--pI]; vu && typeof vu['return'] === 'function' && vu['return'](), pN++; } break; } case 0xb6: { JP: { let vr = pe[--pI], vb = pe[--pI], vW = pe[pI - 0x1], vY = k(vW); vmi(vY, vb, { 'get': vr, 'enumerable': vY === vW, 'configurable': !![] }), pN++; } break; } case 0x7b: { JV: { let vT = pe[--pI], vU = vT['next'](); pe[pI++] = vU, pN++; } break; } case 0xb7: { JE: { let vC = pe[--pI], vn = pe[--pI], vB = pe[pI - 0x1], vz = k(vB); vmi(vz, vn, { 'set': vC, 'enumerable': vz === vB, 'configurable': !![] }), pN++; } break; } case 0x9d: { Ja: { let vX = pe[--pI], vD = pZ[Ml], vw = h(); if (vw) { let s2 = 'get_' + vD, s3 = vw['get'](s2); if (s3 && vmg['call'](s3, vX)) { let s5 = vmG['call'](s3, vX); pe[pI++] = s5['call'](vX), pN++; break Ja; } let s4 = vw['get'](vD); if (s4 && vmg['call'](s4, vX)) { pe[pI++] = vmG['call'](s4, vX), pN++; break Ja; } } let s0 = '_$8zWQSa' + 'get_' + vD['substring'](0x1) + '_$vbpBip'; if (s0 in vX) { let s6 = vX[s0]; pe[pI++] = s6['call'](vX), pN++; break Ja; } let s1 = I(vD); if (s1 in vX) { pe[pI++] = vX[s1], pN++; break Ja; } throw new TypeError('Cannot\x20read\x20private\x20member\x20' + vD + '\x20from\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); } break; } case 0x9a: { JK: { let s7 = pe[--pI], s8 = pe[--pI], s9 = pZ[Ml], sp = null, sM = h(); if (sM) { let so = sM['get'](s9); so && vmg['call'](so, s8) && (sp = vmG['call'](so, s8)); } if (sp === null) { let sJ = A(s9); sJ in s8 && (sp = s8[sJ]); } if (sp === null) throw new TypeError('Cannot\x20read\x20private\x20member\x20' + s9 + '\x20from\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); if (typeof sp !== 'function') throw new TypeError(s9 + '\x20is\x20not\x20a\x20function'); let sv = R(M4, s7), ss = sp['apply'](s8, sv); pe[pI++] = ss, pN++; } break; } case 0x70: { Ji: { let sH = pZ[Ml]; sH in vmH_6ed288 ? pe[pI++] = typeof vmH_6ed288[sH] : pe[pI++] = typeof vmE[sH], pN++; } break; } case 0xb4: { Jy: { let sP = pe[--pI], sV = pe[--pI], sE = pe[pI - 0x1]; vmi(sE['prototype'], sV, { 'value': sP, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0xa0: { Jj: { if (Mo['_$RZzLYA'] && !Mo['_$bfJUlG']) throw new ReferenceError('Must\x20call\x20super\x20constructor\x20in\x20derived\x20class\x20before\x20accessing\x20\x27this\x27\x20or\x20returning\x20from\x20derived\x20constructor'); pe[pI++] = pm, pN++; } break; } case 0x5a: { Jl: { pe[pI++] = [], pN++; } break; } case 0xa7: { Jq: { if (Ml === -0x1) pe[pI++] = Symbol(); else { let sa = pe[--pI]; pe[pI++] = Symbol(sa); } pN++; } break; } case 0x98: { JR: { let sK = pe[--pI], si = pe[--pI], sy = pZ[Ml], sj = c(); !sj['has'](sy) && sj['set'](sy, new WeakMap()); let sl = sj['get'](sy); if (vmg['call'](sl, si)) throw new TypeError('Cannot\x20initialize\x20' + sy + '\x20twice\x20on\x20the\x20same\x20object'); vmO['call'](sl, si, sK), pN++; } break; } case 0x82: { Jt: { let sq = pe[--pI], sR = sq['next'](); pe[pI++] = Promise['resolve'](sR), pN++; } break; } case 0xa4: { Jx: { pe[pI++] = ph, pN++; } break; } case 0x6f: { Jk: { let st = pe[--pI], sx = pe[--pI]; pe[pI++] = sx instanceof st, pN++; } break; } case 0x69: { JF: { let sk = pe[--pI], sF = R(M4, sk), sO = pe[--pI]; if (Ml === 0x1) { pe[pI++] = sF, pN++; break JF; } if (vmH_6ed288['_$QiICz5']) { pN++; break JF; } let sG = vmH_6ed288['_$xK3QkB']; if (sG) { let sg = sG['parent'], sc = sG['newTarget'], sh = Reflect['construct'](sg, sF, sc); pm && pm !== sh && vml(pm)['forEach'](function (sm) { !(sm in sh) && (sh[sm] = pm[sm]); }); pm = sh, Mo['_$bfJUlG'] = !![]; Mo['_$7axwc2'] && (G(Mo['_$dEiGRa'], '__this__'), !Mo['_$dEiGRa']['_$AqrBpj'] && (Mo['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mo['_$dEiGRa']['_$AqrBpj']['__this__'] = pm); pN++; break JF; } if (typeof sO !== 'function') throw new TypeError('Super\x20expression\x20must\x20be\x20a\x20constructor'); vmH_6ed288['_$qimC1Q'] = ph; try { let sm = sO['apply'](pm, sF); sm !== undefined && sm !== pm && typeof sm === 'object' && (pm && Object['assign'](sm, pm), pm = sm), Mo['_$bfJUlG'] = !![], Mo['_$7axwc2'] && (G(Mo['_$dEiGRa'], '__this__'), !Mo['_$dEiGRa']['_$AqrBpj'] && (Mo['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mo['_$dEiGRa']['_$AqrBpj']['__this__'] = pm); } catch (se) { if (se instanceof TypeError && (se['message']['includes']('\x27new\x27') || se['message']['includes']('constructor'))) { let sI = Reflect['construct'](sO, sF, ph); sI !== pm && pm && Object['assign'](sI, pm), pm = sI, Mo['_$bfJUlG'] = !![], Mo['_$7axwc2'] && (G(Mo['_$dEiGRa'], '__this__'), !Mo['_$dEiGRa']['_$AqrBpj'] && (Mo['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mo['_$dEiGRa']['_$AqrBpj']['__this__'] = pm); } else throw se; } finally { delete vmH_6ed288['_$qimC1Q']; } pN++; } break; } case 0x93: { JO: { let sA = pe[--pI], sN = pe[pI - 0x1], sZ = pZ[Ml]; vmi(sN, sZ, { 'value': sA, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0xa8: { JG: { let sS = pZ[Ml]; pe[pI++] = Symbol['for'](sS), pN++; } break; } case 0x91: { Jg: { let sd = pe[--pI], sQ = pe[pI - 0x1], sf = pZ[Ml], sL = k(sQ); vmi(sL, sf, { 'get': sd, 'enumerable': sL === sQ, 'configurable': !![] }), pN++; } break; } case 0xa2: { Jc: { let su = Ml & 0xffff, sr = Ml >> 0x10, sb = pZ[su], sW = pZ[sr]; pe[pI++] = new RegExp(sb, sW), pN++; } break; } case 0x84: { Jh: { let sY = pe[--pI]; pe[pI++] = t(sY), pN++; } break; } case 0xa6: { Jm: { pe[pI++] = vmK[Ml], pN++; } break; } case 0x9c: { Je: { let sT = pe[--pI]; pe[--pI]; let sU = pe[pI - 0x1], sC = pZ[Ml], sn = c(); !sn['has'](sC) && sn['set'](sC, new WeakMap()); let sB = sn['get'](sC); vmO['call'](sB, sU, sT), pN++; } break; } case 0x97: { JI: { let sz = pe[--pI], sX = pe[--pI], sD = pZ[Ml], sw = c(), o0 = 'set_' + sD, o1 = sw['get'](o0); if (o1 && vmg['call'](o1, sX)) { let o5 = vmG['call'](o1, sX); o5['call'](sX, sz), pe[pI++] = sz, pN++; break JI; } let o2 = '_$8zWQSa' + 'set_' + sD['substring'](0x1) + '_$vbpBip'; if (sX['constructor'] && o2 in sX['constructor']) { let o6 = sX['constructor'][o2]; o6['call'](sX, sz), pe[pI++] = sz, pN++; break JI; } let o3 = sw['get'](sD); if (o3 && vmg['call'](o3, sX)) { vmO['call'](o3, sX, sz), pe[pI++] = sz, pN++; break JI; } let o4 = I(sD); if (o4 in sX) { sX[o4] = sz, pe[pI++] = sz, pN++; break JI; } throw new TypeError('Cannot\x20write\x20private\x20member\x20' + sD + '\x20to\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); } break; } case 0x96: { JA: { let o7 = pe[--pI], o8 = pZ[Ml], o9 = c(), oM = 'get_' + o8, ov = o9['get'](oM); if (ov && vmg['call'](ov, o7)) { let oH = vmG['call'](ov, o7); pe[pI++] = oH['call'](o7), pN++; break JA; } let os = '_$8zWQSa' + 'get_' + o8['substring'](0x1) + '_$vbpBip'; if (o7['constructor'] && os in o7['constructor']) { let oP = o7['constructor'][os]; pe[pI++] = oP['call'](o7), pN++; break JA; } let oo = o9['get'](o8); if (oo && vmg['call'](oo, o7)) { pe[pI++] = vmG['call'](oo, o7), pN++; break JA; } let oJ = I(o8); if (oJ in o7) { pe[pI++] = o7[oJ], pN++; break JA; } throw new TypeError('Cannot\x20read\x20private\x20member\x20' + o8 + '\x20from\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); } break; } case 0x6a: { JN: { let oV = pe[--pI]; pe[pI++] = import(oV), pN++; } break; } case 0x5d: { JZ: { let oE = pe[--pI], oa = { 'value': Array['isArray'](oE) ? oE : Array['from'](oE) }; vmc['call'](y, oa), pe[pI++] = oa, pN++; } break; } case 0x5f: { JS: { let oK = pe[pI - 0x1]; oK['length']++, pN++; } break; } case 0x90: { Jd: { let oi = pe[--pI], oy = pe[pI - 0x1], oj = pZ[Ml]; vmi(oy['prototype'], oj, { 'value': oi, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x99: { JQ: { let ol = pe[--pI], oq = pZ[Ml], oR = ![], ot = h(); if (ot) { let ox = ot['get'](oq); ox && vmg['call'](ox, ol) && (oR = !![]); } pe[pI++] = oR, pN++; } break; } case 0x64: { Jf: { let ok = pe[--pI], oF = typeof ok === 'object' ? ok : px(ok), oO = oF && oF[0x3], oG = oF && oF[0x14], og = oF && oF[0xa], oc = oF && oF[0x4], oh = oF && oF[0xe] || 0x0, om = oF && oF[0xd], oe = oO ? Mo['_$R7uRzh'] : undefined, oI = Mo['_$dEiGRa'], oA; if (og) oA = S(pF, ok, oI, j, om, vmE); else { if (oG) { if (oO) oA = Q(pk, ok, oI, oe); else oc ? oA = L(pk, ok, oI, om, vmE) : oA = Z(pk, ok, oI, om, vmE); } else { if (oO) oA = d(W, ok, oI, oe); else oc ? oA = f(W, ok, oI, om, vmE) : oA = N(W, ok, oI, om, vmE); } } q(oA, 'length', { 'value': oh, 'writable': ![], 'enumerable': ![], 'configurable': !![] }), pe[pI++] = oA, pN++; } break; } case 0xa1: { JL: { if (M7 === null) { if (Mo['_$nB3bKs'] || !Mo['_$0wqOjV']) { let oN = Mo['_$gY77Sq'] || pG, oZ = oN ? oN['length'] : 0x0; M7 = vmy(Object['prototype']); for (let oS = 0x0; oS < oZ; oS++) { M7[oS] = oN[oS]; } vmi(M7, 'length', { 'value': oZ, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), vmi(M7, Symbol['iterator'], { 'value': Array['prototype'][Symbol['iterator']], 'writable': !![], 'enumerable': ![], 'configurable': !![] }), M7 = new Proxy(M7, { 'has': function (od, oQ) { if (oQ === Symbol['toStringTag']) return ![]; return oQ in od; }, 'get': function (od, oQ, of) { if (oQ === Symbol['toStringTag']) return 'Arguments'; return Reflect['get'](od, oQ, of); } }), Mo['_$nB3bKs'] ? vmi(M7, 'callee', { 'get': i, 'set': i, 'enumerable': ![], 'configurable': ![] }) : vmi(M7, 'callee', { 'value': pc, 'writable': !![], 'enumerable': ![], 'configurable': !![] }); } else { let od = pG ? pG['length'] : 0x0, oQ = {}, of = {}, oL = pc, ou = ![], or = !![], ob = {}, oW = function (on) { if (typeof on !== 'string') return NaN; let oB = +on; return oB >= 0x0 && oB % 0x1 === 0x0 && String(oB) === on ? oB : NaN; }, oY = function (on) { return !isNaN(on) && on >= 0x0; }, oT = function (on) { if (on in of) return undefined; if (on in oQ) return oQ[on]; return on < pG['length'] ? pG[on] : undefined; }, oU = function (on) { if (on in of) return ![]; if (on in oQ) return !![]; return on < pG['length'] ? on in pG : ![]; }, oC = {}; vmi(oC, 'length', { 'value': od, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), vmi(oC, 'callee', { 'value': pc, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), vmi(oC, Symbol['iterator'], { 'value': Array['prototype'][Symbol['iterator']], 'writable': !![], 'enumerable': ![], 'configurable': !![] }), M7 = new Proxy(oC, { 'get': function (on, oB, oz) { if (oB === 'length') return od; if (oB === 'callee') return ou ? undefined : oL; if (oB === Symbol['toStringTag']) return 'Arguments'; let oX = oW(oB); if (oY(oX)) { if (oX in ob) return Reflect['get'](on, oB, oz); return oT(oX); } return Reflect['get'](on, oB, oz); }, 'set': function (on, oB, oz) { if (oB === 'length') { if (!or) return ![]; return od = oz, on['length'] = oz, !![]; } if (oB === 'callee') return oL = oz, ou = ![], on['callee'] = oz, !![]; let oX = oW(oB); if (oY(oX)) { if (oX in ob) return Reflect['set'](on, oB, oz); let oD = vmj(on, String(oX)); if (oD && !oD['writable']) return ![]; if (oX in of) delete of[oX], oQ[oX] = oz; else oX < pG['length'] ? pG[oX] = oz : oQ[oX] = oz; return !![]; } return on[oB] = oz, !![]; }, 'has': function (on, oB) { if (oB === 'length') return !![]; if (oB === 'callee') return !ou; if (oB === Symbol['toStringTag']) return ![]; let oz = oW(oB); if (oY(oz)) { if (String(oz) in on) return !![]; return oU(oz); } return oB in on; }, 'defineProperty': function (on, oB, oz) { if (oB === 'length') return 'value' in oz && (od = oz['value']), 'writable' in oz && (or = oz['writable']), vmi(on, oB, oz), !![]; if (oB === 'callee') return 'value' in oz && (oL = oz['value']), ou = ![], vmi(on, oB, oz), !![]; let oX = oW(oB); if (oY(oX)) { if ('get' in oz || 'set' in oz) ob[oX] = 0x1, oX in oQ && delete oQ[oX], oX in of && delete of[oX]; else 'value' in oz && (oX < pG['length'] && !(oX in of) ? pG[oX] = oz['value'] : (oQ[oX] = oz['value'], oX in of && delete of[oX])); return vmi(on, String(oX), oz), !![]; } return vmi(on, oB, oz), !![]; }, 'deleteProperty': function (on, oB) { if (oB === 'callee') return ou = !![], delete on['callee'], !![]; let oz = oW(oB); return oY(oz) && (oz in ob && delete ob[oz], oz < pG['length'] ? of[oz] = 0x1 : delete oQ[oz]), delete on[oB], !![]; }, 'preventExtensions': function (on) { let oB = pG ? pG['length'] : 0x0; for (let oz = 0x0; oz < oB; oz++) { !(oz in of) && !vmj(on, String(oz)) && vmi(on, String(oz), { 'value': oT(oz), 'writable': !![], 'enumerable': !![], 'configurable': !![] }); } for (let oX in oQ) { !vmj(on, oX) && vmi(on, oX, { 'value': oQ[oX], 'writable': !![], 'enumerable': !![], 'configurable': !![] }); } return Object['preventExtensions'](on), !![]; }, 'getOwnPropertyDescriptor': function (on, oB) { if (oB === 'callee') { if (ou) return undefined; return vmj(on, 'callee'); } if (oB === 'length') return vmj(on, 'length'); let oz = oW(oB); if (oY(oz)) { if (oz in ob) return vmj(on, oB); if (oU(oz)) { let oD = vmj(on, String(oz)); return { 'value': oT(oz), 'writable': oD ? oD['writable'] : !![], 'enumerable': oD ? oD['enumerable'] : !![], 'configurable': oD ? oD['configurable'] : !![] }; } return vmj(on, oB); } let oX = vmj(on, oB); if (oX) return oX; return undefined; }, 'ownKeys': function (on) { let oB = [], oz = pG ? pG['length'] : 0x0; for (let oD = 0x0; oD < oz; oD++) { !(oD in of) && oB['push'](String(oD)); } for (let ow in oQ) { oB['indexOf'](ow) === -0x1 && oB['push'](ow); } oB['push']('length'); !ou && oB['push']('callee'); let oX = Reflect['ownKeys'](on); for (let J0 = 0x0; J0 < oX['length']; J0++) { oB['indexOf'](oX[J0]) === -0x1 && oB['push'](oX[J0]); } return oB; } }); } } pe[pI++] = M7, pN++; } break; } case 0xa5: { Ju: { pe[pI++] = vma[Ml], pN++; } break; } } }, MV = function (Mj, Ml) { switch (Mj) { case 0xd9: { vR: { let MR = pZ[Ml], Mt = pe[--pI]; G(Mo['_$dEiGRa'], MR); if (!Mo['_$dEiGRa']['_$AqrBpj']) Mo['_$dEiGRa']['_$AqrBpj'] = vmy(null); Mo['_$dEiGRa']['_$AqrBpj'][MR] = Mt, !Mo['_$dEiGRa']['_$ANa2YR'] && (Mo['_$dEiGRa']['_$ANa2YR'] = vmy(null)), Mo['_$dEiGRa']['_$ANa2YR'][MR] = !![], pN++; } break; } case 0xdc: { vt: { let Mx = pe[--pI], Mk = pZ[Ml]; if (Mo['_$nB3bKs'] && !(Mk in vmE) && !(Mk in vmH_6ed288)) throw new ReferenceError(Mk + '\x20is\x20not\x20defined'); vmH_6ed288[Mk] = Mx, vmE[Mk] = Mx, pe[pI++] = Mx, pN++; } break; } case 0xff: { vx: { let MF = Ml & 0xffff, MO = Ml >>> 0x10, MG = pA[MF], Mg = pZ[MO]; pe[pI++] = MG[Mg], pN++; } break; } case 0xd6: { vk: { Mo['_$dEiGRa'] && Mo['_$dEiGRa']['_$D0DSfu'] && (Mo['_$dEiGRa'] = Mo['_$dEiGRa']['_$D0DSfu']), pN++; } break; } case 0xdd: { vF: { let Mc = Ml & 0xffff, Mh = Ml >>> 0x10, Mm = pZ[Mc], Me = Mo['_$dEiGRa']; for (let MN = 0x0; MN < Mh; MN++) { Me = Me['_$D0DSfu']; } let MI = Me['_$twDigJ']; if (MI && Mm in MI) throw new ReferenceError('Cannot\x20access\x20\x27' + Mm + '\x27\x20before\x20initialization'); let MA = Me['_$AqrBpj']; pe[pI++] = MA ? MA[Mm] : undefined, pN++; } break; } case 0xd3: { vO: { let MZ = pZ[Ml]; if (MZ === '__this__') { let Mu = Mo['_$dEiGRa']; while (Mu) { if (Mu['_$twDigJ'] && '__this__' in Mu['_$twDigJ']) throw new ReferenceError('Cannot\x20access\x20\x27__this__\x27\x20before\x20initialization'); if (Mu['_$AqrBpj'] && '__this__' in Mu['_$AqrBpj']) break; Mu = Mu['_$D0DSfu']; } pe[pI++] = pm, pN++; break vO; } let MS = Mo['_$dEiGRa'], Md, MQ = ![], Mf = MZ['indexOf']('$$'), ML = Mf !== -0x1 ? MZ['substring'](0x0, Mf) : null; while (MS) { let Mr = MS['_$twDigJ'], Mb = MS['_$AqrBpj']; if (Mr && MZ in Mr) throw new ReferenceError('Cannot\x20access\x20\x27' + MZ + '\x27\x20before\x20initialization'); if (ML && Mr && ML in Mr) { if (!(Mb && MZ in Mb)) throw new ReferenceError('Cannot\x20access\x20\x27' + ML + '\x27\x20before\x20initialization'); } if (Mb && MZ in Mb) { Md = Mb[MZ], MQ = !![]; break; } MS = MS['_$D0DSfu']; } !MQ && (MZ in vmH_6ed288 ? Md = vmH_6ed288[MZ] : Md = vmE[MZ]), pe[pI++] = Md, pN++; } break; } case 0x100: { vG: { let MW = Ml & 0xffff, MY = Ml >>> 0x10; pe[pI++] = pA[MW] < pZ[MY], pN++; } break; } case 0xfe: { vg: { let MT = Ml & 0xffff, MU = Ml >>> 0x10; pe[pI++] = pA[MT] * pZ[MU], pN++; } break; } case 0xc8: { vc: { debugger; pN++; } break; } case 0xda: { vh: { let MC = pZ[Ml]; !Mo['_$dEiGRa']['_$twDigJ'] && (Mo['_$dEiGRa']['_$twDigJ'] = vmy(null)), Mo['_$dEiGRa']['_$twDigJ'][MC] = !![], pN++; } break; } case 0xd2: { vm: { let Mn = pe[--pI], MB = { ['_$AqrBpj']: null, ['_$ANa2YR']: null, ['_$twDigJ']: null, ['_$D0DSfu']: Mn }; Mo['_$dEiGRa'] = MB, pN++; } break; } case 0xfd: { ve: { let Mz = Ml & 0xffff, MX = Ml >>> 0x10; pe[pI++] = pA[Mz] - pZ[MX], pN++; } break; } case 0x10e: { vI: { debugger; pN++; } break; } case 0xd5: { vA: { pe[pI++] = Mo['_$dEiGRa'], pN++; } break; } case 0xdb: { vN: { let MD = pZ[Ml], Mw = pe[--pI], v0 = Mo['_$dEiGRa']['_$D0DSfu']; v0 && (!v0['_$AqrBpj'] && (v0['_$AqrBpj'] = vmy(null)), v0['_$AqrBpj'][MD] = Mw), pN++; } break; } case 0xd7: { vZ: { let v1 = pZ[Ml], v2 = pe[--pI]; G(Mo['_$dEiGRa'], v1), !Mo['_$dEiGRa']['_$AqrBpj'] && (Mo['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mo['_$dEiGRa']['_$AqrBpj'][v1] = v2, pN++; } break; } case 0xd4: { vS: { let v3 = pZ[Ml], v4 = pe[--pI], v5 = Mo['_$dEiGRa'], v6 = ![]; while (v5) { let v7 = v5['_$twDigJ'], v8 = v5['_$AqrBpj']; if (v7 && v3 in v7) throw new ReferenceError('Cannot\x20access\x20\x27' + v3 + '\x27\x20before\x20initialization'); if (v8 && v3 in v8) { if (v5['_$HWOTIH'] && v3 in v5['_$HWOTIH']) { if (Mo['_$nB3bKs']) throw new TypeError('Assignment\x20to\x20constant\x20variable.'); v6 = !![]; break; } if (v5['_$ANa2YR'] && v3 in v5['_$ANa2YR']) throw new TypeError('Assignment\x20to\x20constant\x20variable.'); v8[v3] = v4, v6 = !![]; break; } v5 = v5['_$D0DSfu']; } if (!v6) { if (v3 in vmH_6ed288) vmH_6ed288[v3] = v4; else v3 in vmE ? vmE[v3] = v4 : vmE[v3] = v4; } pN++; } break; } case 0xfa: { vd: { pA[Ml] = pA[Ml] + 0x1, pN++; } break; } case 0xfc: { vQ: { let v9 = Ml & 0xffff, vp = Ml >>> 0x10; pe[pI++] = pA[v9] + pZ[vp], pN++; } break; } case 0xca: { vf: { return Ms = pI > 0x0 ? pe[--pI] : undefined, 0x1; } break; } case 0x105: { vL: { let vM = pA[Ml] - 0x1; pA[Ml] = vM, pe[pI++] = vM, pN++; } break; } case 0x104: { vu: { let vv = pA[Ml] + 0x1; pA[Ml] = vv, pe[pI++] = vv, pN++; } break; } case 0xc9: { vr: { pN++; } break; } case 0x101: { vb: { let vs = Ml & 0xffff, vo = Ml >>> 0x10; pA[vs] < pZ[vo] ? pN = pd[pN] : pN++; } break; } case 0x103: { vW: { pA[Ml] = pe[--pI], pN++; } break; } case 0xd8: { vY: { let vJ = pZ[Ml], vH = pe[--pI], vP = Mo['_$dEiGRa'], vV = ![]; while (vP) { if (vP['_$AqrBpj'] && vJ in vP['_$AqrBpj']) { if (vP['_$ANa2YR'] && vJ in vP['_$ANa2YR']) break; vP['_$AqrBpj'][vJ] = vH; !vP['_$ANa2YR'] && (vP['_$ANa2YR'] = vmy(null)); vP['_$ANa2YR'][vJ] = !![], vV = !![]; break; } vP = vP['_$D0DSfu']; } !vV && (g(Mo['_$dEiGRa'], vJ), !Mo['_$dEiGRa']['_$AqrBpj'] && (Mo['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mo['_$dEiGRa']['_$AqrBpj'][vJ] = vH, !Mo['_$dEiGRa']['_$ANa2YR'] && (Mo['_$dEiGRa']['_$ANa2YR'] = vmy(null)), Mo['_$dEiGRa']['_$ANa2YR'][vJ] = !![]), pN++; } break; } case 0xfb: { vT: { pA[Ml] = pA[Ml] - 0x1, pN++; } break; } case 0x102: { vU: { let vE = Ml & 0xffff, va = Ml >>> 0x10, vK = pe[--pI], vi = R(M4, vK), vy = pA[vE], vj = pZ[va], vl = vy[vj]; pe[pI++] = vl['apply'](vy, vi), pN++; } break; } case 0x10f: { vC: { if (typeof process !== 'undefined' && process['hrtime'] && process['hrtime']['bigint']) { var Mq = process['hrtime']['bigint'](); debugger; if (Number(process['hrtime']['bigint']() - Mq) / 0xf4240 > 0.1) try { _setDeceptionDetected(); } catch (vq) { } } pN++; } break; } } }); switch (Mi) { case 0x32: { pN = pd[pN]; continue; } case 0x3: { pe[--pI], pN++; continue; } case 0x2c: { let Mj = pe[--pI], Ml = pe[--pI]; pe[pI++] = Ml < Mj, pN++; continue; } case 0x1c: { let Mq = pe[--pI]; pe[pI++] = typeof Mq === a ? Mq : +Mq, pN++; continue; } case 0x49: { let MR = pe[--pI], Mt = pe[--pI], Mx = pe[--pI]; if (Mx === null || Mx === undefined) throw new TypeError('Cannot\x20set\x20property\x20\x27' + String(Mt) + '\x27\x20of\x20' + Mx); if (pX) { if (!Reflect['set'](Mx, Mt, MR)) throw new TypeError('Cannot\x20assign\x20to\x20read\x20only\x20property\x20\x27' + String(Mt) + '\x27\x20of\x20object'); } else Mx[Mt] = MR; pe[pI++] = MR, pN++; continue; } case 0x34: { !pe[--pI] ? pN = pd[pN] : pN++; continue; } case 0x1: { pe[pI++] = undefined, pN++; continue; } case 0x0: { pe[pI++] = pZ[My], pN++; continue; } case 0x2e: { let Mk = pe[--pI], MF = pe[--pI]; pe[pI++] = MF > Mk, pN++; continue; } case 0xb: { let MO = pe[--pI], MG = pe[--pI]; pe[pI++] = MG - MO, pN++; continue; } case 0xa: { let Mg = pe[--pI], Mc = pe[--pI]; pe[pI++] = Mc + Mg, pN++; continue; } case 0x48: { let Mh = pe[--pI], Mm = pe[--pI]; if (Mm === null || Mm === undefined) throw new TypeError('Cannot\x20read\x20property\x20\x27' + String(Mh) + '\x27\x20of\x20' + Mm); pe[pI++] = Mm[Mh], pN++; continue; } case 0x4: { let Me = pe[pI - 0x1]; pe[pI++] = Me, pN++; continue; } case 0x7: { pA[My] = pe[--pI], pN++; continue; } case 0x8: { pe[pI++] = pG[My], pN++; continue; } case 0x10: { let MI = pe[--pI]; pe[pI++] = typeof MI === a ? MI + 0x1n : +MI + 0x1, pN++; continue; } case 0x6: { pe[pI++] = pA[My], pN++; continue; } }Mo = Mv; if (Mi < 0x5a) { if (MH(Mi, My)) { if (MM > 0x0) { MJ(); continue; } return Ms; } } else { if (Mi < 0xc8) { if (MP(Mi, My)) { if (MM > 0x0) { MJ(); continue; } return Ms; } } else { if (MV(Mi, My)) { if (MM > 0x0) { MJ(); continue; } return Ms; } } } M5 = Mv['_$dEiGRa'], M8 = Mv['_$bfJUlG']; } break; } catch (MA) { if (pW && pW['length'] > 0x0) { let MN = pW[pW['length'] - 0x1]; pI = MN['_$ASmqGl']; if (MN['_$tSVosS'] !== undefined) M3(MA), pN = MN['_$tSVosS'], MN['_$tSVosS'] = undefined, MN['_$cOufar'] === undefined && pW['pop'](); else MN['_$cOufar'] !== undefined ? (pN = MN['_$cOufar'], MN['_$ba3Iop'] = MA) : (pN = MN['_$W7TRiE'], pW['pop']()); continue; } throw MA; } } return pI > 0x0 ? pe[--pI] : M8 ? pm : undefined; } function r(pO, pG, pg, pc, ph, pm) { let pe = new Array(0x8), pI = 0x0, pA = new Array((pO[0xe] || 0x0) + (pO[0xf] || 0x0)), pN = 0x0, pZ = pO[0x1], pS = pO[0x11], pd = pO[0x8] || K, pQ = pO[0x2] || K, pf = pS['length'] >> 0x1, pL = (pO[0xe] * 0x1f ^ pO[0xf] * 0x11 ^ pf * 0xd ^ pZ['length'] * 0x7) >>> 0x0 & 0x3, pu, pr, pb; switch (pL) { case 0x1: pu = 0x1, pr = 0x0, pb = 0x1; break; case 0x2: pu = 0x0, pr = pf, pb = 0x0; break; case 0x3: pu = pf, pr = 0x0, pb = 0x0; break; default: pu = 0x0, pr = 0x1, pb = 0x1; break; }let pW = null, pY = null, pT = ![], pU = undefined, pC = ![], pn = 0x0, pB = ![], pz = 0x0, pX = !!pO[0xd], pD = !!pO[0x13], pw = !!pO[0xc], M0 = !!pO[0x5], M1 = pm, M2 = !!pO[0x3]; !pX && !M2 && (pm === undefined || pm === null) && (pm = vmE); let M3 = pO[0x10], M4, M5, M6, M7, M8, M9; if (M3 !== undefined) { let ME = Ma => typeof Ma === 'number' && (Ma | 0x0) === Ma && !Object['is'](Ma, -0x0) ? Ma ^ M3 | 0x0 : Ma; M4 = Ma => { pe[pI++] = ME(Ma); }, M5 = () => ME(pe[--pI]), M6 = () => ME(pe[pI - 0x1]), M7 = Ma => { pe[pI - 0x1] = ME(Ma); }, M8 = Ma => ME(pe[pI - Ma]), M9 = (Ma, MK) => { pe[pI - Ma] = ME(MK); }; } else M4 = Ma => { pe[pI++] = Ma; }, M5 = () => pe[--pI], M6 = () => pe[pI - 0x1], M7 = Ma => { pe[pI - 0x1] = Ma; }, M8 = Ma => pe[pI - Ma], M9 = (Ma, MK) => { pe[pI - Ma] = MK; }; let Mp = { ['_$AqrBpj']: null, ['_$ANa2YR']: null, ['_$twDigJ']: null, ['_$D0DSfu']: pg }; if (pG) { let Ma = pO[0xe] || 0x0; for (let MK = 0x0, Mi = pG['length'] < Ma ? pG['length'] : Ma; MK < Mi; MK++) { pA[MK] = pG[MK]; } } let MM = (pX || !pD) && pG ? x(pG) : null, Mv = null, Ms = ![], Mo = pA['length'], MJ = null, MH = 0x0; M0 && (Mp['_$twDigJ'] = vmy(null), Mp['_$twDigJ']['__this__'] = !![]); m(pO, Mp, pc); let MP = { ['_$nB3bKs']: pX, ['_$0wqOjV']: pD, ['_$RZzLYA']: pw, ['_$7axwc2']: M0, ['_$bfJUlG']: Ms, ['_$R7uRzh']: M1, ['_$gY77Sq']: MM, ['_$dEiGRa']: Mp }; function MV(My, Mj) { if (My === 0x1) M4(Mj); else { if (My === 0x2) { if (pW && pW['length'] > 0x0) { let MF = pW[pW['length'] - 0x1]; pI = MF['_$ASmqGl']; if (MF['_$tSVosS'] !== undefined) M4(Mj), pN = MF['_$tSVosS'], MF['_$tSVosS'] = undefined, MF['_$cOufar'] === undefined && pW['pop'](); else MF['_$cOufar'] !== undefined ? (pN = MF['_$cOufar'], MF['_$ba3Iop'] = Mj) : (pN = MF['_$W7TRiE'], pW['pop']()); } else throw Mj; } else { if (My === 0x3) { let MO = Mj; if (pW && pW['length'] > 0x0) { let MG = pW[pW['length'] - 0x1]; if (MG['_$cOufar'] !== undefined) pT = !![], pU = MO, pN = MG['_$cOufar']; else return MO; } else return MO; } } } while (pN < pf) { try { while (pN < pf) { let Mg = pS[pu + (pN << pb)], Mc = pS[pr + (pN << pb)]; if (Mg === E) { let Mh = M5(); return pN++, { ['_$tJ99GR']: s, ['_$jBroyV']: Mh, '_d': MV }; } if (Mg === P) { let Mm = M5(); return pN++, { ['_$tJ99GR']: o, ['_$jBroyV']: Mm, '_d': MV }; } if (Mg === V) { let Me = M5(); return pN++, { ['_$tJ99GR']: J, ['_$jBroyV']: Me, '_d': MV }; } var Ml, Mq, MR, Mt, Mx, Mk; !Mt && (Mq = null, MR = function () { for (let MI = Mo - 0x1; MI >= 0x0; MI--) { pA[MI] = MJ[--MH]; } Mp = MJ[--MH], MP['_$dEiGRa'] = Mp, MM = MJ[--MH], MP['_$gY77Sq'] = MM, Mv = MJ[--MH], pG = MJ[--MH], pI = MJ[--MH], pN = MJ[--MH], pe[pI++] = Ml, pN++; }, Mt = function (MI, MA) { switch (MI) { case 0x3c: { sA: { let MN = pe[--pI]; if (MA >= 0x0) { let MZ = pZ[MA]; !Mq['_$dEiGRa']['_$AqrBpj'] && (Mq['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mq['_$dEiGRa']['_$AqrBpj'][MZ] = MN; } pN++; } break; } case 0x16: { sN: { let MS = pe[--pI], Md = pe[--pI]; pe[pI++] = Md ^ MS, pN++; } break; } case 0x1d: { sZ: { pe[pI - 0x1] = String(pe[pI - 0x1]), pN++; } break; } case 0xe: { sS: { let MQ = pe[--pI], Mf = pe[--pI]; pe[pI++] = Mf % MQ, pN++; } break; } case 0x1b: { sd: { let ML = pe[pI - 0x3], Mu = pe[pI - 0x2], Mr = pe[pI - 0x1]; pe[pI - 0x3] = Mu, pe[pI - 0x2] = Mr, pe[pI - 0x1] = ML, pN++; } break; } case 0x20: { sQ: { pe[pI - 0x1] = !pe[pI - 0x1], pN++; } break; } case 0x37: { sf: { let Mb = pe[--pI], MW = pe[--pI], MY = pe[--pI]; if (typeof MW !== 'function') throw new TypeError(MW + '\x20is\x20not\x20a\x20function'); let MT = vmH_6ed288['_$Azfz9O'], MU = MT && vmG['call'](MT, MW), MC = vmH_6ed288['_$fL4xYQ']; MU && (vmH_6ed288['_$hnmqnk'] = !![], vmH_6ed288['_$fL4xYQ'] = MU); let Mn; try { if (Mb === 0x0) Mn = vmF(MW, MY, K); else { if (Mb === 0x1) { let MB = pe[--pI]; Mn = MB && typeof MB === 'object' && vmh['call'](y, MB) ? vmF(MW, MY, MB['value']) : vmF(MW, MY, [MB]); } else Mn = vmF(MW, MY, R(M5, Mb)); } pe[pI++] = Mn; } finally { MU && (vmH_6ed288['_$hnmqnk'] = ![], vmH_6ed288['_$fL4xYQ'] = MC); } pN++; } break; } case 0x4e: { sL: { let Mz = pe[--pI], MX = pZ[MA]; Mz === null || Mz === undefined ? pe[pI++] = undefined : pe[pI++] = Mz[MX], pN++; } break; } case 0x2d: { su: { let MD = pe[--pI], Mw = pe[--pI]; pe[pI++] = Mw <= MD, pN++; } break; } case 0xb: { sr: { let v0 = pe[--pI], v1 = pe[--pI]; pe[pI++] = v1 - v0, pN++; } break; } case 0x11: { sb: { let v2 = pe[--pI]; pe[pI++] = typeof v2 === a ? v2 - 0x1n : +v2 - 0x1, pN++; } break; } case 0x12: { sW: { let v3 = pe[--pI], v4 = pe[--pI]; pe[pI++] = v4 ** v3, pN++; } break; } case 0x1a: { sY: { let v5 = pe[--pI], v6 = pe[--pI]; pe[pI++] = v6 >>> v5, pN++; } break; } case 0x2b: { sT: { let v7 = pe[--pI], v8 = pe[--pI]; pe[pI++] = v8 !== v7, pN++; } break; } case 0x4: { sU: { let v9 = pe[pI - 0x1]; pe[pI++] = v9, pN++; } break; } case 0x36: { sC: { let vp = pe[--pI], vM = pe[--pI]; if (typeof vM !== 'function') throw new TypeError(vM + '\x20is\x20not\x20a\x20function'); let vv = vmH_6ed288['_$Azfz9O'], vs = !vmH_6ed288['_$fL4xYQ'] && !vmH_6ed288['_$qimC1Q'] && !(vv && vmG['call'](vv, vM)) && vmG['call'](l, vM); if (vs) { let vV = vs['c'] || (vs['c'] = typeof vs['b'] === 'object' ? vs['b'] : px(vs['b'])); if (vV) { let vE; if (vp === 0x0) vE = []; else { if (vp === 0x1) { let vK = pe[--pI]; vE = vK && typeof vK === 'object' && vmh['call'](y, vK) ? vK['value'] : [vK]; } else vE = R(M5, vp); } let va = vV[0x0]; if (va && vV === pO && !vV[0x2] && vs['e'] === pg) { !MJ && (MJ = []); MJ[MH++] = pN, MJ[MH++] = pI, MJ[MH++] = pG, MJ[MH++] = Mv, MJ[MH++] = MM, MJ[MH++] = Mp; for (let vi = 0x0; vi < Mo; vi++) { MJ[MH++] = pA[vi]; } pG = vE, Mv = null; if (vV[0x13]) { MM = null; let vy = vV[0xe] || 0x0; for (let vj = 0x0; vj < vy && vj < vE['length']; vj++) { pA[vj] = vE[vj]; } for (let vl = vE['length'] < vy ? vE['length'] : vy; vl < Mo; vl++) { pA[vl] = undefined; } pN = va; } else { MM = x(vE), MP['_$gY77Sq'] = MM; for (let vq = 0x0; vq < Mo; vq++) { pA[vq] = undefined; } pN = 0x0; } break sC; } vmH_6ed288['_$hnmqnk'] ? vmH_6ed288['_$hnmqnk'] = ![] : vmH_6ed288['_$fL4xYQ'] = undefined; pe[pI++] = u(vV, vE, vs['e'], vM, undefined, undefined), pN++; break sC; } } let vo = vmH_6ed288['_$fL4xYQ'], vJ = vmH_6ed288['_$Azfz9O'], vH = vJ && vmG['call'](vJ, vM); vH ? (vmH_6ed288['_$hnmqnk'] = !![], vmH_6ed288['_$fL4xYQ'] = vH) : vmH_6ed288['_$fL4xYQ'] = undefined; let vP; try { if (vp === 0x0) vP = vM(); else { if (vp === 0x1) { let vR = pe[--pI]; vP = vR && typeof vR === 'object' && vmh['call'](y, vR) ? vmF(vM, undefined, vR['value']) : vM(vR); } else vP = vmF(vM, undefined, R(M5, vp)); } pe[pI++] = vP; } finally { vH && (vmH_6ed288['_$hnmqnk'] = ![]), vmH_6ed288['_$fL4xYQ'] = vo; } pN++; } break; } case 0x38: { sn: { if (pW && pW['length'] > 0x0) { let vt = pW[pW['length'] - 0x1]; if (vt['_$cOufar'] !== undefined) { pT = !![], pU = pe[--pI], pN = vt['_$cOufar']; break sn; } } return pT && (pT = ![], pU = undefined), Ml = pe[--pI], 0x1; } break; } case 0x4a: { sB: { let vx, vk; MA >= 0x0 ? (vk = pe[--pI], vx = pZ[MA]) : (vx = pe[--pI], vk = pe[--pI]); let vF = delete vk[vx]; if (Mq['_$nB3bKs'] && !vF) throw new TypeError('Cannot\x20delete\x20property\x20\x27' + String(vx) + '\x27\x20of\x20object'); pe[pI++] = vF, pN++; } break; } case 0x29: { sz: { let vO = pe[--pI], vG = pe[--pI]; pe[pI++] = vG != vO, pN++; } break; } case 0x1: { sX: { pe[pI++] = undefined, pN++; } break; } case 0x47: { sD: { let vg = pe[--pI], vc = pe[--pI], vh = pZ[MA]; if (vc === null || vc === undefined) throw new TypeError('Cannot\x20set\x20property\x20\x27' + String(vh) + '\x27\x20of\x20' + vc); if (Mq['_$nB3bKs']) { if (!Reflect['set'](vc, vh, vg)) throw new TypeError('Cannot\x20assign\x20to\x20read\x20only\x20property\x20\x27' + String(vh) + '\x27\x20of\x20object'); } else vc[vh] = vg; pe[pI++] = vg, pN++; } break; } case 0x4c: { sw: { let vm = pe[--pI], ve = pZ[MA]; if (vmH_6ed288['_$skECeW'] && ve in vmH_6ed288['_$skECeW']) throw new ReferenceError('Cannot\x20access\x20\x27' + ve + '\x27\x20before\x20initialization'); let vI = !(ve in vmH_6ed288) && !(ve in vmE); vmH_6ed288[ve] = vm, ve in vmE && (vmE[ve] = vm), vI && (vmE[ve] = vm), pe[pI++] = vm, pN++; } break; } case 0xc: { o0: { let vA = pe[--pI], vN = pe[--pI]; pe[pI++] = vN * vA, pN++; } break; } case 0x15: { o1: { let vZ = pe[--pI], vS = pe[--pI]; pe[pI++] = vS | vZ, pN++; } break; } case 0x2: { o2: { pe[pI++] = null, pN++; } break; } case 0x2a: { o3: { let vd = pe[--pI], vQ = pe[--pI]; pe[pI++] = vQ === vd, pN++; } break; } case 0x10: { o4: { let vf = pe[--pI]; pe[pI++] = typeof vf === a ? vf + 0x1n : +vf + 0x1, pN++; } break; } case 0x5: { o5: { let vL = pe[pI - 0x1]; pe[pI - 0x1] = pe[pI - 0x2], pe[pI - 0x2] = vL, pN++; } break; } case 0x32: { o6: { pN = pd[pN]; } break; } case 0x46: { o7: { let vu = pe[--pI], vr = pZ[MA]; if (vu === null || vu === undefined) throw new TypeError('Cannot\x20read\x20property\x20\x27' + String(vr) + '\x27\x20of\x20' + vu); pe[pI++] = vu[vr], pN++; } break; } case 0x0: { o8: { pe[pI++] = pZ[MA], pN++; } break; } case 0x3d: { o9: { if (pW && pW['length'] > 0x0) { let vb = pW[pW['length'] - 0x1]; vb['_$cOufar'] === pN && (vb['_$ba3Iop'] !== undefined && (pY = vb['_$ba3Iop']), pW['pop']()); } pN++; } break; } case 0x14: { oM: { let vW = pe[--pI], vY = pe[--pI]; pe[pI++] = vY & vW, pN++; } break; } case 0x17: { ov: { pe[pI - 0x1] = ~pe[pI - 0x1], pN++; } break; } case 0x48: { os: { let vT = pe[--pI], vU = pe[--pI]; if (vU === null || vU === undefined) throw new TypeError('Cannot\x20read\x20property\x20\x27' + String(vT) + '\x27\x20of\x20' + vU); pe[pI++] = vU[vT], pN++; } break; } case 0x3a: { oo: { let vC = pQ[pN]; if (!pW) pW = []; pW['push']({ ['_$tSVosS']: vC[0x0] >= 0x0 ? vC[0x0] : undefined, ['_$cOufar']: vC[0x1] >= 0x0 ? vC[0x1] : undefined, ['_$W7TRiE']: vC[0x2] >= 0x0 ? vC[0x2] : undefined, ['_$ASmqGl']: pI }), pN++; } break; } case 0x9: { oJ: { pG[MA] = pe[--pI], pN++; } break; } case 0x3f: { oH: { let vn = pd[pN]; if (pW && pW['length'] > 0x0) { let vB = pW[pW['length'] - 0x1]; if (vB['_$cOufar'] !== undefined && vn >= vB['_$W7TRiE']) { pC = !![], pn = vn, pN = vB['_$cOufar']; break oH; } } pN = vn; } break; } case 0x53: { oP: { let vz = pe[--pI], vX = pe[--pI], vD = pZ[MA]; vmi(vX, vD, { 'value': vz, 'writable': !![], 'enumerable': !![], 'configurable': !![] }), typeof vz === 'function' && (!vmH_6ed288['_$Azfz9O'] && (vmH_6ed288['_$Azfz9O'] = new WeakMap()), vmO['call'](vmH_6ed288['_$Azfz9O'], vz, vX)), pN++; } break; } case 0x34: { oV: { !pe[--pI] ? pN = pd[pN] : pN++; } break; } case 0x51: { oE: { let vw = pe[--pI], s0 = pe[pI - 0x1]; vw !== null && vw !== undefined && Object['assign'](s0, vw), pN++; } break; } case 0x52: { oa: { let s1 = pe[--pI], s2 = pe[--pI]; s2 === null || s2 === undefined ? pe[pI++] = undefined : pe[pI++] = s2[s1], pN++; } break; } case 0x39: { oK: { throw pe[--pI]; } break; } case 0x3e: { oi: { if (pY !== null) { pT = ![], pC = ![], pB = ![]; let s3 = pY; pY = null; throw s3; } if (pT) { if (pW && pW['length'] > 0x0) { let s5 = pW[pW['length'] - 0x1]; if (s5['_$cOufar'] !== undefined) { pN = s5['_$cOufar']; break oi; } } let s4 = pU; return pT = ![], pU = undefined, Ml = s4, 0x1; } if (pC) { if (pW && pW['length'] > 0x0) { let s7 = pW[pW['length'] - 0x1]; if (s7['_$cOufar'] !== undefined) { pN = s7['_$cOufar']; break oi; } } let s6 = pn; pC = ![], pn = 0x0, pN = s6; break oi; } if (pB) { if (pW && pW['length'] > 0x0) { let s9 = pW[pW['length'] - 0x1]; if (s9['_$cOufar'] !== undefined) { pN = s9['_$cOufar']; break oi; } } let s8 = pz; pB = ![], pz = 0x0, pN = s8; break oi; } pN++; } break; } case 0x2c: { oy: { let sp = pe[--pI], sM = pe[--pI]; pe[pI++] = sM < sp, pN++; } break; } case 0x40: { oj: { let sv = pd[pN]; if (pW && pW['length'] > 0x0) { let ss = pW[pW['length'] - 0x1]; if (ss['_$cOufar'] !== undefined && sv >= ss['_$W7TRiE']) { pB = !![], pz = sv, pN = ss['_$cOufar']; break oj; } } pN = sv; } break; } case 0x49: { ol: { let so = pe[--pI], sJ = pe[--pI], sH = pe[--pI]; if (sH === null || sH === undefined) throw new TypeError('Cannot\x20set\x20property\x20\x27' + String(sJ) + '\x27\x20of\x20' + sH); if (Mq['_$nB3bKs']) { if (!Reflect['set'](sH, sJ, so)) throw new TypeError('Cannot\x20assign\x20to\x20read\x20only\x20property\x20\x27' + String(sJ) + '\x27\x20of\x20object'); } else sH[sJ] = so; pe[pI++] = so, pN++; } break; } case 0x13: { oq: { pe[pI - 0x1] = +pe[pI - 0x1], pN++; } break; } case 0xf: { oR: { pe[pI - 0x1] = -pe[pI - 0x1], pN++; } break; } case 0x7: { ot: { pA[MA] = pe[--pI], pN++; } break; } case 0x54: { ox: { let sP = pe[--pI], sV = pe[--pI], sE = pe[--pI]; vmi(sE, sV, { 'value': sP, 'writable': !![], 'enumerable': !![], 'configurable': !![] }), typeof sP === 'function' && (!vmH_6ed288['_$Azfz9O'] && (vmH_6ed288['_$Azfz9O'] = new WeakMap()), vmO['call'](vmH_6ed288['_$Azfz9O'], sP, sE)), pN++; } break; } case 0xa: { ok: { let sa = pe[--pI], sK = pe[--pI]; pe[pI++] = sK + sa, pN++; } break; } case 0x4d: { oF: { pe[pI++] = {}, pN++; } break; } case 0x2f: { oO: { let si = pe[--pI], sy = pe[--pI]; pe[pI++] = sy >= si, pN++; } break; } case 0x28: { oG: { let sj = pe[--pI], sl = pe[--pI]; pe[pI++] = sl == sj, pN++; } break; } case 0x4b: { og: { let sq = pZ[MA], sR; if (vmH_6ed288['_$skECeW'] && sq in vmH_6ed288['_$skECeW']) throw new ReferenceError('Cannot\x20access\x20\x27' + sq + '\x27\x20before\x20initialization'); if (sq in vmH_6ed288) sR = vmH_6ed288[sq]; else { if (sq in vmE) sR = vmE[sq]; else throw new ReferenceError(sq + '\x20is\x20not\x20defined'); } pe[pI++] = sR, pN++; } break; } case 0x8: { oc: { pe[pI++] = pG[MA], pN++; } break; } case 0x3b: { oh: { pW['pop'](), pN++; } break; } case 0x1c: { om: { let st = pe[--pI]; pe[pI++] = typeof st === a ? st : +st, pN++; } break; } case 0xd: { oe: { let sx = pe[--pI], sk = pe[--pI]; pe[pI++] = sk / sx, pN++; } break; } case 0x4f: { oI: { let sF = pe[--pI], sO = pe[--pI]; pe[pI++] = sO in sF, pN++; } break; } case 0x19: { oA: { let sG = pe[--pI], sg = pe[--pI]; pe[pI++] = sg >> sG, pN++; } break; } case 0x18: { oN: { let sc = pe[--pI], sh = pe[--pI]; pe[pI++] = sh << sc, pN++; } break; } case 0x2e: { oZ: { let sm = pe[--pI], se = pe[--pI]; pe[pI++] = se > sm, pN++; } break; } case 0x35: { oS: { let sI = pe[--pI]; sI !== null && sI !== undefined ? pN = pd[pN] : pN++; } break; } case 0x6: { od: { pe[pI++] = pA[MA], pN++; } break; } case 0x3: { oQ: { pe[--pI], pN++; } break; } case 0x33: { of: { pe[--pI] ? pN = pd[pN] : pN++; } break; } } }, Mx = function (MI, MA) { switch (MI) { case 0x80: { J9: { let MZ = pe[--pI]; pe[pI++] = !!MZ['done'], pN++; } break; } case 0x8f: { Jp: { let MS = pe[--pI], Md = pe[--pI], MQ = pe[--pI], Mf = F(MQ), ML = O(Mf, Md); ML['desc'] && ML['desc']['set'] ? ML['desc']['set']['call'](MQ, MS) : MQ[Md] = MS, pe[pI++] = MS, pN++; } break; } case 0xa3: { JM: { pe[--pI], pe[pI++] = undefined, pN++; } break; } case 0xb8: { Jv: { let Mu = pe[--pI], Mr = pe[--pI], Mb = pe[pI - 0x1]; vmi(Mb, Mr, { 'get': Mu, 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0xa9: { Js: { let MW = pe[--pI]; pe[pI++] = Symbol['keyFor'](MW), pN++; } break; } case 0x7f: { Jo: { let MY = pe[--pI]; if (MY == null) throw new TypeError('Cannot\x20iterate\x20over\x20' + MY); let MT = MY[Symbol['iterator']]; if (typeof MT !== 'function') throw new TypeError('Object\x20is\x20not\x20iterable'); pe[pI++] = vmF(MT, MY, []), pN++; } break; } case 0x95: { JJ: { let MU = pe[--pI], MC = pe[pI - 0x1], Mn = pZ[MA]; vmi(MC, Mn, { 'set': MU, 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x9e: { JH: { let MB = pe[--pI], Mz = pe[--pI], MX = pZ[MA], MD = h(); if (MD) { let v1 = 'set_' + MX, v2 = MD['get'](v1); if (v2 && vmg['call'](v2, Mz)) { let v4 = vmG['call'](v2, Mz); v4['call'](Mz, MB), pe[pI++] = MB, pN++; break JH; } let v3 = MD['get'](MX); if (v3 && vmg['call'](v3, Mz)) { vmO['call'](v3, Mz, MB), pe[pI++] = MB, pN++; break JH; } } let Mw = '_$8zWQSa' + 'set_' + MX['substring'](0x1) + '_$vbpBip'; if (Mw in Mz) { let v5 = Mz[Mw]; v5['call'](Mz, MB), pe[pI++] = MB, pN++; break JH; } let v0 = I(MX); if (v0 in Mz) { Mz[v0] = MB, pe[pI++] = MB, pN++; break JH; } throw new TypeError('Cannot\x20write\x20private\x20member\x20' + MX + '\x20to\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); } break; } case 0x94: { JP: { let v6 = pe[--pI], v7 = pe[pI - 0x1], v8 = pZ[MA]; vmi(v7, v8, { 'get': v6, 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x9b: { JV: { let v9 = pe[--pI], vp = pZ[MA]; if (v9 == null) { pe[pI++] = undefined, pN++; break JV; } let vM = c(), vv = vM['get'](vp); if (!vv || !vmg['call'](vv, v9)) throw new TypeError('Cannot\x20read\x20private\x20member\x20' + vp + '\x20from\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); pe[pI++] = vmG['call'](vv, v9), pN++; } break; } case 0x5e: { JE: { let vs = pe[--pI], vo = pe[pI - 0x1]; if (Array['isArray'](vs)) Array['prototype']['push']['apply'](vo, vs); else for (let vJ of vs) { vo['push'](vJ); } pN++; } break; } case 0x8e: { Ja: { let vH = pe[--pI], vP = pe[--pI], vV = vmH_6ed288['_$fL4xYQ'], vE = vV ? vmt(vV) : F(vP), va = O(vE, vH); if (va['desc'] && va['desc']['get']) { let vi = va['desc']['get']['call'](vP); pe[pI++] = vi, pN++; break Ja; } if (va['desc'] && va['desc']['set'] && !('value' in va['desc'])) { pe[pI++] = undefined, pN++; break Ja; } let vK = va['proto'] ? va['proto'][vH] : vE[vH]; if (typeof vK === 'function') { let vy = va['proto'] || vE, vj = vK['bind'](vP), vl = vK['constructor'] && vK['constructor']['name'], vq = vl === 'GeneratorFunction' || vl === 'AsyncFunction' || vl === 'AsyncGeneratorFunction'; !vq && (!vmH_6ed288['_$Azfz9O'] && (vmH_6ed288['_$Azfz9O'] = new WeakMap()), vmO['call'](vmH_6ed288['_$Azfz9O'], vj, vy)), pe[pI++] = vj; } else pe[pI++] = vK; pN++; } break; } case 0x8c: { JK: { let vR = pe[--pI], vt = pe[--pI], vx = MA, vk = function (vF, vO) { let vG = function () { if (vF) { vO && (vmH_6ed288['_$oyo4cq'] = vG); let vg = '_$qimC1Q' in vmH_6ed288; !vg && (vmH_6ed288['_$qimC1Q'] = new.target); try { let vc = vF['apply'](this, x(arguments)); if (vO && vc !== undefined && (typeof vc !== 'object' || vc === null)) throw new TypeError('Derived\x20constructors\x20may\x20only\x20return\x20object\x20or\x20undefined'); return vc; } finally { vO && delete vmH_6ed288['_$oyo4cq'], !vg && delete vmH_6ed288['_$qimC1Q']; } } }; return vG; }(vt, vx); vR && vmi(vk, 'name', { 'value': vR, 'configurable': !![] }), pe[pI++] = vk, pN++; } break; } case 0xb9: { Ji: { let vF = pe[--pI], vO = pe[--pI], vG = pe[pI - 0x1]; vmi(vG, vO, { 'set': vF, 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x92: { Jy: { let vg = pe[--pI], vc = pe[pI - 0x1], vh = pZ[MA], vm = k(vc); vmi(vm, vh, { 'set': vg, 'enumerable': vm === vc, 'configurable': !![] }), pN++; } break; } case 0x83: { Jj: { let ve = pe[--pI]; ve && typeof ve['return'] === 'function' ? pe[pI++] = Promise['resolve'](ve['return']()) : pe[pI++] = Promise['resolve'](), pN++; } break; } case 0x6e: { Jl: { pe[pI - 0x1] = typeof pe[pI - 0x1], pN++; } break; } case 0x5b: { Jq: { let vI = pe[--pI], vA = pe[pI - 0x1]; vA['push'](vI), pN++; } break; } case 0x68: { JR: { let vN = pe[--pI], vZ = R(M5, vN), vS = pe[--pI]; if (typeof vS !== 'function') throw new TypeError(vS + '\x20is\x20not\x20a\x20constructor'); if (vmh['call'](j, vS)) throw new TypeError(vS['name'] + '\x20is\x20not\x20a\x20constructor'); let vd = vmH_6ed288['_$fL4xYQ']; vmH_6ed288['_$fL4xYQ'] = undefined; let vQ; try { vQ = Reflect['construct'](vS, vZ); } finally { vmH_6ed288['_$fL4xYQ'] = vd; } pe[pI++] = vQ, pN++; } break; } case 0xb5: { Jt: { let vf = pe[--pI], vL = pe[--pI], vu = pe[pI - 0x1]; vmi(vu, vL, { 'value': vf, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x81: { Jx: { let vr = pe[--pI]; if (vr == null) throw new TypeError('Cannot\x20iterate\x20over\x20' + vr); let vb = vr[Symbol['asyncIterator']]; if (typeof vb === 'function') pe[pI++] = vb['call'](vr); else { let vW = vr[Symbol['iterator']]; if (typeof vW !== 'function') throw new TypeError('Object\x20is\x20not\x20async\x20iterable'); pe[pI++] = vW['call'](vr); } pN++; } break; } case 0x8d: { Jk: { let vY = pe[--pI], vT = pe[pI - 0x1]; if (vY === null) { vmR(vT['prototype'], null), vmR(vT, Function['prototype']), vT['_$oNQR0e'] = null, pN++; break Jk; } if (typeof vY !== 'function') throw new TypeError('Class\x20extends\x20value\x20' + String(vY) + '\x20is\x20not\x20a\x20constructor\x20or\x20null'); let vU = ![]; try { let vC = vmy(vY['prototype']), vn = vY['apply'](vC, []); vn !== undefined && vn !== vC && (vU = !![]); } catch (vB) { vB instanceof TypeError && (vB['message']['includes']('\x27new\x27') || vB['message']['includes']('constructor') || vB['message']['includes']('Illegal\x20constructor')) && (vU = !![]); } if (vU) { let vz = vT, vX = vmH_6ed288, vD = '_$qimC1Q', vw = '_$oyo4cq', s0 = '_$xK3QkB'; function MN(...s1) { let s2 = vmy(vY['prototype']); vX[s0] = { 'parent': vY, 'newTarget': new.target || MN }, vX[vw] = new.target || MN; let s3 = vD in vX; !s3 && (vX[vD] = new.target); try { let s4 = vz['apply'](s2, s1); s4 !== undefined && typeof s4 === 'object' && (s2 = s4); } finally { delete vX[s0], delete vX[vw], !s3 && delete vX[vD]; } return s2; } MN['prototype'] = vmy(vY['prototype']), MN['prototype']['constructor'] = MN, vmR(MN, vY), vml(vz)['forEach'](function (s1) { s1 !== 'prototype' && s1 !== 'length' && s1 !== 'name' && q(MN, s1, vmj(vz, s1)); }); vz['prototype'] && (vml(vz['prototype'])['forEach'](function (s1) { s1 !== 'constructor' && q(MN['prototype'], s1, vmj(vz['prototype'], s1)); }), vmq(vz['prototype'])['forEach'](function (s1) { q(MN['prototype'], s1, vmj(vz['prototype'], s1)); })); pe[--pI], pe[pI++] = MN, MN['_$oNQR0e'] = vY, pN++; break Jk; } vmR(vT['prototype'], vY['prototype']), vmR(vT, vY), vT['_$oNQR0e'] = vY, pN++; } break; } case 0x7c: { JF: { let s1 = pe[--pI]; s1 && typeof s1['return'] === 'function' && s1['return'](), pN++; } break; } case 0xb6: { JO: { let s2 = pe[--pI], s3 = pe[--pI], s4 = pe[pI - 0x1], s5 = k(s4); vmi(s5, s3, { 'get': s2, 'enumerable': s5 === s4, 'configurable': !![] }), pN++; } break; } case 0x7b: { JG: { let s6 = pe[--pI], s7 = s6['next'](); pe[pI++] = s7, pN++; } break; } case 0xb7: { Jg: { let s8 = pe[--pI], s9 = pe[--pI], sp = pe[pI - 0x1], sM = k(sp); vmi(sM, s9, { 'set': s8, 'enumerable': sM === sp, 'configurable': !![] }), pN++; } break; } case 0x9d: { Jc: { let sv = pe[--pI], ss = pZ[MA], so = h(); if (so) { let sP = 'get_' + ss, sV = so['get'](sP); if (sV && vmg['call'](sV, sv)) { let sa = vmG['call'](sV, sv); pe[pI++] = sa['call'](sv), pN++; break Jc; } let sE = so['get'](ss); if (sE && vmg['call'](sE, sv)) { pe[pI++] = vmG['call'](sE, sv), pN++; break Jc; } } let sJ = '_$8zWQSa' + 'get_' + ss['substring'](0x1) + '_$vbpBip'; if (sJ in sv) { let sK = sv[sJ]; pe[pI++] = sK['call'](sv), pN++; break Jc; } let sH = I(ss); if (sH in sv) { pe[pI++] = sv[sH], pN++; break Jc; } throw new TypeError('Cannot\x20read\x20private\x20member\x20' + ss + '\x20from\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); } break; } case 0x9a: { Jh: { let si = pe[--pI], sy = pe[--pI], sj = pZ[MA], sl = null, sq = h(); if (sq) { let sx = sq['get'](sj); sx && vmg['call'](sx, sy) && (sl = vmG['call'](sx, sy)); } if (sl === null) { let sk = A(sj); sk in sy && (sl = sy[sk]); } if (sl === null) throw new TypeError('Cannot\x20read\x20private\x20member\x20' + sj + '\x20from\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); if (typeof sl !== 'function') throw new TypeError(sj + '\x20is\x20not\x20a\x20function'); let sR = R(M5, si), st = sl['apply'](sy, sR); pe[pI++] = st, pN++; } break; } case 0x70: { Jm: { let sF = pZ[MA]; sF in vmH_6ed288 ? pe[pI++] = typeof vmH_6ed288[sF] : pe[pI++] = typeof vmE[sF], pN++; } break; } case 0xb4: { Je: { let sO = pe[--pI], sG = pe[--pI], sg = pe[pI - 0x1]; vmi(sg['prototype'], sG, { 'value': sO, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0xa0: { JI: { if (Mq['_$RZzLYA'] && !Mq['_$bfJUlG']) throw new ReferenceError('Must\x20call\x20super\x20constructor\x20in\x20derived\x20class\x20before\x20accessing\x20\x27this\x27\x20or\x20returning\x20from\x20derived\x20constructor'); pe[pI++] = pm, pN++; } break; } case 0x5a: { JA: { pe[pI++] = [], pN++; } break; } case 0xa7: { JN: { if (MA === -0x1) pe[pI++] = Symbol(); else { let sc = pe[--pI]; pe[pI++] = Symbol(sc); } pN++; } break; } case 0x98: { JZ: { let sh = pe[--pI], sm = pe[--pI], se = pZ[MA], sI = c(); !sI['has'](se) && sI['set'](se, new WeakMap()); let sA = sI['get'](se); if (vmg['call'](sA, sm)) throw new TypeError('Cannot\x20initialize\x20' + se + '\x20twice\x20on\x20the\x20same\x20object'); vmO['call'](sA, sm, sh), pN++; } break; } case 0x82: { JS: { let sN = pe[--pI], sZ = sN['next'](); pe[pI++] = Promise['resolve'](sZ), pN++; } break; } case 0xa4: { Jd: { pe[pI++] = ph, pN++; } break; } case 0x6f: { JQ: { let sS = pe[--pI], sd = pe[--pI]; pe[pI++] = sd instanceof sS, pN++; } break; } case 0x69: { Jf: { let sQ = pe[--pI], sf = R(M5, sQ), sL = pe[--pI]; if (MA === 0x1) { pe[pI++] = sf, pN++; break Jf; } if (vmH_6ed288['_$QiICz5']) { pN++; break Jf; } let su = vmH_6ed288['_$xK3QkB']; if (su) { let sr = su['parent'], sb = su['newTarget'], sW = Reflect['construct'](sr, sf, sb); pm && pm !== sW && vml(pm)['forEach'](function (sY) { !(sY in sW) && (sW[sY] = pm[sY]); }); pm = sW, Mq['_$bfJUlG'] = !![]; Mq['_$7axwc2'] && (G(Mq['_$dEiGRa'], '__this__'), !Mq['_$dEiGRa']['_$AqrBpj'] && (Mq['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mq['_$dEiGRa']['_$AqrBpj']['__this__'] = pm); pN++; break Jf; } if (typeof sL !== 'function') throw new TypeError('Super\x20expression\x20must\x20be\x20a\x20constructor'); vmH_6ed288['_$qimC1Q'] = ph; try { let sY = sL['apply'](pm, sf); sY !== undefined && sY !== pm && typeof sY === 'object' && (pm && Object['assign'](sY, pm), pm = sY), Mq['_$bfJUlG'] = !![], Mq['_$7axwc2'] && (G(Mq['_$dEiGRa'], '__this__'), !Mq['_$dEiGRa']['_$AqrBpj'] && (Mq['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mq['_$dEiGRa']['_$AqrBpj']['__this__'] = pm); } catch (sT) { if (sT instanceof TypeError && (sT['message']['includes']('\x27new\x27') || sT['message']['includes']('constructor'))) { let sU = Reflect['construct'](sL, sf, ph); sU !== pm && pm && Object['assign'](sU, pm), pm = sU, Mq['_$bfJUlG'] = !![], Mq['_$7axwc2'] && (G(Mq['_$dEiGRa'], '__this__'), !Mq['_$dEiGRa']['_$AqrBpj'] && (Mq['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mq['_$dEiGRa']['_$AqrBpj']['__this__'] = pm); } else throw sT; } finally { delete vmH_6ed288['_$qimC1Q']; } pN++; } break; } case 0x93: { JL: { let sC = pe[--pI], sn = pe[pI - 0x1], sB = pZ[MA]; vmi(sn, sB, { 'value': sC, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0xa8: { Ju: { let sz = pZ[MA]; pe[pI++] = Symbol['for'](sz), pN++; } break; } case 0x91: { Jr: { let sX = pe[--pI], sD = pe[pI - 0x1], sw = pZ[MA], o0 = k(sD); vmi(o0, sw, { 'get': sX, 'enumerable': o0 === sD, 'configurable': !![] }), pN++; } break; } case 0xa2: { Jb: { let o1 = MA & 0xffff, o2 = MA >> 0x10, o3 = pZ[o1], o4 = pZ[o2]; pe[pI++] = new RegExp(o3, o4), pN++; } break; } case 0x84: { JW: { let o5 = pe[--pI]; pe[pI++] = t(o5), pN++; } break; } case 0xa6: { JY: { pe[pI++] = vmK[MA], pN++; } break; } case 0x9c: { JT: { let o6 = pe[--pI]; pe[--pI]; let o7 = pe[pI - 0x1], o8 = pZ[MA], o9 = c(); !o9['has'](o8) && o9['set'](o8, new WeakMap()); let oM = o9['get'](o8); vmO['call'](oM, o7, o6), pN++; } break; } case 0x97: { JU: { let ov = pe[--pI], os = pe[--pI], oo = pZ[MA], oJ = c(), oH = 'set_' + oo, oP = oJ['get'](oH); if (oP && vmg['call'](oP, os)) { let oK = vmG['call'](oP, os); oK['call'](os, ov), pe[pI++] = ov, pN++; break JU; } let oV = '_$8zWQSa' + 'set_' + oo['substring'](0x1) + '_$vbpBip'; if (os['constructor'] && oV in os['constructor']) { let oi = os['constructor'][oV]; oi['call'](os, ov), pe[pI++] = ov, pN++; break JU; } let oE = oJ['get'](oo); if (oE && vmg['call'](oE, os)) { vmO['call'](oE, os, ov), pe[pI++] = ov, pN++; break JU; } let oa = I(oo); if (oa in os) { os[oa] = ov, pe[pI++] = ov, pN++; break JU; } throw new TypeError('Cannot\x20write\x20private\x20member\x20' + oo + '\x20to\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); } break; } case 0x96: { JC: { let oy = pe[--pI], oj = pZ[MA], ol = c(), oq = 'get_' + oj, oR = ol['get'](oq); if (oR && vmg['call'](oR, oy)) { let oF = vmG['call'](oR, oy); pe[pI++] = oF['call'](oy), pN++; break JC; } let ot = '_$8zWQSa' + 'get_' + oj['substring'](0x1) + '_$vbpBip'; if (oy['constructor'] && ot in oy['constructor']) { let oO = oy['constructor'][ot]; pe[pI++] = oO['call'](oy), pN++; break JC; } let ox = ol['get'](oj); if (ox && vmg['call'](ox, oy)) { pe[pI++] = vmG['call'](ox, oy), pN++; break JC; } let ok = I(oj); if (ok in oy) { pe[pI++] = oy[ok], pN++; break JC; } throw new TypeError('Cannot\x20read\x20private\x20member\x20' + oj + '\x20from\x20an\x20object\x20whose\x20class\x20did\x20not\x20declare\x20it'); } break; } case 0x6a: { Jn: { let oG = pe[--pI]; pe[pI++] = import(oG), pN++; } break; } case 0x5d: { JB: { let og = pe[--pI], oc = { 'value': Array['isArray'](og) ? og : Array['from'](og) }; vmc['call'](y, oc), pe[pI++] = oc, pN++; } break; } case 0x5f: { Jz: { let oh = pe[pI - 0x1]; oh['length']++, pN++; } break; } case 0x90: { JX: { let om = pe[--pI], oe = pe[pI - 0x1], oI = pZ[MA]; vmi(oe['prototype'], oI, { 'value': om, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), pN++; } break; } case 0x99: { JD: { let oA = pe[--pI], oN = pZ[MA], oZ = ![], oS = h(); if (oS) { let od = oS['get'](oN); od && vmg['call'](od, oA) && (oZ = !![]); } pe[pI++] = oZ, pN++; } break; } case 0x64: { Jw: { let oQ = pe[--pI], of = typeof oQ === 'object' ? oQ : px(oQ), oL = of && of[0x3], ou = of && of[0x14], or = of && of[0xa], ob = of && of[0x4], oW = of && of[0xe] || 0x0, oY = of && of[0xd], oT = oL ? Mq['_$R7uRzh'] : undefined, oU = Mq['_$dEiGRa'], oC; if (or) oC = S(pF, oQ, oU, j, oY, vmE); else { if (ou) { if (oL) oC = Q(pk, oQ, oU, oT); else ob ? oC = L(pk, oQ, oU, oY, vmE) : oC = Z(pk, oQ, oU, oY, vmE); } else { if (oL) oC = d(W, oQ, oU, oT); else ob ? oC = f(W, oQ, oU, oY, vmE) : oC = N(W, oQ, oU, oY, vmE); } } q(oC, 'length', { 'value': oW, 'writable': ![], 'enumerable': ![], 'configurable': !![] }), pe[pI++] = oC, pN++; } break; } case 0xa1: { H0: { if (Mv === null) { if (Mq['_$nB3bKs'] || !Mq['_$0wqOjV']) { let on = Mq['_$gY77Sq'] || pG, oB = on ? on['length'] : 0x0; Mv = vmy(Object['prototype']); for (let oz = 0x0; oz < oB; oz++) { Mv[oz] = on[oz]; } vmi(Mv, 'length', { 'value': oB, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), vmi(Mv, Symbol['iterator'], { 'value': Array['prototype'][Symbol['iterator']], 'writable': !![], 'enumerable': ![], 'configurable': !![] }), Mv = new Proxy(Mv, { 'has': function (oX, oD) { if (oD === Symbol['toStringTag']) return ![]; return oD in oX; }, 'get': function (oX, oD, ow) { if (oD === Symbol['toStringTag']) return 'Arguments'; return Reflect['get'](oX, oD, ow); } }), Mq['_$nB3bKs'] ? vmi(Mv, 'callee', { 'get': i, 'set': i, 'enumerable': ![], 'configurable': ![] }) : vmi(Mv, 'callee', { 'value': pc, 'writable': !![], 'enumerable': ![], 'configurable': !![] }); } else { let oX = pG ? pG['length'] : 0x0, oD = {}, ow = {}, J0 = pc, J1 = ![], J2 = !![], J3 = {}, J4 = function (J9) { if (typeof J9 !== 'string') return NaN; let Jp = +J9; return Jp >= 0x0 && Jp % 0x1 === 0x0 && String(Jp) === J9 ? Jp : NaN; }, J5 = function (J9) { return !isNaN(J9) && J9 >= 0x0; }, J6 = function (J9) { if (J9 in ow) return undefined; if (J9 in oD) return oD[J9]; return J9 < pG['length'] ? pG[J9] : undefined; }, J7 = function (J9) { if (J9 in ow) return ![]; if (J9 in oD) return !![]; return J9 < pG['length'] ? J9 in pG : ![]; }, J8 = {}; vmi(J8, 'length', { 'value': oX, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), vmi(J8, 'callee', { 'value': pc, 'writable': !![], 'enumerable': ![], 'configurable': !![] }), vmi(J8, Symbol['iterator'], { 'value': Array['prototype'][Symbol['iterator']], 'writable': !![], 'enumerable': ![], 'configurable': !![] }), Mv = new Proxy(J8, { 'get': function (J9, Jp, JM) { if (Jp === 'length') return oX; if (Jp === 'callee') return J1 ? undefined : J0; if (Jp === Symbol['toStringTag']) return 'Arguments'; let Jv = J4(Jp); if (J5(Jv)) { if (Jv in J3) return Reflect['get'](J9, Jp, JM); return J6(Jv); } return Reflect['get'](J9, Jp, JM); }, 'set': function (J9, Jp, JM) { if (Jp === 'length') { if (!J2) return ![]; return oX = JM, J9['length'] = JM, !![]; } if (Jp === 'callee') return J0 = JM, J1 = ![], J9['callee'] = JM, !![]; let Jv = J4(Jp); if (J5(Jv)) { if (Jv in J3) return Reflect['set'](J9, Jp, JM); let Js = vmj(J9, String(Jv)); if (Js && !Js['writable']) return ![]; if (Jv in ow) delete ow[Jv], oD[Jv] = JM; else Jv < pG['length'] ? pG[Jv] = JM : oD[Jv] = JM; return !![]; } return J9[Jp] = JM, !![]; }, 'has': function (J9, Jp) { if (Jp === 'length') return !![]; if (Jp === 'callee') return !J1; if (Jp === Symbol['toStringTag']) return ![]; let JM = J4(Jp); if (J5(JM)) { if (String(JM) in J9) return !![]; return J7(JM); } return Jp in J9; }, 'defineProperty': function (J9, Jp, JM) { if (Jp === 'length') return 'value' in JM && (oX = JM['value']), 'writable' in JM && (J2 = JM['writable']), vmi(J9, Jp, JM), !![]; if (Jp === 'callee') return 'value' in JM && (J0 = JM['value']), J1 = ![], vmi(J9, Jp, JM), !![]; let Jv = J4(Jp); if (J5(Jv)) { if ('get' in JM || 'set' in JM) J3[Jv] = 0x1, Jv in oD && delete oD[Jv], Jv in ow && delete ow[Jv]; else 'value' in JM && (Jv < pG['length'] && !(Jv in ow) ? pG[Jv] = JM['value'] : (oD[Jv] = JM['value'], Jv in ow && delete ow[Jv])); return vmi(J9, String(Jv), JM), !![]; } return vmi(J9, Jp, JM), !![]; }, 'deleteProperty': function (J9, Jp) { if (Jp === 'callee') return J1 = !![], delete J9['callee'], !![]; let JM = J4(Jp); return J5(JM) && (JM in J3 && delete J3[JM], JM < pG['length'] ? ow[JM] = 0x1 : delete oD[JM]), delete J9[Jp], !![]; }, 'preventExtensions': function (J9) { let Jp = pG ? pG['length'] : 0x0; for (let JM = 0x0; JM < Jp; JM++) { !(JM in ow) && !vmj(J9, String(JM)) && vmi(J9, String(JM), { 'value': J6(JM), 'writable': !![], 'enumerable': !![], 'configurable': !![] }); } for (let Jv in oD) { !vmj(J9, Jv) && vmi(J9, Jv, { 'value': oD[Jv], 'writable': !![], 'enumerable': !![], 'configurable': !![] }); } return Object['preventExtensions'](J9), !![]; }, 'getOwnPropertyDescriptor': function (J9, Jp) { if (Jp === 'callee') { if (J1) return undefined; return vmj(J9, 'callee'); } if (Jp === 'length') return vmj(J9, 'length'); let JM = J4(Jp); if (J5(JM)) { if (JM in J3) return vmj(J9, Jp); if (J7(JM)) { let Js = vmj(J9, String(JM)); return { 'value': J6(JM), 'writable': Js ? Js['writable'] : !![], 'enumerable': Js ? Js['enumerable'] : !![], 'configurable': Js ? Js['configurable'] : !![] }; } return vmj(J9, Jp); } let Jv = vmj(J9, Jp); if (Jv) return Jv; return undefined; }, 'ownKeys': function (J9) { let Jp = [], JM = pG ? pG['length'] : 0x0; for (let Js = 0x0; Js < JM; Js++) { !(Js in ow) && Jp['push'](String(Js)); } for (let Jo in oD) { Jp['indexOf'](Jo) === -0x1 && Jp['push'](Jo); } Jp['push']('length'); !J1 && Jp['push']('callee'); let Jv = Reflect['ownKeys'](J9); for (let JJ = 0x0; JJ < Jv['length']; JJ++) { Jp['indexOf'](Jv[JJ]) === -0x1 && Jp['push'](Jv[JJ]); } return Jp; } }); } } pe[pI++] = Mv, pN++; } break; } case 0xa5: { H1: { pe[pI++] = vma[MA], pN++; } break; } } }, Mk = function (MI, MA) { switch (MI) { case 0xd9: { vZ: { let MZ = pZ[MA], MS = pe[--pI]; G(Mq['_$dEiGRa'], MZ); if (!Mq['_$dEiGRa']['_$AqrBpj']) Mq['_$dEiGRa']['_$AqrBpj'] = vmy(null); Mq['_$dEiGRa']['_$AqrBpj'][MZ] = MS, !Mq['_$dEiGRa']['_$ANa2YR'] && (Mq['_$dEiGRa']['_$ANa2YR'] = vmy(null)), Mq['_$dEiGRa']['_$ANa2YR'][MZ] = !![], pN++; } break; } case 0xdc: { vS: { let Md = pe[--pI], MQ = pZ[MA]; if (Mq['_$nB3bKs'] && !(MQ in vmE) && !(MQ in vmH_6ed288)) throw new ReferenceError(MQ + '\x20is\x20not\x20defined'); vmH_6ed288[MQ] = Md, vmE[MQ] = Md, pe[pI++] = Md, pN++; } break; } case 0xff: { vd: { let Mf = MA & 0xffff, ML = MA >>> 0x10, Mu = pA[Mf], Mr = pZ[ML]; pe[pI++] = Mu[Mr], pN++; } break; } case 0xd6: { vQ: { Mq['_$dEiGRa'] && Mq['_$dEiGRa']['_$D0DSfu'] && (Mq['_$dEiGRa'] = Mq['_$dEiGRa']['_$D0DSfu']), pN++; } break; } case 0xdd: { vf: { let Mb = MA & 0xffff, MW = MA >>> 0x10, MY = pZ[Mb], MT = Mq['_$dEiGRa']; for (let Mn = 0x0; Mn < MW; Mn++) { MT = MT['_$D0DSfu']; } let MU = MT['_$twDigJ']; if (MU && MY in MU) throw new ReferenceError('Cannot\x20access\x20\x27' + MY + '\x27\x20before\x20initialization'); let MC = MT['_$AqrBpj']; pe[pI++] = MC ? MC[MY] : undefined, pN++; } break; } case 0xd3: { vL: { let MB = pZ[MA]; if (MB === '__this__') { let v1 = Mq['_$dEiGRa']; while (v1) { if (v1['_$twDigJ'] && '__this__' in v1['_$twDigJ']) throw new ReferenceError('Cannot\x20access\x20\x27__this__\x27\x20before\x20initialization'); if (v1['_$AqrBpj'] && '__this__' in v1['_$AqrBpj']) break; v1 = v1['_$D0DSfu']; } pe[pI++] = pm, pN++; break vL; } let Mz = Mq['_$dEiGRa'], MX, MD = ![], Mw = MB['indexOf']('$$'), v0 = Mw !== -0x1 ? MB['substring'](0x0, Mw) : null; while (Mz) { let v2 = Mz['_$twDigJ'], v3 = Mz['_$AqrBpj']; if (v2 && MB in v2) throw new ReferenceError('Cannot\x20access\x20\x27' + MB + '\x27\x20before\x20initialization'); if (v0 && v2 && v0 in v2) { if (!(v3 && MB in v3)) throw new ReferenceError('Cannot\x20access\x20\x27' + v0 + '\x27\x20before\x20initialization'); } if (v3 && MB in v3) { MX = v3[MB], MD = !![]; break; } Mz = Mz['_$D0DSfu']; } !MD && (MB in vmH_6ed288 ? MX = vmH_6ed288[MB] : MX = vmE[MB]), pe[pI++] = MX, pN++; } break; } case 0x100: { vu: { let v4 = MA & 0xffff, v5 = MA >>> 0x10; pe[pI++] = pA[v4] < pZ[v5], pN++; } break; } case 0xfe: { vr: { let v6 = MA & 0xffff, v7 = MA >>> 0x10; pe[pI++] = pA[v6] * pZ[v7], pN++; } break; } case 0xc8: { vb: { debugger; pN++; } break; } case 0xda: { vW: { let v8 = pZ[MA]; !Mq['_$dEiGRa']['_$twDigJ'] && (Mq['_$dEiGRa']['_$twDigJ'] = vmy(null)), Mq['_$dEiGRa']['_$twDigJ'][v8] = !![], pN++; } break; } case 0xd2: { vY: { let v9 = pe[--pI], vp = { ['_$AqrBpj']: null, ['_$ANa2YR']: null, ['_$twDigJ']: null, ['_$D0DSfu']: v9 }; Mq['_$dEiGRa'] = vp, pN++; } break; } case 0xfd: { vT: { let vM = MA & 0xffff, vv = MA >>> 0x10; pe[pI++] = pA[vM] - pZ[vv], pN++; } break; } case 0x10e: { vU: { debugger; pN++; } break; } case 0xd5: { vC: { pe[pI++] = Mq['_$dEiGRa'], pN++; } break; } case 0xdb: { vn: { let vs = pZ[MA], vo = pe[--pI], vJ = Mq['_$dEiGRa']['_$D0DSfu']; vJ && (!vJ['_$AqrBpj'] && (vJ['_$AqrBpj'] = vmy(null)), vJ['_$AqrBpj'][vs] = vo), pN++; } break; } case 0xd7: { vB: { let vH = pZ[MA], vP = pe[--pI]; G(Mq['_$dEiGRa'], vH), !Mq['_$dEiGRa']['_$AqrBpj'] && (Mq['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mq['_$dEiGRa']['_$AqrBpj'][vH] = vP, pN++; } break; } case 0xd4: { vz: { let vV = pZ[MA], vE = pe[--pI], va = Mq['_$dEiGRa'], vK = ![]; while (va) { let vi = va['_$twDigJ'], vy = va['_$AqrBpj']; if (vi && vV in vi) throw new ReferenceError('Cannot\x20access\x20\x27' + vV + '\x27\x20before\x20initialization'); if (vy && vV in vy) { if (va['_$HWOTIH'] && vV in va['_$HWOTIH']) { if (Mq['_$nB3bKs']) throw new TypeError('Assignment\x20to\x20constant\x20variable.'); vK = !![]; break; } if (va['_$ANa2YR'] && vV in va['_$ANa2YR']) throw new TypeError('Assignment\x20to\x20constant\x20variable.'); vy[vV] = vE, vK = !![]; break; } va = va['_$D0DSfu']; } if (!vK) { if (vV in vmH_6ed288) vmH_6ed288[vV] = vE; else vV in vmE ? vmE[vV] = vE : vmE[vV] = vE; } pN++; } break; } case 0xfa: { vX: { pA[MA] = pA[MA] + 0x1, pN++; } break; } case 0xfc: { vD: { let vj = MA & 0xffff, vl = MA >>> 0x10; pe[pI++] = pA[vj] + pZ[vl], pN++; } break; } case 0xca: { vw: { return Ml = pI > 0x0 ? pe[--pI] : undefined, 0x1; } break; } case 0x105: { s0: { let vq = pA[MA] - 0x1; pA[MA] = vq, pe[pI++] = vq, pN++; } break; } case 0x104: { s1: { let vR = pA[MA] + 0x1; pA[MA] = vR, pe[pI++] = vR, pN++; } break; } case 0xc9: { s2: { pN++; } break; } case 0x101: { s3: { let vt = MA & 0xffff, vx = MA >>> 0x10; pA[vt] < pZ[vx] ? pN = pd[pN] : pN++; } break; } case 0x103: { s4: { pA[MA] = pe[--pI], pN++; } break; } case 0xd8: { s5: { let vk = pZ[MA], vF = pe[--pI], vO = Mq['_$dEiGRa'], vG = ![]; while (vO) { if (vO['_$AqrBpj'] && vk in vO['_$AqrBpj']) { if (vO['_$ANa2YR'] && vk in vO['_$ANa2YR']) break; vO['_$AqrBpj'][vk] = vF; !vO['_$ANa2YR'] && (vO['_$ANa2YR'] = vmy(null)); vO['_$ANa2YR'][vk] = !![], vG = !![]; break; } vO = vO['_$D0DSfu']; } !vG && (g(Mq['_$dEiGRa'], vk), !Mq['_$dEiGRa']['_$AqrBpj'] && (Mq['_$dEiGRa']['_$AqrBpj'] = vmy(null)), Mq['_$dEiGRa']['_$AqrBpj'][vk] = vF, !Mq['_$dEiGRa']['_$ANa2YR'] && (Mq['_$dEiGRa']['_$ANa2YR'] = vmy(null)), Mq['_$dEiGRa']['_$ANa2YR'][vk] = !![]), pN++; } break; } case 0xfb: { s6: { pA[MA] = pA[MA] - 0x1, pN++; } break; } case 0x102: { s7: { let vg = MA & 0xffff, vc = MA >>> 0x10, vh = pe[--pI], vm = R(M5, vh), ve = pA[vg], vI = pZ[vc], vA = ve[vI]; pe[pI++] = vA['apply'](ve, vm), pN++; } break; } case 0x10f: { s8: { if (typeof process !== 'undefined' && process['hrtime'] && process['hrtime']['bigint']) { var MN = process['hrtime']['bigint'](); debugger; if (Number(process['hrtime']['bigint']() - MN) / 0xf4240 > 0.1) try { _setDeceptionDetected(); } catch (vN) { } } pN++; } break; } } }); switch (Mg) { case 0x32: { pN = pd[pN]; continue; } case 0x3: { pe[--pI], pN++; continue; } case 0x2c: { let MI = pe[--pI], MA = pe[--pI]; pe[pI++] = MA < MI, pN++; continue; } case 0x1c: { let MN = pe[--pI]; pe[pI++] = typeof MN === a ? MN : +MN, pN++; continue; } case 0x49: { let MZ = pe[--pI], MS = pe[--pI], Md = pe[--pI]; if (Md === null || Md === undefined) throw new TypeError('Cannot\x20set\x20property\x20\x27' + String(MS) + '\x27\x20of\x20' + Md); if (pX) { if (!Reflect['set'](Md, MS, MZ)) throw new TypeError('Cannot\x20assign\x20to\x20read\x20only\x20property\x20\x27' + String(MS) + '\x27\x20of\x20object'); } else Md[MS] = MZ; pe[pI++] = MZ, pN++; continue; } case 0x34: { !pe[--pI] ? pN = pd[pN] : pN++; continue; } case 0x1: { pe[pI++] = undefined, pN++; continue; } case 0x0: { pe[pI++] = pZ[Mc], pN++; continue; } case 0x2e: { let MQ = pe[--pI], Mf = pe[--pI]; pe[pI++] = Mf > MQ, pN++; continue; } case 0xb: { let ML = pe[--pI], Mu = pe[--pI]; pe[pI++] = Mu - ML, pN++; continue; } case 0xa: { let Mr = pe[--pI], Mb = pe[--pI]; pe[pI++] = Mb + Mr, pN++; continue; } case 0x48: { let MW = pe[--pI], MY = pe[--pI]; if (MY === null || MY === undefined) throw new TypeError('Cannot\x20read\x20property\x20\x27' + String(MW) + '\x27\x20of\x20' + MY); pe[pI++] = MY[MW], pN++; continue; } case 0x4: { let MT = pe[pI - 0x1]; pe[pI++] = MT, pN++; continue; } case 0x7: { pA[Mc] = pe[--pI], pN++; continue; } case 0x8: { pe[pI++] = pG[Mc], pN++; continue; } case 0x10: { let MU = pe[--pI]; pe[pI++] = typeof MU === a ? MU + 0x1n : +MU + 0x1, pN++; continue; } case 0x6: { pe[pI++] = pA[Mc], pN++; continue; } }Mq = MP; if (Mg < 0x5a) { if (Mt(Mg, Mc)) { if (MH > 0x0) { MR(); continue; } return Ml; } } else { if (Mg < 0xc8) { if (Mx(Mg, Mc)) { if (MH > 0x0) { MR(); continue; } return Ml; } } else { if (Mk(Mg, Mc)) { if (MH > 0x0) { MR(); continue; } return Ml; } } } Mp = MP['_$dEiGRa'], Ms = MP['_$bfJUlG']; } break; } catch (MC) { if (pW && pW['length'] > 0x0) { let Mn = pW[pW['length'] - 0x1]; pI = Mn['_$ASmqGl']; if (Mn['_$tSVosS'] !== undefined) M4(MC), pN = Mn['_$tSVosS'], Mn['_$tSVosS'] = undefined, Mn['_$cOufar'] === undefined && pW['pop'](); else Mn['_$cOufar'] !== undefined ? (pN = Mn['_$cOufar'], Mn['_$ba3Iop'] = MC) : (pN = Mn['_$W7TRiE'], pW['pop']()); continue; } throw MC; } } return pI > 0x0 ? pe[--pI] : Ms ? pm : undefined; } return MV(0x0); } function* b(pO, pG, pg, pc, ph, pm) { let pe = r(pO, pG, pg, pc, ph, pm); while (!![]) { if (pe && typeof pe === 'object' && pe['_$tJ99GR'] !== undefined) { let pI = pe['_d'], pA; try { pA = yield pe; } catch (pN) { pe = pI(0x2, pN); continue; } pA && typeof pA === 'object' && pA['_$tJ99GR'] === H ? pe = pI(0x3, pA['_$jBroyV']) : pe = pI(0x1, pA); } else return pe; } } let W = function (pO, pG, pg, pc, ph, pm) { vmH_6ed288['_$hnmqnk'] ? vmH_6ed288['_$hnmqnk'] = ![] : vmH_6ed288['_$fL4xYQ'] = undefined; let pe = typeof pO === 'object' ? pO : px(pO); return u(pe, pG, pg, pc, ph, pm); }, Y = 0x0, T = 0x1, U = 0x2, C = 0x3, B = 0x4, z = 0x5, X = 0x6, D = 0x7, w = 0x8, p0 = 0x9, p1 = 0xa, p2 = 0xb, p3 = 0x1, p4 = 0x2, p5 = 0x4, p6 = 0x8, p7 = 0x20, p8 = 0x40, p9 = 0x80, pp = 0x100, pM = 0x200, pv = 0x400, ps = 0x800, po = 0x1000, pJ = 0x2000, pH = 0x4000, pP = 0x8000, pV = 0x10000, pE = 0x20000, pa = 0x40000, pK = 0x80000; function pi(pO) { this['_$lenC1J'] = pO, this['_$Xkgh7P'] = new DataView(pO['buffer'], pO['byteOffset'], pO['byteLength']), this['_$9VXUwS'] = 0x0; } pi['prototype']['_$gp4Jk3'] = function () { return this['_$lenC1J'][this['_$9VXUwS']++]; }, pi['prototype']['_$EhnI13'] = function () { let pO = this['_$Xkgh7P']['getUint16'](this['_$9VXUwS'], !![]); return this['_$9VXUwS'] += 0x2, pO; }, pi['prototype']['_$zMCFTG'] = function () { let pO = this['_$Xkgh7P']['getUint32'](this['_$9VXUwS'], !![]); return this['_$9VXUwS'] += 0x4, pO; }, pi['prototype']['_$GUoODm'] = function () { let pO = this['_$Xkgh7P']['getInt32'](this['_$9VXUwS'], !![]); return this['_$9VXUwS'] += 0x4, pO; }, pi['prototype']['_$2t0xn4'] = function () { let pO = this['_$Xkgh7P']['getFloat64'](this['_$9VXUwS'], !![]); return this['_$9VXUwS'] += 0x8, pO; }, pi['prototype']['_$izGyu3'] = function () { let pO = 0x0, pG = 0x0, pg; do { pg = this['_$gp4Jk3'](), pO |= (pg & 0x7f) << pG, pG += 0x7; } while (pg >= 0x80); return pO >>> 0x1 ^ -(pO & 0x1); }, pi['prototype']['_$Q4HHgR'] = function () { let pO = this['_$izGyu3'](), pG = this['_$lenC1J'], pg = this['_$9VXUwS'], pc = pg + pO; this['_$9VXUwS'] = pc; var ph = ''; while (pg < pc) { var pm = pG[pg++]; if (pm < 0x80) ph += String['fromCharCode'](pm); else { if (pm < 0xe0) ph += String['fromCharCode']((pm & 0x1f) << 0x6 | pG[pg++] & 0x3f); else { if (pm < 0xf0) ph += String['fromCharCode']((pm & 0xf) << 0xc | (pG[pg++] & 0x3f) << 0x6 | pG[pg++] & 0x3f); else { var pe = (pm & 0x7) << 0x12 | (pG[pg++] & 0x3f) << 0xc | (pG[pg++] & 0x3f) << 0x6 | pG[pg++] & 0x3f; pe -= 0x10000, ph += String['fromCharCode']((pe >> 0xa) + 0xd800, (pe & 0x3ff) + 0xdc00); } } } } return ph; }; var py = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/', pj = new Uint8Array(0x80); for (var pl = 0x0; pl < py['length']; pl++) { pj[py['charCodeAt'](pl)] = pl; } function pq(pO) { var pG = pO['charCodeAt'](pO['length'] - 0x1) === 0x3d ? pO['charCodeAt'](pO['length'] - 0x2) === 0x3d ? 0x2 : 0x1 : 0x0, pg = (pO['length'] * 0x3 >> 0x2) - pG, pc = new Uint8Array(pg), ph = 0x0; for (var pm = 0x0; pm < pO['length']; pm += 0x4) { var pe = pj[pO['charCodeAt'](pm)], pI = pj[pO['charCodeAt'](pm + 0x1)], pA = pj[pO['charCodeAt'](pm + 0x2)], pN = pj[pO['charCodeAt'](pm + 0x3)]; pc[ph++] = pe << 0x2 | pI >> 0x4, ph < pg && (pc[ph++] = (pI & 0xf) << 0x4 | pA >> 0x2), ph < pg && (pc[ph++] = (pA & 0x3) << 0x6 | pN); } return pc; } function pR(pO) { let pG = pO['_$gp4Jk3'](); switch (pG) { case Y: return null; case T: return undefined; case U: return ![]; case C: return !![]; case B: { let pg = pO['_$gp4Jk3'](); return pg > 0x7f ? pg - 0x100 : pg; } case z: { let pc = pO['_$EhnI13'](); return pc > 0x7fff ? pc - 0x10000 : pc; } case X: return pO['_$GUoODm'](); case D: return pO['_$2t0xn4'](); case w: return pO['_$Q4HHgR'](); case p0: return BigInt(pO['_$Q4HHgR']()); case p1: { let ph = pO['_$Q4HHgR'](), pm = pO['_$Q4HHgR'](); return new RegExp(ph, pm); } case p2: { let pe = pO['_$izGyu3'](), pI = new Uint8Array(pe); for (let pA = 0x0; pA < pe; pA++) { pI[pA] = pO['_$gp4Jk3'](); } return pt(pI); } default: return null; } } function pt(pO) { let pG = typeof pO === 'string' ? pq(pO) : pO, pg = new pi(pG), pc = pg['_$gp4Jk3'](), ph = pg['_$zMCFTG'](), pm = pg['_$izGyu3'](), pe = pg['_$izGyu3'](), pI = []; pI[0xe] = pm, pI[0xf] = pe; ph & p6 && (pI[0x7] = pg['_$izGyu3']()); if (ph & p7) { let pu = pg['_$izGyu3'](), pr = {}; for (let pb = 0x0; pb < pu; pb++) { let pW = pg['_$izGyu3'](), pY = pg['_$izGyu3'](); pr[pW] = pY; } pI[0xb] = pr; } ph & p8 && (pI[0x16] = pg['_$zMCFTG']()); ph & p9 && (pI[0x15] = pg['_$zMCFTG']()); ph & pp && (pI[0x12] = pg['_$zMCFTG']()); ph & pM && (pI[0x6] = pg['_$izGyu3']()); ph & pv && (pI[0x10] = pg['_$zMCFTG']()); ph & pK && (pI[0x0] = pg['_$izGyu3']()); ph & p3 && (pI[0x3] = 0x1); ph & p4 && (pI[0x14] = 0x1); ph & p5 && (pI[0xa] = 0x1); ph & pH && (pI[0x4] = 0x1); ph & pP && (pI[0xd] = 0x1); ph & pV && (pI[0x13] = 0x1); ph & pE && (pI[0xc] = 0x1); ph & pa && (pI[0x5] = 0x1); ph & pJ && (pI[0x9] = 0x1); let pA = pg['_$izGyu3'](), pN = new Array(pA); for (let pT = 0x0; pT < pA; pT++) { pN[pT] = pR(pg); } pI[0x1] = pN; function pZ(pU) { let pC = pU['_$gp4Jk3'](); switch (pC) { case Y: return -0x1; case B: { let pn = pU['_$gp4Jk3'](); return pn > 0x7f ? pn - 0x100 : pn; } case z: { let pB = pU['_$EhnI13'](); return pB > 0x7fff ? pB - 0x10000 : pB; } case X: return pU['_$GUoODm'](); case D: return pU['_$2t0xn4'](); case w: return pU['_$Q4HHgR'](); default: return -0x1; } } let pS = pg['_$izGyu3'](), pd = pS << 0x1, pQ = new Int32Array(pd), pf = 0x0, pL = (pm * 0x1f ^ pe * 0x11 ^ pS * 0xd ^ pA * 0x7) >>> 0x0 & 0x3; switch (pL) { case 0x1: for (let pU = 0x0; pU < pS; pU++) { let pC = pZ(pg), pn = pg['_$izGyu3'](); pQ[pf++] = pC, pQ[pf++] = pn; } break; case 0x2: { let pB = new Int32Array(pS); for (let pz = 0x0; pz < pS; pz++) { pB[pz] = pg['_$izGyu3'](); } for (let pX = 0x0; pX < pS; pX++) { pQ[pf++] = pB[pX]; } for (let pD = 0x0; pD < pS; pD++) { pQ[pf++] = pZ(pg); } break; } case 0x3: { let pw = new Int32Array(pS); for (let M0 = 0x0; M0 < pS; M0++) { pw[M0] = pZ(pg); } for (let M1 = 0x0; M1 < pS; M1++) { pQ[pf++] = pw[M1]; } for (let M2 = 0x0; M2 < pS; M2++) { pQ[pf++] = pg['_$izGyu3'](); } break; } case 0x0: default: for (let M3 = 0x0; M3 < pS; M3++) { pQ[pf++] = pg['_$izGyu3'](), pQ[pf++] = pZ(pg); } break; }pI[0x11] = pQ; if (ph & ps) { let M4 = pg['_$izGyu3'](), M5 = {}; for (let M6 = 0x0; M6 < M4; M6++) { let M7 = pg['_$izGyu3'](), M8 = pg['_$izGyu3'](); M5[M7] = M8; } pI[0x8] = M5; } if (ph & po) { let M9 = pg['_$izGyu3'](), Mp = {}; for (let MM = 0x0; MM < M9; MM++) { let Mv = pg['_$izGyu3'](), Ms = pg['_$izGyu3']() - 0x1, Mo = pg['_$izGyu3']() - 0x1, MJ = pg['_$izGyu3']() - 0x1; Mp[Mv] = [Ms, Mo, MJ]; } pI[0x2] = Mp; } return pI; } let px = function (pO) { let pG = M; M = null; let pg = null, pc = {}; return function (ph) { let pm = pg ? pg[ph] : ph; if (pc[pm]) return pc[pm]; let pe = pG[pm]; return typeof pe === 'string' ? pc[pm] = pO(pe) : pc[pm] = pe, pc[pm]; }; }(pt), pk = async function (pO, pG, pg, pc, ph, pm, pe) { let pI = typeof pO === 'object' ? pO : px(pO), pA = b(pI, pG, pg, pc, ph, pe), pN = pA['next'](); while (!pN['done']) { if (pN['value']['_$tJ99GR'] !== s) throw new Error('Unexpected\x20yield\x20in\x20async\x20context'); try { let pZ = await Promise['resolve'](pN['value']['_$jBroyV']); vmH_6ed288['_$fL4xYQ'] = pm, pN = pA['next'](pZ); } catch (pS) { vmH_6ed288['_$fL4xYQ'] = pm, pN = pA['throw'](pS); } } return pN['value']; }, pF = function (pO, pG, pg, pc, ph, pm) { let pe = typeof pO === 'object' ? pO : px(pO), pI = b(pe, pG, pg, pc, undefined, pm), pA = ![], pN = null, pZ = undefined, pS = ![]; function pd(pb, pW) { if (pA) return { 'value': undefined, 'done': !![] }; vmH_6ed288['_$fL4xYQ'] = ph; if (pN) { let pT; try { if (pW) { if (typeof pN['throw'] === 'function') pT = pN['throw'](pb); else { typeof pN['return'] === 'function' && pN['return'](); pN = null; throw new TypeError('The\x20iterator\x20does\x20not\x20provide\x20a\x20\x27throw\x27\x20method.'); } } else pT = pN['next'](pb); if (pT !== null && typeof pT === 'object') { } else { pN = null; throw new TypeError('Iterator\x20result\x20' + pT + '\x20is\x20not\x20an\x20object'); } } catch (pU) { pN = null; try { let pC = pI['throw'](pU); return pQ(pC); } catch (pn) { pA = !![]; throw pn; } } if (!pT['done']) return { 'value': pT['value'], 'done': ![] }; pN = null, pb = pT['value'], pW = ![]; } let pY; try { pY = pW ? pI['throw'](pb) : pI['next'](pb); } catch (pB) { pA = !![]; throw pB; } return pQ(pY); } function pQ(pb) { if (pb['done']) { pA = !![]; if (pS) return pS = ![], { 'value': pZ, 'done': !![] }; return { 'value': pb['value'], 'done': !![] }; } let pW = pb['value']; if (pW['_$tJ99GR'] === o) return { 'value': pW['_$jBroyV'], 'done': ![] }; if (pW['_$tJ99GR'] === J) { let pY = pW['_$jBroyV'], pT = pY; pT && typeof pT[Symbol['iterator']] === 'function' && (pT = pT[Symbol['iterator']]()); if (pT && typeof pT['next'] === 'function') { let pU = pT['next'](); if (!pU['done']) return pN = pT, { 'value': pU['value'], 'done': ![] }; return pd(pU['value'], ![]); } return pd(undefined, ![]); } throw new Error('Unexpected\x20signal\x20in\x20generator'); } let pf = pe && pe[0x14], pL = async function (pb) { if (pA) return { 'value': pb, 'done': !![] }; if (pN && typeof pN['return'] === 'function') { try { await pN['return'](); } catch (pY) { } pN = null; } let pW; try { vmH_6ed288['_$fL4xYQ'] = ph, pW = pI['next']({ ['_$tJ99GR']: H, ['_$jBroyV']: pb }); } catch (pT) { pA = !![]; throw pT; } while (!pW['done']) { let pU = pW['value']; if (pU['_$tJ99GR'] === s) try { let pC = await Promise['resolve'](pU['_$jBroyV']); vmH_6ed288['_$fL4xYQ'] = ph, pW = pI['next'](pC); } catch (pn) { vmH_6ed288['_$fL4xYQ'] = ph, pW = pI['throw'](pn); } else { if (pU['_$tJ99GR'] === o) try { vmH_6ed288['_$fL4xYQ'] = ph, pW = pI['next'](); } catch (pB) { pA = !![]; throw pB; } else break; } } return pA = !![], { 'value': pW['value'], 'done': !![] }; }, pu = function (pb) { if (pA) return { 'value': pb, 'done': !![] }; if (pN && typeof pN['return'] === 'function') { let pY; try { pY = pN['return'](pb); if (pY === null || typeof pY !== 'object') throw new TypeError('Iterator\x20result\x20' + pY + '\x20is\x20not\x20an\x20object'); } catch (pT) { pN = null; let pU; try { pU = pI['throw'](pT); } catch (pC) { pA = !![]; throw pC; } return pQ(pU); } if (!pY['done']) return { 'value': pY['value'], 'done': ![] }; pN = null; } pZ = pb, pS = !![]; let pW; try { vmH_6ed288['_$fL4xYQ'] = ph, pW = pI['next']({ ['_$tJ99GR']: H, ['_$jBroyV']: pb }); } catch (pn) { pA = !![], pS = ![]; throw pn; } if (!pW['done'] && pW['value'] && pW['value']['_$tJ99GR'] === o) return { 'value': pW['value']['_$jBroyV'], 'done': ![] }; return pA = !![], pS = ![], { 'value': pW['value'], 'done': !![] }; }; if (pf) { let pb = async function (pW, pY) { if (pA) return { 'value': undefined, 'done': !![] }; vmH_6ed288['_$fL4xYQ'] = ph; if (pN) { let pU; try { pU = pY ? typeof pN['throw'] === 'function' ? await pN['throw'](pW) : (pN = null, (function () { throw pW; }())) : await pN['next'](pW); } catch (pC) { pN = null; try { vmH_6ed288['_$fL4xYQ'] = ph; let pn = pI['throw'](pC); return await pr(pn); } catch (pB) { pA = !![]; throw pB; } } if (!pU['done']) return { 'value': pU['value'], 'done': ![] }; pN = null, pW = pU['value'], pY = ![]; } let pT; try { pT = pY ? pI['throw'](pW) : pI['next'](pW); } catch (pz) { pA = !![]; throw pz; } return await pr(pT); }; async function pr(pW) { while (!pW['done']) { let pY = pW['value']; if (pY['_$tJ99GR'] === s) { let pT; try { pT = await Promise['resolve'](pY['_$jBroyV']), vmH_6ed288['_$fL4xYQ'] = ph, pW = pI['next'](pT); } catch (pU) { vmH_6ed288['_$fL4xYQ'] = ph, pW = pI['throw'](pU); } continue; } if (pY['_$tJ99GR'] === o) return { 'value': pY['_$jBroyV'], 'done': ![] }; if (pY['_$tJ99GR'] === J) { let pC = pY['_$jBroyV'], pn = pC; if (pn && typeof pn[Symbol['asyncIterator']] === 'function') pn = pn[Symbol['asyncIterator']](); else pn && typeof pn[Symbol['iterator']] === 'function' && (pn = pn[Symbol['iterator']]()); if (pn && typeof pn['next'] === 'function') { let pB = await pn['next'](); if (!pB['done']) return pN = pn, { 'value': pB['value'], 'done': ![] }; vmH_6ed288['_$fL4xYQ'] = ph, pW = pI['next'](pB['value']); continue; } vmH_6ed288['_$fL4xYQ'] = ph, pW = pI['next'](undefined); continue; } throw new Error('Unexpected\x20signal\x20in\x20async\x20generator'); } pA = !![]; if (pS) return pS = ![], { 'value': pZ, 'done': !![] }; return { 'value': pW['value'], 'done': !![] }; } return { 'next': function (pW) { return pb(pW, ![]); }, 'return': pL, 'throw': function (pW) { if (pA) return Promise['reject'](pW); return pb(pW, !![]); }, [Symbol['asyncIterator']]: function () { return this; } }; } else return { 'next': function (pW) { return pd(pW, ![]); }, 'return': pu, 'throw': function (pW) { if (pA) throw pW; return pd(pW, !![]); }, [Symbol['iterator']]: function () { return this; } }; }; return function (pO, pG, pg, pc, ph, pm) { let pe = px(pO), pI = pm; if (pe && pe[0xa]) { let pA = vmH_6ed288['_$fL4xYQ']; return pF(pe, pG, pg, pc, pA, pI); } if (pe && pe[0x14]) { let pN = vmH_6ed288['_$fL4xYQ']; return pk(pe, pG, pg, pc, ph, pN, pI); } if (pe && pe[0xd] && pI === vmE) return W(pe, pG, pg, pc, ph, undefined); return W(pe, pG, pg, pc, ph, pI); }; }()); try { document, Object['defineProperty'](vmH_6ed288, 'document', { 'get': function () { return document; }, 'set': function (M) { document = M; }, 'configurable': !![] }); } catch (vmJH) { } try { encodeURIComponent, Object['defineProperty'](vmH_6ed288, 'encodeURIComponent', { 'get': function () { return encodeURIComponent; }, 'set': function (M) { encodeURIComponent = M; }, 'configurable': !![] }); } catch (vmJP) { } try { setTimeout, Object['defineProperty'](vmH_6ed288, 'setTimeout', { 'get': function () { return setTimeout; }, 'set': function (M) { setTimeout = M; }, 'configurable': !![] }); } catch (vmJV) { } try { window, Object['defineProperty'](vmH_6ed288, 'window', { 'get': function () { return window; }, 'set': function (M) { window = M; }, 'configurable': !![] }); } catch (vmJE) { } try { console, Object['defineProperty'](vmH_6ed288, 'console', { 'get': function () { return console; }, 'set': function (M) { console = M; }, 'configurable': !![] }); } catch (vmJa) { } try { IntersectionObserver, Object['defineProperty'](vmH_6ed288, 'IntersectionObserver', { 'get': function () { return IntersectionObserver; }, 'set': function (M) { IntersectionObserver = M; }, 'configurable': !![] }); } catch (vmJK) { } try { Event, Object['defineProperty'](vmH_6ed288, 'Event', { 'get': function () { return Event; }, 'set': function (M) { Event = M; }, 'configurable': !![] }); } catch (vmJi) { } try { alert, Object['defineProperty'](vmH_6ed288, 'alert', { 'get': function () { return alert; }, 'set': function (M) { alert = M; }, 'configurable': !![] }); } catch (vmJy) { } vmH_6ed288['enviarWhats'] = enviarWhats; globalThis['enviarWhats'] = vmH_6ed288['enviarWhats']; vmH_6ed288['selecionarProfissional'] = selecionarProfissional; globalThis['selecionarProfissional'] = vmH_6ed288['selecionarProfissional']; document['addEventListener']('DOMContentLoaded', () => { return vmJ_19d68c(0x2, [], undefined, undefined, undefined, this); }), document['addEventListener']('DOMContentLoaded', () => { return vmJ_19d68c(0xe, [], undefined, undefined, undefined, this); }); function selecionarProfissional(M) { return vmJ_19d68c(0xf, Array['from'](arguments), undefined, undefined, new.target, this); } function enviarWhats(M) { return vmJ_19d68c(0x10, Array['from'](arguments), undefined, undefined, new.target, this); }
-</script>
-</body>
-
 </html>
