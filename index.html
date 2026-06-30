@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta name="description" content="High-Performance Team — Treino, Nutrição e Saúde integrados. Emagreça ou ganhe massa com acompanhamento profissional online em Brasília/DF.">
   <meta name="keywords" content="personal trainer online, nutricionista, saúde, emagrecer, ganhar massa, Brasília, DF">
   <meta property="og:title" content="High-Performance Team — Alta Performance">
   <meta property="og:description" content="Treino, nutrição e saúde integrados para acelerar seus resultados.">
   <title>High-Performance Team | Personal Trainer, Nutrição e Saúde</title>
+  <!-- Dumbbell favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 48'%3E%3Crect x='0' y='8' width='12' height='32' rx='3' fill='%23D93B3B'/%3E%3Crect x='12' y='14' width='8' height='20' rx='2' fill='%23D93B3B'/%3E%3Crect x='20' y='20' width='80' height='8' rx='4' fill='%23D93B3B'/%3E%3Crect x='100' y='14' width='8' height='20' rx='2' fill='%23D93B3B'/%3E%3Crect x='108' y='8' width='12' height='32' rx='3' fill='%23D93B3B'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,8 +21,17 @@
   <!-- HEADER -->
   <header id="header">
     <div class="header-inner">
-      <a href="#home" class="logo">High-Performance <span>Team</span></a>
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu()">
+      <a href="#home" class="logo">
+        <svg class="logo-dumbbell" viewBox="0 0 120 48" fill="currentColor" aria-hidden="true">
+          <rect x="0"   y="8"  width="12" height="32" rx="3"/>
+          <rect x="12"  y="14" width="8"  height="20" rx="2"/>
+          <rect x="20"  y="20" width="80" height="8"  rx="4"/>
+          <rect x="100" y="14" width="8"  height="20" rx="2"/>
+          <rect x="108" y="8"  width="12" height="32" rx="3"/>
+        </svg>
+        High-Performance <span>Team</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </button>
       <nav>
@@ -39,7 +54,16 @@
     </div>
     <div class="particles" id="particles"></div>
     <div class="container hero-content">
-      <p class="eyebrow">Brasília · DF — Alta Performance</p>
+      <p class="eyebrow">
+        <svg class="eyebrow-dumbbell" viewBox="0 0 120 48" fill="currentColor" aria-hidden="true">
+          <rect x="0"   y="8"  width="12" height="32" rx="3"/>
+          <rect x="12"  y="14" width="8"  height="20" rx="2"/>
+          <rect x="20"  y="20" width="80" height="8"  rx="4"/>
+          <rect x="100" y="14" width="8"  height="20" rx="2"/>
+          <rect x="108" y="8"  width="12" height="32" rx="3"/>
+        </svg>
+        Brasília · DF — Alta Performance
+      </p>
       <h1 class="hero-title">
         Emagreça.<br>
         Ganhe massa.<br>
@@ -67,7 +91,15 @@
       <h2 class="sec-title">Resultado de verdade tem método</h2>
       <div class="benefits-grid">
         <div class="benefit-card">
-          <div class="benefit-icon">🏋️</div>
+          <div class="benefit-icon">
+            <svg viewBox="0 0 120 48" fill="currentColor" aria-hidden="true" style="width:36px;height:14px;display:block">
+              <rect x="0"   y="8"  width="12" height="32" rx="3"/>
+              <rect x="12"  y="14" width="8"  height="20" rx="2"/>
+              <rect x="20"  y="20" width="80" height="8"  rx="4"/>
+              <rect x="100" y="14" width="8"  height="20" rx="2"/>
+              <rect x="108" y="8"  width="12" height="32" rx="3"/>
+            </svg>
+          </div>
           <h3>Treino Personalizado</h3>
           <p>Plano criado para o seu corpo, objetivo e rotina. Nada genérico.</p>
         </div>
@@ -317,7 +349,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.min.js"></script>
 
   <!-- BANNER DE COOKIES -->
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
