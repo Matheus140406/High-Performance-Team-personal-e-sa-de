@@ -141,11 +141,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--ink);
   display: inline-flex; align-items: center; gap: 10px;
   text-transform: uppercase;
+  min-width: 0; flex-shrink: 1;
 }
 .logo-icon {
   width: 30px; height: 30px; border-radius: 50%;
   background: #fff; padding: 3px; object-fit: contain;
   flex-shrink: 0; box-shadow: 0 0 0 1px var(--bord);
+}
+.logo-text {
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .logo span { color: var(--red); }
 
@@ -455,45 +459,48 @@ nav#siteNav { display: contents; }
 .reviews-track-wrap {
   overflow: hidden; position: relative;
   max-width: 1140px; margin: 0 auto; padding: 0 60px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 90px, #000 calc(100% - 90px), transparent);
+          mask-image: linear-gradient(to right, transparent, #000 90px, #000 calc(100% - 90px), transparent);
 }
-.reviews-track-wrap::before, .reviews-track-wrap::after {
-  content: ''; position: absolute; top: 0; bottom: 0; width: 90px; z-index: 2; pointer-events: none;
+/* A rolagem é controlada via JS (transform inline); ver assets/js/reviews-carousel.js */
+.reviews-track {
+  display: flex; gap: 16px; width: max-content; will-change: transform;
+  cursor: grab; touch-action: pan-y; user-select: none;
 }
-.reviews-track-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
-.reviews-track-wrap::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
-.sec-alt .reviews-track-wrap::before { background: linear-gradient(to right, var(--surf), transparent); }
-.sec-alt .reviews-track-wrap::after  { background: linear-gradient(to left, var(--surf), transparent); }
-/* A rolagem é controlada via JS (transform inline), sem travar no hover */
-.reviews-track { display: flex; gap: 16px; width: max-content; will-change: transform; }
+.reviews-track-wrap.is-dragging .reviews-track { cursor: grabbing; }
 .review-card {
+  display: flex; flex-direction: column; gap: 12px;
   background: var(--card); border: 1px solid var(--bord);
   border-radius: var(--radius-lg); padding: 24px 28px;
   min-width: 280px; max-width: 300px; flex-shrink: 0;
   opacity: 1 !important; transform: none !important;
 }
-.r-stars { color: var(--red); font-size: 16px; margin-bottom: 10px; letter-spacing: 2px; }
-.r-text { font-size: 14px; color: var(--sub); line-height: 1.6; margin-bottom: 14px; }
-.r-name { font-size: 13px; font-weight: 700; color: var(--ink); }
-
-/* Setas: posicionadas de forma absoluta para nunca serem empurradas pra fora pelo trilho */
-.reviews-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  z-index: 6; flex-shrink: 0;
-  width: 44px; height: 44px; border-radius: 50%;
+.review-top { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--card); border: 1px solid var(--bord); color: var(--ink);
-  box-shadow: var(--shadow-sm);
-  transition: border-color .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+  font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: .02em;
 }
-.reviews-arrow:hover { border-color: var(--red); color: var(--red); transform: translateY(-50%) scale(1.08); }
-.reviews-arrow svg { width: 18px; height: 18px; }
-.reviews-arrow-prev { left: 8px; }
-.reviews-arrow-next { right: 8px; }
+.review-avatar-nutricao    { background: rgba(76,175,130,.16); color: #4CAF82; }
+.review-avatar-saude       { background: rgba(126,200,227,.2); color: #3D91AD; }
+.review-avatar-performance { background: rgba(217,59,59,.14); color: var(--red); }
+.review-who { display: flex; flex-direction: column; gap: 4px; }
+.review-tag {
+  display: inline-block; width: fit-content;
+  font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px;
+}
+.review-tag-nutricao    { background: rgba(76,175,130,.14); color: #4CAF82; }
+.review-tag-saude       { background: rgba(126,200,227,.2); color: #3D91AD; }
+.review-tag-performance { background: rgba(217,59,59,.14); color: var(--red); }
+.r-stars { color: var(--red); font-size: 16px; letter-spacing: 2px; }
+.r-text {
+  font-family: Georgia, 'Times New Roman', serif; font-style: italic;
+  font-size: 14.5px; color: var(--sub); line-height: 1.65;
+}
+.r-name { font-size: 13px; font-weight: 700; color: var(--ink); }
 @media (max-width: 640px) {
   .reviews-track-wrap { padding: 0 8px; }
-  .reviews-arrow { width: 36px; height: 36px; }
-  .reviews-arrow-prev { left: 2px; }
-  .reviews-arrow-next { right: 2px; }
 }
 /* ---------- FAQ (acordeão fluido) ---------- */
 .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
@@ -638,24 +645,44 @@ nav#siteNav { display: contents; }
    MENU LATERAL (DRAWER) — TABLET E MOBILE
    ============================================================ */
 @media (max-width: 1024px) {
-  .menu-toggle { display: flex; }
+  .menu-toggle { display: flex; flex-shrink: 0; }
 
   nav#siteNav { display: block; }
   .nav-list {
-    position: fixed; top: 0; right: 0; height: 100dvh;
+    position: fixed; top: 68px; right: 0; height: calc(100dvh - 68px);
     width: min(84vw, 340px);
     background: var(--surf); border-left: 1px solid var(--bord);
-    flex-direction: column; align-items: stretch; gap: 4px;
-    padding: calc(68px + max(16px, env(safe-area-inset-top))) 20px 30px;
+    flex-direction: column; align-items: stretch; justify-content: center; gap: 4px;
+    padding: 24px 20px max(24px, env(safe-area-inset-bottom));
     transform: translateX(100%); transition: transform .4s var(--ease);
     overflow-y: auto; box-shadow: var(--shadow-lg);
+    z-index: 950;
   }
   .nav-list.open { transform: translateX(0); }
-  .nav-list-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+  .nav-list-icon { display: flex; justify-content: center; margin-bottom: 20px; flex-shrink: 0; }
   .nav-list-icon img { width: 60px; height: 60px; border-radius: 50%; background: #fff; padding: 6px; }
-  .nav-link { padding: 15px 16px; font-size: 16px; border-bottom: 1px solid var(--bord2); border-radius: 0; }
+  .nav-link { padding: 15px 16px; font-size: 16px; border-bottom: 1px solid var(--bord2); border-radius: 0; flex-shrink: 0; }
   .nav-link:hover, .nav-link.active { background: transparent; color: var(--red); }
-  .nav-cta { border-radius: 999px; text-align: center; margin: 14px 0 0; border-bottom: none; }
+  .nav-cta { border-radius: 999px; text-align: center; margin: 14px 0 0; border-bottom: none; flex-shrink: 0; }
+}
+
+@media (max-width: 480px) {
+  .header-inner { padding: 0 16px; }
+  .logo { font-size: 13px; gap: 8px; }
+  .logo-icon { width: 26px; height: 26px; }
+  .header-actions { gap: 4px; }
+}
+
+@media (max-width: 400px) {
+  .logo { font-size: 11.5px; letter-spacing: .04em; gap: 6px; }
+  .logo-icon { width: 24px; height: 24px; }
+  .header-inner { padding: 0 12px; }
+  .header-actions { gap: 2px; }
+}
+
+@media (max-width: 345px) {
+  .logo { font-size: 10px; letter-spacing: .02em; gap: 5px; }
+  .logo-icon { width: 22px; height: 22px; }
 }
 
 /* ---------- RESPONSIVO GERAL ---------- */
