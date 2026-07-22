@@ -19,18 +19,14 @@
 
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- Aplica o tema salvo antes da renderização, evitando flash -->
+  <!-- Força o tema escuro como padrão em toda carga de página, evitando flash -->
   <script>
     (function () {
-      // Reseta uma única vez qualquer tema herdado de antes do padrão escuro
-      // (ex: navegadores que já tinham salvo "light" pela preferência do sistema).
-      if (!localStorage.getItem('hpt-theme-default-dark-v1')) {
+      try {
+        localStorage.removeItem('hpt-theme-default-dark-v1');
         localStorage.setItem('hpt-theme', 'dark');
-        localStorage.setItem('hpt-theme-default-dark-v1', '1');
-      }
-      var t = localStorage.getItem('hpt-theme') || 'dark';
-      localStorage.setItem('hpt-theme', t);
-      document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', 'dark');
     })();
   </script>
 </head>
