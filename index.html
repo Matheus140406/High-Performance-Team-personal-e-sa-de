@@ -22,8 +22,8 @@
   <!-- Aplica o tema salvo antes da renderização, evitando flash -->
   <script>
     (function () {
-      var t = localStorage.getItem('hpt-theme') ||
-        (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      var t = localStorage.getItem('hpt-theme') || 'dark';
+      localStorage.setItem('hpt-theme', t);
       document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
