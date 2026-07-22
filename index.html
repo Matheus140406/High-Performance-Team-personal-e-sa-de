@@ -290,27 +290,177 @@
       <h2 class="sec-title">O que dizem nossos alunos</h2>
     </div>
     <div class="reviews-track-wrap">
-      <button class="reviews-arrow reviews-arrow-prev" id="reviewsPrev" aria-label="Depoimento anterior">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
       <div class="reviews-track" id="reviewsTrack">
-        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Perdi 12kg em poucos meses com acompanhamento profissional de verdade. Método que funciona!"</p><p class="r-name">Carlos M.</p></div>
-        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Minha evolução foi muito maior do que imaginava. A equipe é incrível e muito atenciosa."</p><p class="r-name">Juliana Silva</p></div>
-        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Atendimento excelente e resultados reais. Vale cada centavo investido."</p><p class="r-name">Vitoria</p></div>
-        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Treinos simples de seguir e muito eficientes. Em 3 meses ganhei 5kg de massa muscular."</p><p class="r-name">Amanda R.</p></div>
-        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"A consultoria de nutrição mudou minha relação com a comida. Recomendo demais!"</p><p class="r-name">Vanessa</p></div>
-        <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"Nunca pensei que conseguiria emagrecer sem academia presencial. O Fernando me provou o contrário."</p><p class="r-name">Diego</p></div>
-        <!-- duplicatas para loop infinito -->
-        <div class="review-card" aria-hidden="true"><div class="r-stars">★★★★★</div><p class="r-text">"Perdi 12kg em poucos meses com acompanhamento profissional de verdade. Método que funciona!"</p><p class="r-name">M. Carvalho</p></div>
-        <div class="review-card" aria-hidden="true"><div class="r-stars">★★★★★</div><p class="r-text">"Minha evolução foi muito maior do que imaginava. A equipe é incrível e muito atenciosa."</p><p class="r-name">Daniele</p></div>
-        <div class="review-card" aria-hidden="true"><div class="r-stars">★★★★★</div><p class="r-text">"Atendimento excelente e resultados reais. Vale cada centavo investido."</p><p class="r-name">Gustavo</p></div>
-        <div class="review-card" aria-hidden="true"><div class="r-stars">★★★★★</div><p class="r-text">"Treinos simples de seguir e muito eficientes. Em 3 meses ganhei 5kg de massa muscular."</p><p class="r-name">Amanda</p></div>
-        <div class="review-card" aria-hidden="true"><div class="r-stars">★★★★★</div><p class="r-text">"A consultoria de nutrição mudou minha relação com a comida. Recomendo demais!"</p><p class="r-name">Thiago</p></div>
-        <div class="review-card" aria-hidden="true"><div class="r-stars">★★★★★</div><p class="r-text">"Nunca pensei que conseguiria emagrecer sem academia presencial. O Fernando me provou o contrário."</p><p class="r-name">Victor A.</p></div>
+
+        <article class="review-card" data-plan="nutricao">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-nutricao">CD</div>
+            <div class="review-who">
+              <p class="r-name">Camila Duarte</p>
+              <span class="review-tag review-tag-nutricao">Nutrição</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"O plano alimentar da Fernanda finalmente fez sentido pra minha rotina. Sem dieta maluca, só resultado consistente."</p>
+        </article>
+
+        <article class="review-card" data-plan="performance">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-performance">RA</div>
+            <div class="review-who">
+              <p class="r-name">Rafael Andrade</p>
+              <span class="review-tag review-tag-performance">Performance</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Treino pensado pra minha rotina real, não pra internet. Em três meses já via diferença no espelho."</p>
+        </article>
+
+        <article class="review-card" data-plan="saude">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-saude">B</div>
+            <div class="review-who">
+              <p class="r-name">Beatriz</p>
+              <span class="review-tag review-tag-saude">Saúde</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"A consulta com a Geovanna foi o divisor de águas. Finalmente entendi o que meu corpo precisava."</p>
+        </article>
+
+        <article class="review-card" data-plan="nutricao">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-nutricao">BC</div>
+            <div class="review-who">
+              <p class="r-name">Bruno Cardoso</p>
+              <span class="review-tag review-tag-nutricao">Nutrição</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Troquei o 'chute' por acompanhamento de verdade. Em dois meses minha relação com a comida mudou."</p>
+        </article>
+
+        <article class="review-card" data-plan="performance">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-performance">LM</div>
+            <div class="review-who">
+              <p class="r-name">Larissa Monteiro</p>
+              <span class="review-tag review-tag-performance">Performance</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"O Fernando ajusta o treino toda vez que eu evoluo. Sinto que estou sempre um passo à frente."</p>
+        </article>
+
+        <article class="review-card" data-plan="saude">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-saude">T</div>
+            <div class="review-who">
+              <p class="r-name">Thiago</p>
+              <span class="review-tag review-tag-saude">Saúde</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Atendimento atencioso, que olha pra saúde como um todo — não só pro sintoma do momento."</p>
+        </article>
+
+        <article class="review-card" data-plan="nutricao">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-nutricao">J</div>
+            <div class="review-who">
+              <p class="r-name">Juliana</p>
+              <span class="review-tag review-tag-nutricao">Nutrição</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Nunca imaginei que comer bem pudesse ser tão simples. A orientação é clara e sempre próxima."</p>
+        </article>
+
+        <article class="review-card" data-plan="performance">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-performance">D</div>
+            <div class="review-who">
+              <p class="r-name">Diego</p>
+              <span class="review-tag review-tag-performance">Performance</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Nunca pensei que conseguiria emagrecer sem academia presencial. O método provou o contrário."</p>
+        </article>
+
+        <article class="review-card" data-plan="saude">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-saude">PN</div>
+            <div class="review-who">
+              <p class="r-name">Patrícia Nunes</p>
+              <span class="review-tag review-tag-saude">Saúde</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Me senti realmente ouvida. A avaliação foi completa e o retorno, muito além do esperado."</p>
+        </article>
+
+        <article class="review-card" data-plan="performance">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-performance">R</div>
+            <div class="review-who">
+              <p class="r-name">Renata</p>
+              <span class="review-tag review-tag-performance">Performance</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Suporte direto pelo WhatsApp fez toda diferença nos dias difíceis. Nunca me senti sozinha no processo."</p>
+        </article>
+
+        <article class="review-card" data-plan="nutricao">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-nutricao">G</div>
+            <div class="review-who">
+              <p class="r-name">Gustavo</p>
+              <span class="review-tag review-tag-nutricao">Nutrição</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Ajustaram meu cardápio à minha rotina puxada de trabalho e ainda assim os resultados apareceram rápido."</p>
+        </article>
+
+        <article class="review-card" data-plan="saude">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-saude">MT</div>
+            <div class="review-who">
+              <p class="r-name">Marcelo Teixeira</p>
+              <span class="review-tag review-tag-saude">Saúde</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Profissional que investiga a causa, não só trata o sintoma. Recomendo pra quem busca cuidado de verdade."</p>
+        </article>
+
+        <article class="review-card" data-plan="performance">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-performance">AF</div>
+            <div class="review-who">
+              <p class="r-name">André Farias</p>
+              <span class="review-tag review-tag-performance">Performance</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"Ganhei massa que a academia sozinha nunca tinha me dado. Método sério, sem enrolação."</p>
+        </article>
+
+        <article class="review-card" data-plan="nutricao">
+          <div class="review-top">
+            <div class="review-avatar review-avatar-nutricao">FR</div>
+            <div class="review-who">
+              <p class="r-name">Fernanda Rocha</p>
+              <span class="review-tag review-tag-nutricao">Nutrição</span>
+            </div>
+          </div>
+          <div class="r-stars">★★★★★</div>
+          <p class="r-text">"A nutricionista entende que cada corpo é diferente. Meu acompanhamento é sob medida, sem fórmula pronta."</p>
+        </article>
+
       </div>
-      <button class="reviews-arrow reviews-arrow-next" id="reviewsNext" aria-label="Próximo depoimento">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
     </div>
   </section>
 
@@ -467,6 +617,7 @@
   </div>
 
   <script src="assets/js/script.js"></script>
+  <script src="assets/js/reviews-carousel.js"></script>
 
   <script>
     /* ---------- COOKIES ---------- */
