@@ -5,14 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página não encontrada | High-Performance Team</title>
   <link rel="icon" type="image/png" href="/imagens/logo-icon.png">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=3.0">
   <script>
     (function () {
-      try {
-        localStorage.removeItem('hpt-theme-default-dark-v1');
-        localStorage.setItem('hpt-theme', 'dark');
-      } catch (e) {}
-      document.documentElement.setAttribute('data-theme', 'dark');
+      var SITE_VERSION = '3.0';
+      var VERSION_KEY = 'hpt-site-version';
+      var THEME_KEY = 'hpt-theme';
+
+      var storedVersion = null;
+      try { storedVersion = localStorage.getItem(VERSION_KEY); } catch (e) {}
+
+      if (storedVersion !== SITE_VERSION) {
+        try {
+          localStorage.removeItem(THEME_KEY);
+          localStorage.removeItem('hpt-theme-default-dark-v1');
+          localStorage.setItem(VERSION_KEY, SITE_VERSION);
+        } catch (e) {}
+      }
+
+      var theme = 'dark';
+      try { theme = localStorage.getItem(THEME_KEY) || 'dark'; } catch (e) {}
+      try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
   <style>
@@ -27,7 +41,7 @@
       background: var(--bg);
     }
     .error-code {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Fraunces', sans-serif;
       font-size: clamp(5rem, 20vw, 9rem);
       line-height: 1;
       color: var(--red);

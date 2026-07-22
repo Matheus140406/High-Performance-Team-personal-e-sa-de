@@ -17,16 +17,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=3.0">
 
-  <!-- Força o tema escuro como padrão em toda carga de página, evitando flash -->
+  <!--
+    Cache busting: os arquivos em /assets/ são servidos com
+    Cache-Control: immutable, max-age=31536000 (ver vercel.json). Navegadores
+    com esses arquivos em cache NUNCA revalidam sozinhos dentro desse prazo.
+    Sempre que style.css/script.js/etc. mudarem de forma visível, incremente
+    o "?v=" acima e nos <script src="...?v="> abaixo — isso muda a URL e
+    força um fetch novo, sem depender de reload nem de JS.
+  -->
+
+  <!-- Migração de versão + tema: roda antes de qualquer CSS renderizar -->
   <script>
     (function () {
-      try {
-        localStorage.removeItem('hpt-theme-default-dark-v1');
-        localStorage.setItem('hpt-theme', 'dark');
-      } catch (e) {}
-      document.documentElement.setAttribute('data-theme', 'dark');
+      var SITE_VERSION = '3.0';
+      var VERSION_KEY = 'hpt-site-version';
+      var THEME_KEY = 'hpt-theme';
+
+      var storedVersion = null;
+      try { storedVersion = localStorage.getItem(VERSION_KEY); } catch (e) {}
+
+      if (storedVersion !== SITE_VERSION) {
+        // Nova versão de layout: descarta preferências de tema/layout antigas
+        // (inclui a flag de uma migração anterior, que não é mais usada).
+        try {
+          localStorage.removeItem(THEME_KEY);
+          localStorage.removeItem('hpt-theme-default-dark-v1');
+          localStorage.setItem(VERSION_KEY, SITE_VERSION);
+        } catch (e) {}
+      }
+
+      var theme = 'dark';
+      try { theme = localStorage.getItem(THEME_KEY) || 'dark'; } catch (e) {}
+      // Regrava sempre: assets/js/script.js também lê essa chave e, se a
+      // encontrar vazia, cai para a preferência de tema do sistema. Gravar
+      // aqui evita que isso aconteça depois deste script rodar.
+      try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 </head>
@@ -618,9 +646,9 @@
     </div>
   </div>
 
-  <script src="assets/js/script.js"></script>
-  <script src="assets/js/reviews-carousel.js"></script>
-  <script src="assets/js/hero-parallax.js"></script>
+  <script src="assets/js/script.js?v=3.0"></script>
+  <script src="assets/js/reviews-carousel.js?v=3.0"></script>
+  <script src="assets/js/hero-parallax.js?v=3.0"></script>
 
   <script>
     /* ---------- COOKIES ---------- */
