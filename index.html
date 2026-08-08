@@ -3,676 +3,588 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#050507">
-  <meta name="description" content="High-Performance Team — Treino, Nutrição e Saúde integrados. Emagreça ou ganhe massa com acompanhamento profissional 100% online e personalizado.">
+  <meta name="theme-color" content="#08080c">
+  <meta name="description" content="Personal trainer online, nutricionista e médica. Treino personalizado, plano alimentar e acompanhamento de saúde 100% online.">
   <meta name="keywords" content="personal trainer online, nutricionista, saúde, emagrecer, ganhar massa, acompanhamento online">
   <meta property="og:title" content="High-Performance Team — Alta Performance">
   <meta property="og:description" content="Treino, nutrição e saúde integrados para acelerar seus resultados, com acompanhamento próximo e 100% online.">
-  <title>High-Performance Team | Personal Trainer, Nutrição e Saúde</title>
+  <title>High-Performance Team — Treino, Nutrição e Saúde</title>
 
   <link rel="icon" type="image/png" href="imagens/logo-icon.png">
   <link rel="apple-touch-icon" href="imagens/logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/style.css?v=4.1">
+  <link rel="stylesheet" href="assets/css/style.css?v=5.1">
 
   <!--
     Cache busting: os arquivos em /assets/ são servidos com
     Cache-Control: immutable, max-age=31536000 (ver vercel.json). Navegadores
     com esses arquivos em cache NUNCA revalidam sozinhos dentro desse prazo.
-    Sempre que style.css/script.js/etc. mudarem de forma visível, incremente
-    o "?v=" acima e nos <script src="...?v="> abaixo — isso muda a URL e
-    força um fetch novo, sem depender de reload nem de JS.
+    Sempre que style.css/script.js mudarem de forma visível, incremente
+    o "?v=" acima e nos <script src="...?v="> abaixo.
   -->
-
-  <!-- Migração de versão + tema: roda antes de qualquer CSS renderizar -->
-  <script>
-    (function () {
-      var SITE_VERSION = '4.1';
-      var VERSION_KEY = 'hpt-site-version';
-      var THEME_KEY = 'hpt-theme';
-
-      var storedVersion = null;
-      try { storedVersion = localStorage.getItem(VERSION_KEY); } catch (e) {}
-
-      if (storedVersion !== SITE_VERSION) {
-        // Nova versão de layout: descarta preferências de tema/layout antigas
-        // (inclui a flag de uma migração anterior, que não é mais usada).
-        try {
-          localStorage.removeItem(THEME_KEY);
-          localStorage.removeItem('hpt-theme-default-dark-v1');
-          localStorage.setItem(VERSION_KEY, SITE_VERSION);
-        } catch (e) {}
-      }
-
-      var theme = 'dark';
-      try { theme = localStorage.getItem(THEME_KEY) || 'dark'; } catch (e) {}
-      // Regrava sempre: assets/js/script.js também lê essa chave e, se a
-      // encontrar vazia, cai para a preferência de tema do sistema. Gravar
-      // aqui evita que isso aconteça depois deste script rodar.
-      try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
 </head>
 <body>
 
-  <div class="menu-overlay" id="menuOverlay"></div>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#home" class="logo">
+      <img src="imagens/logo-icon.png" class="logo-icon" alt="Logo">
+      <span class="logo-text">High-Performance <span>Team</span></span>
+    </a>
+    <nav class="nav-desktop">
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#equipe" class="nav-link">Equipe</a>
+      <a href="#planos" class="nav-link">Planos</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#contato" class="nav-cta">Contato</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <!-- HEADER -->
-  <header id="header">
-    <div class="header-inner">
-      <a href="#home" class="logo">
-        <img src="imagens/logo-icon.png" alt="High-Performance Team" class="logo-icon">
-        <span class="logo-text">High-Performance <span>Team</span></span>
-      </a>
+<!-- Mobile nav -->
+<div class="nav-mobile">
+  <div class="nav-mobile-inner">
+    <img src="imagens/logo-icon.png" style="width:56px;height:56px;border-radius:50%;background:#fff;padding:5px;object-fit:contain;margin-bottom:20px" alt="">
+    <a href="#sobre" class="nav-link">Sobre</a>
+    <a href="#equipe" class="nav-link">Equipe</a>
+    <a href="#planos" class="nav-link">Planos</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="#contato" class="nav-cta" style="margin-top:16px">Contato</a>
+  </div>
+</div>
 
-      <div class="header-actions">
-        <button class="theme-toggle" aria-label="Alternar tema claro/escuro" onclick="toggleTheme()">
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-        </button>
-
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu()">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <nav id="siteNav">
-        <ul class="nav-list" id="navList">
-          <li class="nav-list-icon"><img src="imagens/logo-icon.png" alt=""></li>
-          <li><a href="#home"    class="nav-link">Home</a></li>
-          <li><a href="#equipe"  class="nav-link">Equipe</a></li>
-          <li><a href="#planos"  class="nav-link">Planos</a></li>
-          <li><a href="#faq"     class="nav-link">FAQ</a></li>
-          <li><a href="#sobre"   class="nav-link">Sobre</a></li>
-          <li><a href="#contato" class="nav-link nav-cta">Contato</a></li>
-        </ul>
-      </nav>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-bg">
+    <img src="imagens/gymman.jpg" alt="">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Alta Performance · 100% Online</div>
+    <h1 class="hero-title">
+      Emagreça.<br>Ganhe massa.<br><span>Evolua.</span>
+    </h1>
+    <p class="hero-sub">Um método pensado para o seu corpo e a sua rotina — sem precisar de personal presencial. Acompanhamento próximo e contínuo, para você evoluir com consistência.</p>
+    <div class="hero-btns" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px;animation:fadeSlide .7s ease both .45s">
+      <a href="#planos" class="btn-primary">Ver Planos</a>
+      <a href="#contato" class="btn-ghost">Falar com a equipe</a>
     </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="hero-bg">
-      <img src="imagens/gymman.jpg" alt="Treino de alta performance" class="hero-img">
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="particles" id="particles"></div>
-    <div class="container hero-content">
-      <p class="eyebrow">Alta Performance · 100% Online</p>
-      <h1 class="hero-title">
-        Emagreça.<br>
-        Ganhe massa.<br>
-        <span>Evolua.</span>
-      </h1>
-      <p class="hero-sub">Um método pensado para o seu corpo e a sua rotina — sem precisar de personal presencial. Acompanhamento próximo e contínuo, para você evoluir com consistência.</p>
-      <div class="hero-btns">
-        <a href="#planos"  class="btn btn-primary">Ver Planos</a>
-        <a href="#contato" class="btn btn-ghost">Falar com a equipe</a>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-n">200<span style="font-size:22px">+</span></span>
+        <p class="stat-label">Alunos Ativos</p>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-n" data-target="200">0</span><span class="stat-plus">+</span><p>Alunos Ativos</p></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-n" data-target="3">0</span><p>Especialistas</p></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-n" data-target="98">0</span><span class="stat-plus">%</span><p>Satisfação</p></div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-n">3</span>
+        <p class="stat-label">Especialistas</p>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-n">98<span style="font-size:22px">%</span></span>
+        <p class="stat-label">Satisfação</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BENEFÍCIOS -->
-  <section id="sobre" class="sec sec-alt">
-    <div class="container">
-      <p class="sec-eye">Por que nos escolher</p>
+<!-- ANIMATED SHOWCASE -->
+<section style="position:relative;height:100vh;overflow:hidden;background:#08080c">
+  <div style="position:absolute;inset:0;animation:slideShow 12s ease-in-out infinite">
+    <img src="imagens/Beneficios-de-fazer-treino.jpg" style="width:100%;height:100%;object-fit:cover;animation:kenBurns1 12s ease-in-out infinite;filter:brightness(.5)" alt="">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,#08080c 5%,transparent 40%),linear-gradient(to bottom,#08080c 2%,transparent 30%)"></div>
+    <div style="position:absolute;bottom:15%;left:0;right:0;text-align:center;z-index:2">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;color:#dc2626;text-transform:uppercase;font-weight:700;margin-bottom:12px">01 — Treino</div>
+      <h2 style="font-family:'Libre Baskerville',serif;font-size:clamp(32px,5vw,56px);color:#fff;font-weight:400;margin:0 0 16px">Força e consistência</h2>
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;color:rgba(255,255,255,.5);max-width:500px;margin:0 auto;line-height:1.7">Treino personalizado, ajustado conforme você evolui. Nada genérico.</p>
+    </div>
+  </div>
+  <div style="position:absolute;inset:0;animation:slideShow2 12s ease-in-out infinite">
+    <img src="imagens/nutricao.jpg" style="width:100%;height:100%;object-fit:cover;animation:kenBurns2 12s ease-in-out infinite;filter:brightness(.5)" alt="">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,#08080c 5%,transparent 40%),linear-gradient(to bottom,#08080c 2%,transparent 30%)"></div>
+    <div style="position:absolute;bottom:15%;left:0;right:0;text-align:center;z-index:2">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;color:#4ade80;text-transform:uppercase;font-weight:700;margin-bottom:12px">02 — Nutrição</div>
+      <h2 style="font-family:'Libre Baskerville',serif;font-size:clamp(32px,5vw,56px);color:#fff;font-weight:400;margin:0 0 16px">Alimentação inteligente</h2>
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;color:rgba(255,255,255,.5);max-width:500px;margin:0 auto;line-height:1.7">Plano alimentar sob medida, sem dietas restritivas.</p>
+    </div>
+  </div>
+  <div style="position:absolute;inset:0;animation:slideShow3 12s ease-in-out infinite">
+    <img src="imagens/fisioterapia.jpg" style="width:100%;height:100%;object-fit:cover;animation:kenBurns3 12s ease-in-out infinite;filter:brightness(.5)" alt="">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,#08080c 5%,transparent 40%),linear-gradient(to bottom,#08080c 2%,transparent 30%)"></div>
+    <div style="position:absolute;bottom:15%;left:0;right:0;text-align:center;z-index:2">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;color:#38bdf8;text-transform:uppercase;font-weight:700;margin-bottom:12px">03 — Saúde</div>
+      <h2 style="font-family:'Libre Baskerville',serif;font-size:clamp(32px,5vw,56px);color:#fff;font-weight:400;margin:0 0 16px">Mobilidade e bem-estar</h2>
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;color:rgba(255,255,255,.5);max-width:500px;margin:0 auto;line-height:1.7">Cuidado médico completo para sua saúde funcional.</p>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5">
+    <div style="width:32px;height:3px;border-radius:2px;background:#dc2626;animation:slideShow 12s ease-in-out infinite"></div>
+    <div style="width:32px;height:3px;border-radius:2px;background:rgba(255,255,255,.15)"><div style="width:100%;height:100%;border-radius:2px;background:#4ade80;animation:slideShow2 12s ease-in-out infinite"></div></div>
+    <div style="width:32px;height:3px;border-radius:2px;background:rgba(255,255,255,.15)"><div style="width:100%;height:100%;border-radius:2px;background:#38bdf8;animation:slideShow3 12s ease-in-out infinite"></div></div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section id="sobre" style="padding:120px 0;background:#0a0a0f;position:relative">
+  <div style="position:absolute;inset:0;background:radial-gradient(circle 600px at 20% 50%,rgba(220,38,38,.04),transparent),radial-gradient(circle 500px at 80% 20%,rgba(6,182,212,.03),transparent);pointer-events:none"></div>
+  <div class="section">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-eye">Por que nos escolher</div>
       <h2 class="sec-title">Resultado de verdade tem método</h2>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">🏋️</div>
-          <h3>Treino Personalizado</h3>
-          <p>Plano criado para o seu corpo, objetivo e rotina. Nada genérico.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:rgba(220,38,38,.1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M6 4v16M18 4v16M6 12h12M3 4h6M3 20h6M15 4h6M15 20h6"></path></svg>
         </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📊</div>
-          <h3>Ajustes Constantes</h3>
-          <p>Evoluiu? Seu treino evolui junto. Acompanhamento contínuo.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">💬</div>
-          <h3>Suporte Direto</h3>
-          <p>Tire dúvidas pelo WhatsApp com o profissional que te acompanha.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🥗</div>
-          <h3>Nutrição Integrada</h3>
-          <p>Alimentação alinhada ao treino para potencializar os resultados.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🩺</div>
-          <h3>Saúde em Foco</h3>
-          <p>Médica especialista para cuidar da sua saúde de perto.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📈</div>
-          <h3>Resultados Reais</h3>
-          <p>Metodologia comprovada com centenas de alunos transformados.</p>
-        </div>
+        <h3>Treino Personalizado</h3>
+        <p>Plano criado para o seu corpo, objetivo e rotina. Nada genérico.</p>
       </div>
-
-      <div class="gallery-grid">
-        <div class="gallery-item"><img src="imagens/Beneficios-de-fazer-treino.jpg" alt="Benefícios de treinar com acompanhamento"></div>
-        <div class="gallery-item"><img src="imagens/gymwoman.jpg" alt="Treino de força feminino"></div>
-        <div class="gallery-item"><img src="imagens/nutricao.jpg" alt="Alimentação saudável integrada ao treino"></div>
-        <div class="gallery-item"><img src="imagens/fisioterapia.jpg" alt="Acompanhamento de mobilidade e postura"></div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:rgba(220,38,38,.1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M12 20V10M6 20V4M18 20v-6"></path></svg>
+        </div>
+        <h3>Ajustes Constantes</h3>
+        <p>Evoluiu? Seu treino evolui junto. Acompanhamento contínuo.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:rgba(220,38,38,.1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </div>
+        <h3>Suporte Direto</h3>
+        <p>Tire dúvidas pelo WhatsApp com o profissional que te acompanha.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:rgba(74,222,128,.1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"></path></svg>
+        </div>
+        <h3>Nutrição Integrada</h3>
+        <p>Alimentação alinhada ao treino para potencializar os resultados.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:rgba(56,189,248,.1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+        </div>
+        <h3>Saúde em Foco</h3>
+        <p>Médica especialista para cuidar da sua saúde de perto.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:rgba(220,38,38,.1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        </div>
+        <h3>Resultados Reais</h3>
+        <p>Metodologia comprovada com centenas de alunos transformados.</p>
       </div>
     </div>
-  </section>
 
-  <!-- EQUIPE -->
-  <section id="equipe" class="sec">
-    <div class="container">
-      <p class="sec-eye">Quem cuida de você</p>
+    <!-- GALLERY -->
+    <div class="gallery-grid">
+      <div class="gallery-item" style="grid-row:1/3">
+        <img src="imagens/Beneficios-de-fazer-treino.jpg" alt="Treino">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,12,.85) 5%,rgba(8,8,12,.2) 40%,transparent 70%);pointer-events:none"></div>
+        <div style="position:absolute;top:20px;left:20px" class="gallery-icon" style="width:40px;height:40px;border-radius:10px;background:rgba(220,38,38,.15);backdrop-filter:blur(8px)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M6 4v16M18 4v16M6 12h12M3 4h6M3 20h6M15 4h6M15 20h6"></path></svg>
+        </div>
+        <div style="position:absolute;bottom:28px;left:24px;z-index:2">
+          <div class="gallery-label" style="color:#dc2626;margin-bottom:8px">Performance</div>
+          <div style="font-family:'Libre Baskerville',serif;font-size:26px;color:#fff;font-weight:400;line-height:1.2">Treino de<br>força</div>
+          <div style="width:40px;height:2px;background:linear-gradient(to right,#dc2626,transparent);margin-top:12px;border-radius:1px"></div>
+        </div>
+      </div>
+      <div class="gallery-item" style="border-color:rgba(255,255,255,.06)">
+        <img src="imagens/gymwoman.jpg" alt="Treino feminino">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,12,.8) 5%,transparent 55%);pointer-events:none"></div>
+        <div style="position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:8px;background:rgba(220,38,38,.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        </div>
+        <div style="position:absolute;bottom:16px;left:16px;z-index:2">
+          <div class="gallery-label" style="color:#dc2626;margin-bottom:4px">Resistência</div>
+          <div style="width:24px;height:2px;background:#dc2626;border-radius:1px"></div>
+        </div>
+      </div>
+      <div class="gallery-item" style="border-color:rgba(255,255,255,.06)">
+        <img src="imagens/nutricao.jpg" alt="Nutrição">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,12,.8) 5%,transparent 55%);pointer-events:none"></div>
+        <div style="position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:8px;background:rgba(74,222,128,.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+        </div>
+        <div style="position:absolute;bottom:16px;left:16px;z-index:2">
+          <div class="gallery-label" style="color:#4ade80;margin-bottom:4px">Nutrição</div>
+          <div style="width:24px;height:2px;background:#4ade80;border-radius:1px"></div>
+        </div>
+      </div>
+      <div class="gallery-item" style="grid-column:2/4;border-color:rgba(255,255,255,.06)">
+        <img src="imagens/fisioterapia.jpg" alt="Mobilidade">
+        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,12,.8) 5%,transparent 50%);pointer-events:none"></div>
+        <div style="position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:8px;background:rgba(56,189,248,.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+        </div>
+        <div style="position:absolute;bottom:18px;left:20px;z-index:2">
+          <div class="gallery-label" style="color:#38bdf8;margin-bottom:6px">Mobilidade & Saúde</div>
+          <div style="font-family:'Libre Baskerville',serif;font-size:18px;color:#fff;font-weight:400">Bem-estar e equilíbrio</div>
+          <div style="width:32px;height:2px;background:linear-gradient(to right,#38bdf8,transparent);margin-top:10px;border-radius:1px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe" style="padding:120px 0;background:#08080c">
+  <div class="section">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-eye">Quem cuida de você</div>
       <h2 class="sec-title">Nossa Equipe</h2>
-      <div class="team-grid">
-
-        <!-- Geovanna -->
-        <div class="prof-card">
-          <div class="prof-img-wrap">
-            <img src="imagens/geovanasousamacedo.jpeg" alt="Geovanna Sousa — Médica" class="prof-img">
-            <div class="prof-badge saude">SAÚDE</div>
-          </div>
-          <div class="prof-body">
-            <h3 class="prof-name">Geovanna Sousa</h3>
-            <p class="prof-reg">CRM DF: 34698</p>
-            <p class="prof-price">R$ 280,00</p>
-            <p class="prof-desc">Consulta médica com foco em saúde funcional, hormônios e performance.</p>
-            <button class="btn btn-ghost btn-sm" onclick="selecionarProfissional('saude','Geovanna Sousa','R$ 280,00')">Agendar Consulta</button>
-          </div>
+    </div>
+    <div class="team-grid">
+      <div class="prof-card" style="--hover-color:rgba(56,189,248,.3);--hover-shadow:rgba(56,189,248,.15)">
+        <div style="position:relative;aspect-ratio:3/4;overflow:hidden">
+          <img src="imagens/geovanasousamacedo.jpeg" alt="Geovanna Sousa">
+          <div class="prof-badge" style="background:rgba(56,189,248,.9);color:#fff">SAÚDE</div>
         </div>
-
-        <!-- Fernanda -->
-        <div class="prof-card">
-          <div class="prof-img-wrap">
-            <img src="imagens/Fernanda-Nutri.png" alt="Fernanda — Nutricionista" class="prof-img">
-            <div class="prof-badge nutri">NUTRIÇÃO</div>
-          </div>
-          <div class="prof-body">
-            <h3 class="prof-name">Fernanda</h3>
-            <p class="prof-reg">CRN: 15044</p>
-            <p class="prof-price">R$ 230,00</p>
-            <p class="prof-desc">Plano alimentar individualizado para emagrecer, ganhar massa ou melhorar a saúde.</p>
-            <button class="btn btn-ghost btn-sm" onclick="selecionarProfissional('nutricao','Fernanda','R$ 230,00')">Agendar Consulta</button>
-          </div>
+        <div class="prof-body">
+          <h3 class="prof-name">Geovanna Sousa</h3>
+          <p class="prof-reg">CRM DF: 34698</p>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;margin:0 0 12px;background:linear-gradient(135deg,#38bdf8,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent">R$ 280,00</p>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.65;margin:0 0 20px">Consulta médica com foco em saúde funcional, hormônios e performance.</p>
+          <a href="https://wa.me/5561991463375" target="_blank" rel="noopener" class="btn-ghost" style="padding:10px 24px;font-size:12px;border-width:1.5px">Agendar Consulta</a>
         </div>
-
-        <!-- Fernando -->
-        <div class="prof-card">
-          <div class="prof-img-wrap">
-            <img src="imagens/fernando-albert.jpeg" alt="Fernando Albert — Personal Trainer" class="prof-img">
-            <div class="prof-badge performance">PERFORMANCE</div>
-          </div>
-          <div class="prof-body">
-            <h3 class="prof-name">Fernando Albert</h3>
-            <p class="prof-reg">CREF: 019533-G/DF</p>
-            <p class="prof-price prof-price-tag">Planos a partir de R$ 79,90</p>
-            <p class="prof-desc">Personal trainer online com planos individualizados para você ganhar massa ou emagrecer sem precisar de um profissional presencial.</p>
-            <a href="#planos" class="btn btn-primary btn-sm">Ver Planos ↓</a>
-          </div>
+      </div>
+      <div class="prof-card" style="--hover-color:rgba(74,222,128,.3);--hover-shadow:rgba(74,222,128,.15)">
+        <div style="position:relative;aspect-ratio:3/4;overflow:hidden">
+          <img src="imagens/Fernanda-Nutri.png" alt="Fernanda">
+          <div class="prof-badge" style="background:rgba(74,222,128,.9);color:#fff">NUTRIÇÃO</div>
         </div>
-
+        <div class="prof-body">
+          <h3 class="prof-name">Fernanda</h3>
+          <p class="prof-reg">CRN: 15044</p>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;margin:0 0 12px;background:linear-gradient(135deg,#4ade80,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent">R$ 230,00</p>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.65;margin:0 0 20px">Plano alimentar individualizado para emagrecer, ganhar massa ou melhorar a saúde.</p>
+          <a href="https://wa.me/5561991887614" target="_blank" rel="noopener" class="btn-ghost" style="padding:10px 24px;font-size:12px;border-width:1.5px">Agendar Consulta</a>
+        </div>
+      </div>
+      <div class="prof-card" style="--hover-color:rgba(220,38,38,.3);--hover-shadow:rgba(220,38,38,.15)">
+        <div style="position:relative;aspect-ratio:3/4;overflow:hidden">
+          <img src="imagens/fernando-albert.jpeg" alt="Fernando Albert">
+          <div class="prof-badge" style="background:rgba(220,38,38,.9);color:#fff">PERFORMANCE</div>
+        </div>
+        <div class="prof-body">
+          <h3 class="prof-name">Fernando Albert</h3>
+          <p class="prof-reg">CREF: 019533-G/DF</p>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;margin:0 0 12px;background:linear-gradient(135deg,#dc2626,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Planos a partir de R$ 79,90</p>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.65;margin:0 0 20px">Personal trainer online com planos individualizados para ganhar massa ou emagrecer.</p>
+          <a href="#planos" class="btn-primary" style="padding:10px 24px;font-size:12px;display:inline-flex">Ver Planos ↓</a>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PLANOS -->
-  <section id="planos" class="sec sec-alt">
-    <div class="container">
-      <p class="sec-eye">Personal Trainer Online</p>
+<!-- PLANOS -->
+<section id="planos" style="padding:120px 0;background:#0a0a0f;position:relative">
+  <div style="position:absolute;inset:0;background:radial-gradient(circle 800px at 50% 0%,rgba(220,38,38,.04),transparent);pointer-events:none"></div>
+  <div class="section">
+    <div style="text-align:center;margin-bottom:24px">
+      <div class="sec-eye">Personal Trainer Online</div>
       <h2 class="sec-title">Escolha seu Plano</h2>
-
-      <div class="fern-wrap">
-        <div class="fern-img-wrap">
-          <img src="imagens/fernando-albert.jpeg" alt="Fernando Albert" class="fern-img">
-        </div>
-        <div class="fern-bio">
-          <span class="fern-tag">PERFORMANCE · CREF 019533-G/DF</span>
-          <h3 class="fern-name">Fernando Albert</h3>
-          <p class="fern-sub">Personal Trainer Especializado</p>
-          <p class="fern-desc">Ganhe massa muscular ou emagreça com um plano 100% personalizado criado por personal trainer qualificado — sem precisar contratar um profissional presencial. Resultado com método, acompanhamento real e suporte direto.</p>
-          <a href="https://www.instagram.com/albertperfomance" target="_blank" rel="noopener" class="fern-social">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            Siga @albertperfomance
-          </a>
-        </div>
+    </div>
+    <!-- Fernando bio -->
+    <div class="fern-wrap" style="display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:start;margin:48px 0;padding:32px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px">
+      <div style="aspect-ratio:3/4;border-radius:14px;overflow:hidden">
+        <img src="imagens/fernando-albert.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(60%)" alt="Fernando Albert">
       </div>
-
-      <div class="plans-grid plans-grid-3">
-
-        <!-- PLANO BASE -->
-        <div class="plan-card">
-          <div class="plan-header">
-            <h3 class="plan-name">Plano Base</h3>
-            <p class="plan-quote">"Comece a treinar com método. Sem achismo, sem treino genérico da internet."</p>
-          </div>
-          <ul class="plan-items">
-            <li>Treino estruturado para seu objetivo</li>
-            <li>Orientações gerais de execução</li>
-            <li>Check-in mensal de progresso</li>
-          </ul>
-          <div class="plan-price-wrap">
-            <p class="plan-price">R$ 79,90<span>/mês</span></p>
-          </div>
-          <button class="btn btn-ghost btn-full" onclick="enviarWhatsPlano('Base','R$ 79,90')">Contratar Plano Base</button>
-        </div>
-
-        <!-- PLANO PREMIUM -->
-        <div class="plan-card featured">
-          <div class="plan-badge">MAIS ESCOLHIDO</div>
-          <div class="plan-header">
-            <h3 class="plan-name">Plano Premium</h3>
-            <p class="plan-quote">"Resultado de verdade: treino ajustado mensalmente, com personal te acompanhando de perto."</p>
-          </div>
-          <ul class="plan-items">
-            <li>Treino 100% personalizado</li>
-            <li>Ajustes mensais conforme evolução</li>
-            <li>Contato direto pelo WhatsApp</li>
-            <li>Feedback de execução dos exercícios</li>
-            <li>Acompanhamento próximo e contínuo</li>
-          </ul>
-          <div class="plan-price-wrap">
-            <p class="plan-price">R$ 149,90<span>/mês</span></p>
-          </div>
-          <button class="btn btn-primary btn-full" onclick="enviarWhatsPlano('Premium','R$ 149,90')">Contratar Plano Premium</button>
-        </div>
-
-        <!-- PLANO VIP -->
-        <div class="plan-card vip">
-          <div class="plan-badge plan-badge-vip">VIP · EQUIPE COMPLETA</div>
-          <div class="plan-header">
-            <h3 class="plan-name">Plano VIP</h3>
-            <p class="plan-quote">"O máximo que você pode ter: Personal Trainer, Nutricionista e Médica cuidando de você."</p>
-          </div>
-          <ul class="plan-items">
-            <li>Tudo do Plano Premium</li>
-            <li>Consulta com Nutricionista Fernanda</li>
-            <li>Consulta médica com Geovanna Sousa</li>
-            <li>Plano alimentar integrado ao treino</li>
-            <li>Acompanhamento multidisciplinar completo</li>
-            <li>Suporte prioritário via WhatsApp</li>
-          </ul>
-          <div class="plan-price-wrap">
-            <p class="plan-price plan-price-vip">R$ 529,90<span>/mês</span></p>
-          </div>
-          <button class="btn btn-vip btn-full" onclick="enviarWhatsPlano('VIP','R$ 529,90')">Contratar Plano VIP</button>
-        </div>
-
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:3px;background:rgba(220,38,38,.12);color:#dc2626;display:inline-block;margin-bottom:14px;font-weight:700">PERFORMANCE · CREF 019533-G/DF</div>
+        <h3 style="font-family:'Libre Baskerville',serif;font-size:28px;font-weight:400;color:#fff;margin:0 0 4px">Fernando Albert</h3>
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,.35);margin:0 0 16px">Personal Trainer Especializado</p>
+        <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:rgba(255,255,255,.5);line-height:1.75;margin:0 0 16px">Ganhe massa muscular ou emagreça com um plano 100% personalizado criado por personal trainer qualificado — sem precisar contratar um profissional presencial.</p>
+        <a href="https://www.instagram.com/albertperfomance" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:#fff;padding:8px 16px;border:1px solid rgba(255,255,255,.1);border-radius:6px;text-decoration:none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+          @albertperfomance
+        </a>
       </div>
     </div>
-  </section>
+    <!-- Plans grid -->
+    <div class="plans-grid">
+      <!-- BASE -->
+      <div class="plan-card base">
+        <div class="shine"></div>
+        <div class="corner-glow"></div>
+        <div class="particle" style="bottom:20px;left:30%;width:3px;height:3px;background:#06b6d4;animation:particleRise 3.5s ease-out infinite"></div>
+        <div class="particle" style="bottom:20px;left:60%;width:3px;height:3px;background:#38bdf8;animation:particleRise 3.5s ease-out 1.2s infinite"></div>
+        <div style="margin-bottom:24px">
+          <h3 class="plan-name">Plano Base</h3>
+          <p class="plan-quote">"Comece a treinar com método. Sem achismo, sem treino genérico da internet."</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;flex:1;margin-bottom:28px">
+          <div class="check-item"><div class="check-icon" style="background:rgba(6,182,212,.12);color:#06b6d4">✓</div><span class="check-text">Treino estruturado para seu objetivo</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(6,182,212,.12);color:#06b6d4">✓</div><span class="check-text">Orientações gerais de execução</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(6,182,212,.12);color:#06b6d4">✓</div><span class="check-text">Check-in mensal de progresso</span></div>
+        </div>
+        <div style="margin-bottom:24px"><span class="plan-price" style="background:linear-gradient(135deg,#06b6d4,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent">R$ 79,90</span> <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.3)">/mês</span></div>
+        <a href="https://wa.me/5561986351036?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Plano%20Base%20(R%24%2079%2C90%2Fm%C3%AAs)." target="_blank" rel="noopener" class="btn-ghost" style="padding:14px 28px;font-size:13px;text-align:center">Contratar Plano Base</a>
+      </div>
+      <!-- PREMIUM -->
+      <div class="plan-card featured">
+        <div class="shine"></div>
+        <div class="corner-glow"></div>
+        <div class="particle" style="bottom:20px;left:25%;width:4px;height:4px;background:#dc2626;animation:particleRise 3s ease-out infinite"></div>
+        <div class="particle" style="bottom:20px;left:50%;width:3px;height:3px;background:#dc2626;animation:particleRise 3s ease-out .8s infinite"></div>
+        <div class="particle" style="bottom:20px;left:75%;width:4px;height:4px;background:#dc2626;animation:particleRise 3s ease-out 1.6s infinite"></div>
+        <div class="particle" style="bottom:20px;left:40%;width:3px;height:3px;background:#ef4444;animation:particleRise 3.5s ease-out 2.2s infinite"></div>
+        <div class="plan-badge" style="background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;box-shadow:0 4px 12px -4px rgba(220,38,38,.4)">MAIS ESCOLHIDO</div>
+        <div style="margin-bottom:24px">
+          <h3 class="plan-name">Plano Premium</h3>
+          <p class="plan-quote">"Resultado de verdade: treino ajustado mensalmente, com personal te acompanhando de perto."</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;flex:1;margin-bottom:28px">
+          <div class="check-item"><div class="check-icon" style="background:rgba(220,38,38,.12);color:#dc2626">✓</div><span class="check-text">Treino 100% personalizado</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(220,38,38,.12);color:#dc2626">✓</div><span class="check-text">Ajustes mensais conforme evolução</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(220,38,38,.12);color:#dc2626">✓</div><span class="check-text">Contato direto pelo WhatsApp</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(220,38,38,.12);color:#dc2626">✓</div><span class="check-text">Feedback de execução dos exercícios</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(220,38,38,.12);color:#dc2626">✓</div><span class="check-text">Acompanhamento próximo e contínuo</span></div>
+        </div>
+        <div style="margin-bottom:24px"><span class="plan-price" style="background:linear-gradient(135deg,#dc2626,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent">R$ 149,90</span> <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.3)">/mês</span></div>
+        <a href="https://wa.me/5561986351036?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Plano%20Premium%20(R%24%20149%2C90%2Fm%C3%AAs)." target="_blank" rel="noopener" class="btn-primary" style="padding:14px 28px;font-size:13px;text-align:center">Contratar Plano Premium</a>
+      </div>
+      <!-- VIP -->
+      <div class="plan-card vip">
+        <div class="shine"></div>
+        <div class="corner-glow" style="top:-60px;right:-60px;width:160px;height:160px;background:radial-gradient(circle,rgba(255,184,28,.15),transparent 70%);animation:pulseScale 3s ease-in-out infinite"></div>
+        <div class="corner-glow" style="bottom:-40px;left:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(234,179,8,.1),transparent 70%);animation:pulseScale 3s ease-in-out 1.5s infinite"></div>
+        <div class="particle" style="bottom:15px;left:20%;width:4px;height:4px;background:#f59e0b;animation:particleRise 2.8s ease-out infinite"></div>
+        <div class="particle" style="bottom:15px;left:35%;width:3px;height:3px;background:#eab308;animation:particleRise 3.2s ease-out .5s infinite"></div>
+        <div class="particle" style="bottom:15px;left:55%;width:4px;height:4px;background:#f59e0b;animation:particleRise 2.5s ease-out 1s infinite"></div>
+        <div class="particle" style="bottom:15px;left:70%;width:3px;height:3px;background:#eab308;animation:particleRise 3s ease-out 1.5s infinite"></div>
+        <div class="particle" style="bottom:15px;left:85%;width:4px;height:4px;background:#f59e0b;animation:particleRise 2.7s ease-out 2s infinite"></div>
+        <div class="particle" style="bottom:15px;left:45%;width:3px;height:3px;background:#fbbf24;animation:particleRise 3.4s ease-out 2.5s infinite"></div>
+        <div class="plan-badge" style="background:linear-gradient(135deg,#f59e0b,#eab308);color:#17130A;box-shadow:0 4px 16px -4px rgba(255,184,28,.5)">VIP · EQUIPE COMPLETA</div>
+        <div style="margin-bottom:24px">
+          <h3 class="plan-name" style="color:#f59e0b;text-shadow:0 0 20px rgba(245,158,11,.4)">Plano VIP</h3>
+          <p class="plan-quote">"O máximo que você pode ter: Personal Trainer, Nutricionista e Médica cuidando de você."</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;flex:1;margin-bottom:28px">
+          <div class="check-item"><div class="check-icon" style="background:rgba(245,158,11,.14);color:#f59e0b">✓</div><span class="check-text">Tudo do Plano Premium</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(245,158,11,.14);color:#f59e0b">✓</div><span class="check-text">Consulta com Nutricionista Fernanda</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(245,158,11,.14);color:#f59e0b">✓</div><span class="check-text">Consulta médica com Geovanna Sousa</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(245,158,11,.14);color:#f59e0b">✓</div><span class="check-text">Plano alimentar integrado ao treino</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(245,158,11,.14);color:#f59e0b">✓</div><span class="check-text">Acompanhamento multidisciplinar</span></div>
+          <div class="check-item"><div class="check-icon" style="background:rgba(245,158,11,.14);color:#f59e0b">✓</div><span class="check-text">Suporte prioritário via WhatsApp</span></div>
+        </div>
+        <div style="margin-bottom:24px"><span class="plan-price" style="background:linear-gradient(135deg,#f59e0b,#eab308);-webkit-background-clip:text;-webkit-text-fill-color:transparent">R$ 529,90</span> <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.3)">/mês</span></div>
+        <a href="https://wa.me/5561986351036?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Plano%20VIP%20(R%24%20529%2C90%2Fm%C3%AAs)." target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:14px 28px;background:linear-gradient(135deg,#f59e0b,#eab308);color:#17130A;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.04em;text-decoration:none;box-shadow:0 8px 24px -8px rgba(255,184,28,.4);transition:all .3s">Contratar Plano VIP</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- DEPOIMENTOS -->
-  <section class="sec depoimentos">
-    <div class="container">
-      <p class="sec-eye">Resultados reais</p>
+<!-- DEPOIMENTOS -->
+<section style="padding:120px 0;background:#08080c;overflow:hidden">
+  <div class="section">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="sec-eye">Resultados reais</div>
       <h2 class="sec-title">O que dizem nossos alunos</h2>
     </div>
-    <div class="reviews-track-wrap">
-      <div class="reviews-track" id="reviewsTrack">
-
-        <article class="review-card" data-plan="nutricao">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-nutricao">CD</div>
-            <div class="review-who">
-              <p class="r-name">Camila Duarte</p>
-              <span class="review-tag review-tag-nutricao">Nutrição</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"O plano alimentar da Fernanda finalmente fez sentido pra minha rotina. Sem dieta maluca, só resultado consistente."</p>
-        </article>
-
-        <article class="review-card" data-plan="performance">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-performance">RA</div>
-            <div class="review-who">
-              <p class="r-name">Rafael Andrade</p>
-              <span class="review-tag review-tag-performance">Performance</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Treino pensado pra minha rotina real, não pra internet. Em três meses já via diferença no espelho."</p>
-        </article>
-
-        <article class="review-card" data-plan="saude">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-saude">B</div>
-            <div class="review-who">
-              <p class="r-name">Beatriz</p>
-              <span class="review-tag review-tag-saude">Saúde</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"A consulta com a Geovanna foi o divisor de águas. Finalmente entendi o que meu corpo precisava."</p>
-        </article>
-
-        <article class="review-card" data-plan="nutricao">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-nutricao">BC</div>
-            <div class="review-who">
-              <p class="r-name">Bruno Cardoso</p>
-              <span class="review-tag review-tag-nutricao">Nutrição</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Troquei o 'chute' por acompanhamento de verdade. Em dois meses minha relação com a comida mudou."</p>
-        </article>
-
-        <article class="review-card" data-plan="performance">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-performance">LM</div>
-            <div class="review-who">
-              <p class="r-name">Larissa Monteiro</p>
-              <span class="review-tag review-tag-performance">Performance</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"O Fernando ajusta o treino toda vez que eu evoluo. Sinto que estou sempre um passo à frente."</p>
-        </article>
-
-        <article class="review-card" data-plan="saude">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-saude">T</div>
-            <div class="review-who">
-              <p class="r-name">Thiago</p>
-              <span class="review-tag review-tag-saude">Saúde</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Atendimento atencioso, que olha pra saúde como um todo — não só pro sintoma do momento."</p>
-        </article>
-
-        <article class="review-card" data-plan="nutricao">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-nutricao">J</div>
-            <div class="review-who">
-              <p class="r-name">Juliana</p>
-              <span class="review-tag review-tag-nutricao">Nutrição</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Nunca imaginei que comer bem pudesse ser tão simples. A orientação é clara e sempre próxima."</p>
-        </article>
-
-        <article class="review-card" data-plan="performance">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-performance">D</div>
-            <div class="review-who">
-              <p class="r-name">Diego</p>
-              <span class="review-tag review-tag-performance">Performance</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Nunca pensei que conseguiria emagrecer sem academia presencial. O método provou o contrário."</p>
-        </article>
-
-        <article class="review-card" data-plan="saude">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-saude">PN</div>
-            <div class="review-who">
-              <p class="r-name">Patrícia Nunes</p>
-              <span class="review-tag review-tag-saude">Saúde</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Me senti realmente ouvida. A avaliação foi completa e o retorno, muito além do esperado."</p>
-        </article>
-
-        <article class="review-card" data-plan="performance">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-performance">R</div>
-            <div class="review-who">
-              <p class="r-name">Renata</p>
-              <span class="review-tag review-tag-performance">Performance</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Suporte direto pelo WhatsApp fez toda diferença nos dias difíceis. Nunca me senti sozinha no processo."</p>
-        </article>
-
-        <article class="review-card" data-plan="nutricao">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-nutricao">G</div>
-            <div class="review-who">
-              <p class="r-name">Gustavo</p>
-              <span class="review-tag review-tag-nutricao">Nutrição</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Ajustaram meu cardápio à minha rotina puxada de trabalho e ainda assim os resultados apareceram rápido."</p>
-        </article>
-
-        <article class="review-card" data-plan="saude">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-saude">MT</div>
-            <div class="review-who">
-              <p class="r-name">Marcelo Teixeira</p>
-              <span class="review-tag review-tag-saude">Saúde</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Profissional que investiga a causa, não só trata o sintoma. Recomendo pra quem busca cuidado de verdade."</p>
-        </article>
-
-        <article class="review-card" data-plan="performance">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-performance">AF</div>
-            <div class="review-who">
-              <p class="r-name">André Farias</p>
-              <span class="review-tag review-tag-performance">Performance</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"Ganhei massa que a academia sozinha nunca tinha me dado. Método sério, sem enrolação."</p>
-        </article>
-
-        <article class="review-card" data-plan="nutricao">
-          <div class="review-top">
-            <div class="review-avatar review-avatar-nutricao">FR</div>
-            <div class="review-who">
-              <p class="r-name">Fernanda Rocha</p>
-              <span class="review-tag review-tag-nutricao">Nutrição</span>
-            </div>
-          </div>
-          <div class="r-stars">★★★★★</div>
-          <p class="r-text">"A nutricionista entende que cada corpo é diferente. Meu acompanhamento é sob medida, sem fórmula pronta."</p>
-        </article>
-
-      </div>
+  </div>
+  <div class="reviews-wrap" style="margin-bottom:16px">
+    <div class="reviews-track scroll-left">
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">RA</div><div><p class="r-name">Rafael Andrade</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Treino pensado pra minha rotina real, não pra internet. Em três meses já via diferença no espelho."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">CD</div><div><p class="r-name">Camila Duarte</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"O plano alimentar da Fernanda finalmente fez sentido pra minha rotina. Sem dieta maluca, só resultado consistente."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(56,189,248,.12);color:#38bdf8">B</div><div><p class="r-name">Beatriz</p><span class="review-tag" style="background:rgba(56,189,248,.12);color:#38bdf8">Saúde</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"A consulta com a Geovanna foi o divisor de águas. Finalmente entendi o que meu corpo precisava."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">LM</div><div><p class="r-name">Larissa Monteiro</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"O Fernando ajusta o treino toda vez que eu evoluo. Sinto que estou sempre um passo à frente."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">J</div><div><p class="r-name">Juliana</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Nunca imaginei que comer bem pudesse ser tão simples. A orientação é clara e sempre próxima."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(56,189,248,.12);color:#38bdf8">PN</div><div><p class="r-name">Patrícia Nunes</p><span class="review-tag" style="background:rgba(56,189,248,.12);color:#38bdf8">Saúde</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Me senti realmente ouvida. A avaliação foi completa e o retorno, muito além do esperado."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">AF</div><div><p class="r-name">André Farias</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Ganhei massa que a academia sozinha nunca tinha me dado. Método sério, sem enrolação."</p></div>
+      <!-- Duplicate for loop -->
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">RA</div><div><p class="r-name">Rafael Andrade</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Treino pensado pra minha rotina real, não pra internet. Em três meses já via diferença no espelho."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">CD</div><div><p class="r-name">Camila Duarte</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"O plano alimentar da Fernanda finalmente fez sentido pra minha rotina. Sem dieta maluca, só resultado consistente."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(56,189,248,.12);color:#38bdf8">B</div><div><p class="r-name">Beatriz</p><span class="review-tag" style="background:rgba(56,189,248,.12);color:#38bdf8">Saúde</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"A consulta com a Geovanna foi o divisor de águas. Finalmente entendi o que meu corpo precisava."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">LM</div><div><p class="r-name">Larissa Monteiro</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"O Fernando ajusta o treino toda vez que eu evoluo. Sinto que estou sempre um passo à frente."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">J</div><div><p class="r-name">Juliana</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Nunca imaginei que comer bem pudesse ser tão simples. A orientação é clara e sempre próxima."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(56,189,248,.12);color:#38bdf8">PN</div><div><p class="r-name">Patrícia Nunes</p><span class="review-tag" style="background:rgba(56,189,248,.12);color:#38bdf8">Saúde</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Me senti realmente ouvida. A avaliação foi completa e o retorno, muito além do esperado."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">AF</div><div><p class="r-name">André Farias</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Ganhei massa que a academia sozinha nunca tinha me dado. Método sério, sem enrolação."</p></div>
     </div>
-  </section>
+  </div>
+  <div class="reviews-wrap">
+    <div class="reviews-track scroll-right">
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">BC</div><div><p class="r-name">Bruno Cardoso</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Troquei o 'chute' por acompanhamento de verdade. Em dois meses minha relação com a comida mudou."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(56,189,248,.12);color:#38bdf8">T</div><div><p class="r-name">Thiago</p><span class="review-tag" style="background:rgba(56,189,248,.12);color:#38bdf8">Saúde</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Atendimento atencioso, que olha pra saúde como um todo — não só pro sintoma do momento."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">D</div><div><p class="r-name">Diego</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Nunca pensei que conseguiria emagrecer sem academia presencial. O método provou o contrário."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">R</div><div><p class="r-name">Renata</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Suporte direto pelo WhatsApp fez toda diferença nos dias difíceis. Nunca me senti sozinha no processo."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">G</div><div><p class="r-name">Gustavo</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Ajustaram meu cardápio à minha rotina puxada de trabalho e ainda assim os resultados apareceram rápido."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(56,189,248,.12);color:#38bdf8">MT</div><div><p class="r-name">Marcelo Teixeira</p><span class="review-tag" style="background:rgba(56,189,248,.12);color:#38bdf8">Saúde</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Profissional que investiga a causa, não só trata o sintoma. Recomendo pra quem busca cuidado de verdade."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">FR</div><div><p class="r-name">Fernanda Rocha</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"A nutricionista entende que cada corpo é diferente. Meu acompanhamento é sob medida, sem fórmula pronta."</p></div>
+      <!-- Duplicate -->
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">BC</div><div><p class="r-name">Bruno Cardoso</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Troquei o 'chute' por acompanhamento de verdade. Em dois meses minha relação com a comida mudou."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(56,189,248,.12);color:#38bdf8">T</div><div><p class="r-name">Thiago</p><span class="review-tag" style="background:rgba(56,189,248,.12);color:#38bdf8">Saúde</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Atendimento atencioso, que olha pra saúde como um todo — não só pro sintoma do momento."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">D</div><div><p class="r-name">Diego</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Nunca pensei que conseguiria emagrecer sem academia presencial. O método provou o contrário."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(220,38,38,.12);color:#dc2626">R</div><div><p class="r-name">Renata</p><span class="review-tag" style="background:rgba(220,38,38,.12);color:#dc2626">Performance</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Suporte direto pelo WhatsApp fez toda diferença nos dias difíceis. Nunca me senti sozinha no processo."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">G</div><div><p class="r-name">Gustavo</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Ajustaram meu cardápio à minha rotina puxada de trabalho e ainda assim os resultados apareceram rápido."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(56,189,248,.12);color:#38bdf8">MT</div><div><p class="r-name">Marcelo Teixeira</p><span class="review-tag" style="background:rgba(56,189,248,.12);color:#38bdf8">Saúde</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"Profissional que investiga a causa, não só trata o sintoma. Recomendo pra quem busca cuidado de verdade."</p></div>
+      <div class="review-card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><div class="review-avatar" style="background:rgba(74,222,128,.12);color:#4ade80">FR</div><div><p class="r-name">Fernanda Rocha</p><span class="review-tag" style="background:rgba(74,222,128,.12);color:#4ade80">Nutrição</span></div></div><div class="r-stars" style="margin-bottom:8px">★★★★★</div><p class="r-text">"A nutricionista entende que cada corpo é diferente. Meu acompanhamento é sob medida, sem fórmula pronta."</p></div>
+    </div>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section id="faq" class="sec sec-alt">
-    <div class="container">
-      <p class="sec-eye">Dúvidas frequentes</p>
+<!-- FAQ -->
+<section id="faq" style="padding:120px 0;background:#0a0a0f">
+  <div class="section">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-eye">Dúvidas frequentes</div>
       <h2 class="sec-title">Perguntas & Respostas</h2>
-
-      <div class="faq-list" id="faqList">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            <span>O treino é montado pelo Fernando ou por um sistema automático?</span>
-            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-answer-wrap">
-            <p class="faq-answer">Cada plano é montado à mão, olhando pra sua rotina, seu objetivo e sua evolução real — nada de fórmula genérica ou treino copiado da internet.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            <span>Como recebo meus treinos e meu plano alimentar no dia a dia?</span>
-            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-answer-wrap">
-            <p class="faq-answer">Tudo chega direto pelo WhatsApp: treino detalhado, vídeos de execução quando necessário e um canal aberto pra tirar dúvidas a qualquer momento.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            <span>Tenho uma lesão ou restrição de saúde. Ainda consigo treinar?</span>
-            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-answer-wrap">
-            <p class="faq-answer">Sim. Seu histórico é avaliado antes de montar o plano, e os exercícios são adaptados. Se precisar de um olhar médico mais de perto, a Geovanna também está disponível.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            <span>Consigo falar direto com o profissional quando tiver dúvida?</span>
-            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-answer-wrap">
-            <p class="faq-answer">Sim, o contato é sempre direto — sem robô, sem fila de atendimento. Você fala com quem realmente cuida do seu caso.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            <span>Atendem quem mora fora do DF ou em outra cidade?</span>
-            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-answer-wrap">
-            <p class="faq-answer">Sim, o acompanhamento é 100% online — funciona de qualquer cidade do Brasil, no seu fuso e na sua rotina.</p>
-          </div>
-        </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question"><span>O treino é montado pelo Fernando ou por um sistema automático?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-answer">Cada plano é montado à mão, olhando pra sua rotina, seu objetivo e sua evolução real — nada de fórmula genérica ou treino copiado da internet.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Como recebo meus treinos e meu plano alimentar no dia a dia?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-answer">Tudo chega direto pelo WhatsApp: treino detalhado, vídeos de execução quando necessário e um canal aberto pra tirar dúvidas a qualquer momento.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Tenho uma lesão ou restrição de saúde. Ainda consigo treinar?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-answer">Sim. Seu histórico é avaliado antes de montar o plano, e os exercícios são adaptados. Se precisar de um olhar médico mais de perto, a Geovanna também está disponível.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Consigo falar direto com o profissional quando tiver dúvida?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-answer">Sim, o contato é sempre direto — sem robô, sem fila de atendimento. Você fala com quem realmente cuida do seu caso.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Atendem quem mora fora do DF ou em outra cidade?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-answer">Sim, o acompanhamento é 100% online — funciona de qualquer cidade do Brasil, no seu fuso e na sua rotina.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTATO -->
-  <section id="contato" class="sec contato">
-    <div class="container">
-      <p class="sec-eye">Fale conosco</p>
-      <h2 class="sec-title">Entre em Contato</h2>
-      <p class="sec-sub">Escolha a área e nos conte seu objetivo. Respondemos em até 24h pelo WhatsApp.</p>
-
-      <div class="contato-form-center">
-        <div class="contato__form-wrap" id="formWrap">
-          <div class="form-icon-stage" id="formIconStage" aria-hidden="true"></div>
-          <div class="form-group">
-            <label for="nome">Seu nome</label>
-            <input type="text" id="nome" placeholder="Como podemos te chamar?">
-          </div>
-          <div class="form-group">
-            <label for="area">Área de interesse</label>
-            <select id="area">
-              <option value="">Selecione uma área</option>
-              <option value="performance">Personal Trainer — Fernando Albert</option>
-              <option value="nutricao">Nutrição — Fernanda</option>
-              <option value="saude">Saúde — Geovanna Sousa</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="mensagem">Seu objetivo</label>
-            <textarea id="mensagem" rows="4" placeholder="Conte o que você quer alcançar..."></textarea>
-          </div>
-          <button id="btn-enviar" class="btn btn-primary btn-full">
-            Iniciar Consultoria via WhatsApp
-          </button>
+<!-- CONTATO -->
+<section id="contato" style="padding:120px 0;background:#08080c">
+  <div class="section">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="sec-eye">Fale conosco</div>
+      <h2 class="sec-title" style="margin-bottom:12px">Entre em Contato</h2>
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:rgba(255,255,255,.45);max-width:480px;margin:0 auto">Escolha a área e nos conte seu objetivo. Respondemos em até 24h pelo WhatsApp.</p>
+    </div>
+    <div style="max-width:560px;margin:0 auto;position:relative">
+      <div id="decoScene" style="position:absolute;inset:-80px -140px;pointer-events:none;z-index:0"></div>
+      <div id="contactForm" class="contact-form">
+        <div class="form-group">
+          <label class="form-label">Seu nome</label>
+          <input type="text" id="nome" placeholder="Como podemos te chamar?" class="form-input">
         </div>
+        <div class="form-group">
+          <label class="form-label">Área de interesse</label>
+          <select id="area" class="form-select">
+            <option value="">Selecione uma área</option>
+            <option value="performance">Personal Trainer — Fernando Albert</option>
+            <option value="nutricao">Nutrição — Fernanda</option>
+            <option value="saude">Saúde — Geovanna Sousa</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:28px">
+          <label class="form-label">Seu objetivo</label>
+          <textarea rows="4" id="mensagem" placeholder="Conte o que você quer alcançar..." class="form-textarea"></textarea>
+        </div>
+        <a href="#" id="btn-enviar" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 32px;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:.04em;text-decoration:none;box-shadow:0 8px 24px -8px rgba(220,38,38,.4);transition:all .3s">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.45 1.27 4.9L2 22l5.25-1.38A9.96 9.96 0 0 0 12.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.85 14.15c-.25.7-1.45 1.35-2 1.44-.53.09-1.15.13-1.86-.12-.43-.15-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"></path></svg>
+          Iniciar Consultoria via WhatsApp
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <p class="logo"><img src="imagens/logo-icon.png" alt="" class="logo-icon">High-Performance <span>Team</span></p>
-        <p class="footer-tagline">Treino, Nutrição e Saúde integrados<br>para resultados reais.</p>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="section">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <img src="imagens/logo-icon.png" style="width:32px;height:32px;border-radius:50%;background:#fff;padding:3px;object-fit:contain" alt="">
+          <span class="logo-text" style="font-size:16px">High-Performance <span>Team</span></span>
+        </div>
+        <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.4);line-height:1.65;margin:0 0 20px">Treino, Nutrição e Saúde integrados<br>para resultados reais.</p>
         <div class="footer-social">
-          <a href="https://www.instagram.com/albertperfomance" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://wa.me/5561986351036" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          </a>
+          <a href="https://www.instagram.com/albertperfomance" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+          <a href="https://wa.me/5561986351036" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></a>
         </div>
       </div>
-      <div class="footer-links">
+      <div style="display:flex;flex-direction:column;gap:10px">
         <p class="footer-col-title">Navegação</p>
-        <a href="#home">Home</a>
-        <a href="#equipe">Equipe</a>
-        <a href="#planos">Planos</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contato">Contato</a>
+        <a href="#home" class="footer-link">Home</a>
+        <a href="#equipe" class="footer-link">Equipe</a>
+        <a href="#planos" class="footer-link">Planos</a>
+        <a href="#faq" class="footer-link">FAQ</a>
+        <a href="#contato" class="footer-link">Contato</a>
       </div>
-      <div class="footer-links">
+      <div style="display:flex;flex-direction:column;gap:10px">
         <p class="footer-col-title">Equipe</p>
-        <a href="https://wa.me/5561986351036" target="_blank" rel="noopener">Fernando Albert</a>
-        <a href="https://wa.me/5561991887614" target="_blank" rel="noopener">Fernanda</a>
-        <a href="https://wa.me/5561991463375" target="_blank" rel="noopener">Geovanna Sousa</a>
+        <a href="https://wa.me/5561986351036" target="_blank" rel="noopener" class="footer-link">Fernando Albert</a>
+        <a href="https://wa.me/5561991887614" target="_blank" rel="noopener" class="footer-link">Fernanda</a>
+        <a href="https://wa.me/5561991463375" target="_blank" rel="noopener" class="footer-link">Geovanna Sousa</a>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© 2026 High-Performance Team · Todos os direitos reservados</p>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- BOLHA FLUTUANTE DO WHATSAPP -->
-  <a class="wa-bubble"
-     href="https://wa.me/5561986351036?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20interesse%20em%20conhecer%20o%20trabalho%20do%20High-Performance%20Team."
-     target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-    <span class="wa-tooltip">Fale com a gente</span>
-    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.45 1.27 4.9L2 22l5.25-1.38A9.96 9.96 0 0 0 12.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.85 14.15c-.25.7-1.45 1.35-2 1.44-.53.09-1.15.13-1.86-.12-.43-.15-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>
-  </a>
+<!-- WhatsApp bubble -->
+<a href="https://wa.me/5561986351036?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20interesse%20em%20conhecer%20o%20trabalho%20do%20High-Performance%20Team." target="_blank" rel="noopener" class="wa-bubble" aria-label="Falar no WhatsApp">
+  <span class="wa-tooltip">Fale com a gente</span>
+  <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.45 1.27 4.9L2 22l5.25-1.38A9.96 9.96 0 0 0 12.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.85 14.15c-.25.7-1.45 1.35-2 1.44-.53.09-1.15.13-1.86-.12-.43-.15-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"></path></svg>
+</a>
 
-  <!-- BANNER DE COOKIES -->
-  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
-    <div class="cookie-inner">
-      <div class="cookie-text">
-        <span class="cookie-icon">🍪</span>
-        <p>Usamos cookies para melhorar sua experiência e analisar o tráfego do site. Ao continuar navegando, você concorda com nossa <a href="#" class="cookie-link">Política de Privacidade</a>.</p>
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-ghost btn-sm" onclick="recusarCookies()">Recusar</button>
-        <button class="btn btn-primary btn-sm" onclick="aceitarCookies()">Aceitar todos</button>
-      </div>
+<!-- BANNER DE COOKIES -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <span class="cookie-icon">🍪</span>
+      <p>Usamos cookies para melhorar sua experiência e analisar o tráfego do site. Ao continuar navegando, você concorda com nossa <a href="#" class="cookie-link">Política de Privacidade</a>.</p>
+    </div>
+    <div class="cookie-actions">
+      <button class="btn-ghost" onclick="recusarCookies()">Recusar</button>
+      <button class="btn-primary" onclick="aceitarCookies()">Aceitar todos</button>
     </div>
   </div>
+</div>
 
-  <script src="assets/js/script.js?v=4.1"></script>
-  <script src="assets/js/reviews-carousel.js?v=3.0"></script>
-  <script src="assets/js/hero-parallax.js?v=3.0"></script>
+<script src="assets/js/script.js?v=5.1"></script>
+<script src="assets/js/hero-parallax.js?v=5.1"></script>
 
-  <script>
-    /* ---------- COOKIES ---------- */
-    (function() {
-      if (localStorage.getItem('cookie-consent')) {
-        document.getElementById('cookie-banner').style.display = 'none';
-      }
-    })();
-
-    function aceitarCookies() {
-      localStorage.setItem('cookie-consent', 'accepted');
-      fecharCookieBanner();
+<script>
+  /* ---------- COOKIES ---------- */
+  (function() {
+    if (localStorage.getItem('cookie-consent')) {
+      document.getElementById('cookie-banner').style.display = 'none';
     }
+  })();
 
-    function recusarCookies() {
-      localStorage.setItem('cookie-consent', 'declined');
-      fecharCookieBanner();
-    }
+  function aceitarCookies() {
+    localStorage.setItem('cookie-consent', 'accepted');
+    fecharCookieBanner();
+  }
 
-    function fecharCookieBanner() {
-      const banner = document.getElementById('cookie-banner');
-      banner.classList.add('cookie-hide');
-      setTimeout(() => banner.style.display = 'none', 400);
-    }
-  </script>
+  function recusarCookies() {
+    localStorage.setItem('cookie-consent', 'declined');
+    fecharCookieBanner();
+  }
+
+  function fecharCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    banner.classList.add('cookie-hide');
+    setTimeout(() => banner.style.display = 'none', 400);
+  }
+</script>
 </body>
 </html>
