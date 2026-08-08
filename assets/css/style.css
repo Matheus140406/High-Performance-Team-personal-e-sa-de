@@ -280,15 +280,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .wa-bubble:hover { transform: translateY(-3px) scale(1.05); }
 .wa-bubble svg { width: 28px; height: 28px; fill: #fff; }
 
-/* ---------- RESPONSIVE ---------- */
+/* ============================================================
+   RESPONSIVE — mobile-first breakpoint scale
+   0–480 mobile · 481–768 tablet · 769–1024 notebook ·
+   1025–1440 desktop · 1441+ desktop grande
+   (plus 375/320 fine-tuning for small/older phones)
+   ============================================================ */
 
-/* Desktop widescreen: let the shell breathe a bit more */
-@media (min-width: 1400px) {
+/* Desktop grande: let the shell breathe a bit more */
+@media (min-width: 1441px) {
   .section, .header-inner { max-width: 1320px; }
 }
 
-/* Tablet landscape / small desktop */
-@media (max-width: 1100px) {
+/* Notebook / small desktop (769–1024) */
+@media (max-width: 1024px) {
   .plans-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .plan-card.featured { grid-column: 1/3; }
   .gallery-grid { grid-template-rows: 220px 220px !important; }
@@ -303,8 +308,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .menu-btn { display: none !important; }
 }
 
-/* Tablet portrait */
-@media (max-width: 900px) {
+/* Tablet (481–768) */
+@media (max-width: 768px) {
   .header-inner { padding: 0 20px; height: 64px; }
   .benefits-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .team-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -325,8 +330,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-content { padding-top: 120px; }
 }
 
-/* Mobile */
-@media (max-width: 640px) {
+/* Celular grande (mobile, ≤480) */
+@media (max-width: 480px) {
   .header-inner { padding: 0 16px; height: 60px; }
   .logo-icon { width: 30px; height: 30px; }
   .logo-text { font-size: 11px; }
@@ -355,10 +360,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Prevent iOS Safari auto-zoom on focus (requires >=16px font-size) */
   .form-input, .form-select, .form-textarea { font-size: 16px; }
 }
-@media (max-width: 420px) {
+
+/* Celular (375) */
+@media (max-width: 375px) {
   .hero-title { font-size: 34px !important; }
   .footer-grid { gap: 32px !important; }
   .fern-wrap > div:first-child { width: 130px; }
+}
+
+/* Celular pequeno (320) */
+@media (max-width: 320px) {
+  .header-inner { padding: 0 12px; }
+  .logo-text { font-size: 10px; }
+  .hero-title { font-size: 30px !important; }
+  .section { padding: 0 14px; }
+  .stat-n { font-size: 32px; }
 }
 
 /* Landscape phones: don't let full-viewport-height sections crowd out content */
