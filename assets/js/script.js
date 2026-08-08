@@ -9,6 +9,59 @@ const WHATSAPP_NUMBERS = {
   saude: '5561991463375',
 };
 
+// Animated stat counters
+document.addEventListener('DOMContentLoaded', function() {
+  const statEls = document.querySelectorAll('.stat-n[data-target]');
+  if (!statEls.length) return;
+  function animateStat(el) {
+    const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+    const duration = 1400;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      el.textContent = Math.floor(progress * target);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    const statObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateStat(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    statEls.forEach(function(el) { statObserver.observe(el); });
+  } else {
+    statEls.forEach(animateStat);
+  }
+});
+
+// Reveal on scroll
+document.addEventListener('DOMContentLoaded', function() {
+  const revealSelectors = '.benefit-card, .prof-card, .plan-card, .info-item, .faq-item, .gallery-item';
+  const revealTargets = document.querySelectorAll(revealSelectors);
+  if ('IntersectionObserver' in window && revealTargets.length) {
+    const revealObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealTargets.forEach(function(el) { revealObserver.observe(el); });
+  } else {
+    revealTargets.forEach(function(el) { el.classList.add('visible'); });
+  }
+});
+
 // FAQ accordion
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.faq-item').forEach(function(item) {
@@ -43,8 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (areaSelect) {
     areaSelect.addEventListener('change', function() {
       const val = this.value;
-      contactForm.className = 'contact-form';
-      if (val) contactForm.classList.add('theme-' + val);
+      if (contactForm) {
+        contactForm.className = 'contact-form';
+        if (val) contactForm.classList.add('theme-' + val);
+      }
       
       // Update decoration scene
       if (decoScene) {
