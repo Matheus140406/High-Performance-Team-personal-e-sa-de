@@ -9,6 +9,12 @@ const WHATSAPP_NUMBERS = {
   saude: '5561991463375',
 };
 
+const AREA_LABELS = {
+  performance: 'Personal Trainer — Fernando Albert',
+  nutricao: 'Nutrição — Fernanda',
+  saude: 'Saúde — Geovanna Sousa',
+};
+
 // FAQ accordion
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.faq-item').forEach(function(item) {
@@ -65,12 +71,17 @@ document.addEventListener('DOMContentLoaded', function() {
   if (btnEnviar) {
     btnEnviar.addEventListener('click', function(e) {
       e.preventDefault();
-      const nome = document.getElementById('nome').value || '';
+      const nome = document.getElementById('nome').value.trim();
       const area = document.getElementById('area').value || 'performance';
-      const msg = document.getElementById('mensagem').value || '';
+      const msg = document.getElementById('mensagem').value.trim();
       const numero = WHATSAPP_NUMBERS[area] || WHATSAPP_NUMBERS.performance;
-      const texto = encodeURIComponent('Olá! Meu nome é ' + nome + '. ' + msg);
-      window.open('https://wa.me/' + numero + '?text=' + texto, '_blank');
+      const areaLabel = AREA_LABELS[area] || AREA_LABELS.performance;
+
+      let texto = 'Olá! Meu nome é ' + (nome || '(não informado)') + '.';
+      texto += ' Tenho interesse em: ' + areaLabel + '.';
+      if (msg) texto += ' ' + msg;
+
+      window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(texto), '_blank');
     });
   }
 });
