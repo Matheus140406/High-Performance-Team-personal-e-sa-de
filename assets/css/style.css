@@ -247,7 +247,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-textarea { resize: none; }
 .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,.3); }
 .form-select { background-color: #14141a; }
-.form-select option { background: #fff; color: #14141a; }
+.form-select option {
+  background: #fff; color: #14141a;
+  /* Options render in the OS's native light popup; force light so
+     Android/Chrome forced-dark doesn't re-invert just the background
+     and leave dark text on a dark background again. */
+  color-scheme: light;
+}
 
 /* ---------- FOOTER ---------- */
 .site-footer { background: #060609; border-top: 1px solid rgba(255,255,255,.04); padding: 60px 0 0; }
