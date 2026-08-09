@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/style.css?v=5.9">
+  <link rel="stylesheet" href="assets/css/style.css?v=6.0">
 
   <!--
     Cache busting: os arquivos em /assets/ são servidos com
@@ -483,12 +483,18 @@
         </div>
         <div class="form-group">
           <label class="form-label">Área de interesse</label>
-          <select id="area" class="form-select">
-            <option value="">Selecione uma área</option>
-            <option value="performance">Personal Trainer — Fernando Albert</option>
-            <option value="nutricao">Nutrição — Fernanda</option>
-            <option value="saude">Saúde — Geovanna Sousa</option>
-          </select>
+          <div class="custom-select" id="areaCustomSelect">
+            <button type="button" class="custom-select-trigger" id="areaTrigger" aria-haspopup="listbox" aria-expanded="false">
+              <span id="areaTriggerLabel">Selecione uma área</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <ul class="custom-select-options" id="areaOptions" role="listbox" tabindex="-1" hidden>
+              <li role="option" data-value="performance">Personal Trainer — Fernando Albert</li>
+              <li role="option" data-value="nutricao">Nutrição — Fernanda</li>
+              <li role="option" data-value="saude">Saúde — Geovanna Sousa</li>
+            </ul>
+          </div>
+          <input type="hidden" id="area" value="">
         </div>
         <div class="form-group" style="margin-bottom:28px">
           <label class="form-label">Seu objetivo</label>
@@ -559,7 +565,7 @@
   </div>
 </div>
 
-<script src="assets/js/script.js?v=5.3"></script>
+<script src="assets/js/script.js?v=5.4"></script>
 <script src="assets/js/hero-parallax.js?v=5.1"></script>
 
 <script>

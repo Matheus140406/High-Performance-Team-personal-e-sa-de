@@ -250,6 +250,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-select:invalid, .form-select option[value=""] { color: rgba(255,255,255,.62); }
 .form-select option { background-color: #0d0d0d; color: #fff; }
 
+/* Custom dropdown — replaces the native <select> popup so its colors
+   don't depend on the browser/OS renderer (which ignored our styling
+   on several devices). */
+.custom-select { position: relative; }
+.custom-select-trigger {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px; padding: 14px 16px; color: rgba(255,255,255,.62);
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 500;
+  cursor: pointer; outline: none; transition: all .3s;
+}
+.custom-select-trigger.has-value { color: #fff; }
+.custom-select-trigger:focus, .custom-select-trigger[aria-expanded="true"] { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,.1); }
+.custom-select-trigger svg { flex-shrink: 0; transition: transform .25s ease; color: rgba(255,255,255,.5); }
+.custom-select-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.custom-select-options {
+  position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 20;
+  background: #0d0d0d; border: 1px solid rgba(255,255,255,.14); border-radius: 8px;
+  padding: 6px; list-style: none; box-shadow: 0 16px 40px -8px rgba(0,0,0,.6);
+  max-height: 240px; overflow-y: auto;
+}
+.custom-select-options[hidden] { display: none; }
+.custom-select-options li {
+  padding: 12px 14px; border-radius: 6px; color: #fff; font-size: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer; transition: background .15s ease;
+}
+.custom-select-options li:hover,
+.custom-select-options li:focus,
+.custom-select-options li.active { background: rgba(220,38,38,.18); }
+
 /* ---------- FOOTER ---------- */
 .site-footer { background: #060609; border-top: 1px solid rgba(255,255,255,.04); padding: 60px 0 0; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.04); }

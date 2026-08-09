@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const val = this.value;
       contactForm.className = 'contact-form';
       if (val) contactForm.classList.add('theme-' + val);
-      
+
       // Update decoration scene
       if (decoScene) {
         decoScene.innerHTML = '';
@@ -63,6 +63,39 @@ document.addEventListener('DOMContentLoaded', function() {
           decoScene.innerHTML = createSaudeScene();
         }
       }
+    });
+  }
+
+  // Custom "área de interesse" dropdown
+  const areaTrigger = document.getElementById('areaTrigger');
+  const areaTriggerLabel = document.getElementById('areaTriggerLabel');
+  const areaOptions = document.getElementById('areaOptions');
+  if (areaTrigger && areaOptions && areaSelect) {
+    const openList = function() {
+      areaOptions.hidden = false;
+      areaTrigger.setAttribute('aria-expanded', 'true');
+    };
+    const closeList = function() {
+      areaOptions.hidden = true;
+      areaTrigger.setAttribute('aria-expanded', 'false');
+    };
+    areaTrigger.addEventListener('click', function() {
+      if (areaOptions.hidden) openList(); else closeList();
+    });
+    areaOptions.querySelectorAll('li').forEach(function(li) {
+      li.addEventListener('click', function() {
+        const val = this.getAttribute('data-value');
+        areaSelect.value = val;
+        areaTriggerLabel.textContent = this.textContent;
+        areaTrigger.classList.add('has-value');
+        areaOptions.querySelectorAll('li').forEach(function(el) { el.classList.remove('active'); });
+        this.classList.add('active');
+        closeList();
+        areaSelect.dispatchEvent(new Event('change'));
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!document.getElementById('areaCustomSelect').contains(e.target)) closeList();
     });
   }
 
