@@ -246,15 +246,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,.1); }
 .form-textarea { resize: none; }
 .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,.5); }
-.form-select { background-color: #17171d; }
+.form-select { background-color: #0d0d0d; }
 .form-select:invalid, .form-select option[value=""] { color: rgba(255,255,255,.5); }
-.form-select option {
-  background: #fff; color: #14141a;
-  /* Options render in the OS's native light popup; force light so
-     Android/Chrome forced-dark doesn't re-invert just the background
-     and leave dark text on a dark background again. */
-  color-scheme: light;
-}
+.form-select option { background-color: #0d0d0d; color: #fff; }
 
 /* ---------- FOOTER ---------- */
 .site-footer { background: #060609; border-top: 1px solid rgba(255,255,255,.04); padding: 60px 0 0; }
