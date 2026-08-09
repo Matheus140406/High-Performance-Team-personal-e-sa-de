@@ -9,10 +9,10 @@ const WHATSAPP_NUMBERS = {
   saude: '5561991463375',
 };
 
-const AREA_LABELS = {
-  performance: 'Personal Trainer — Fernando Albert',
-  nutricao: 'Nutrição — Fernanda',
-  saude: 'Saúde — Geovanna Sousa',
+const AREA_GREETINGS = {
+  performance: 'Oi, Fernando! 💪',
+  nutricao: 'Oi, Fernanda! 🥗',
+  saude: 'Oi, Geovanna! 🩺',
 };
 
 // FAQ accordion
@@ -75,11 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const area = document.getElementById('area').value || 'performance';
       const msg = document.getElementById('mensagem').value.trim();
       const numero = WHATSAPP_NUMBERS[area] || WHATSAPP_NUMBERS.performance;
-      const areaLabel = AREA_LABELS[area] || AREA_LABELS.performance;
+      const greeting = AREA_GREETINGS[area] || AREA_GREETINGS.performance;
 
-      let texto = 'Olá! Meu nome é ' + (nome || '(não informado)') + '.';
-      texto += ' Tenho interesse em: ' + areaLabel + '.';
+      let texto = greeting + ' Me chamo ' + (nome || '(não informado)') + ' e vi o site.';
       if (msg) texto += ' ' + msg;
+      else texto += ' Podemos conversar? 🙂';
 
       window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(texto), '_blank');
     });
