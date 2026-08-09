@@ -9,6 +9,12 @@ const WHATSAPP_NUMBERS = {
   saude: '5561991463375',
 };
 
+const AREA_GREETINGS = {
+  performance: 'Oi, Fernando! 💪',
+  nutricao: 'Oi, Fernanda! 🥗',
+  saude: 'Oi, Geovanna! 🩺',
+};
+
 // FAQ accordion
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.faq-item').forEach(function(item) {
@@ -45,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const val = this.value;
       contactForm.className = 'contact-form';
       if (val) contactForm.classList.add('theme-' + val);
-      
+
       // Update decoration scene
       if (decoScene) {
         decoScene.innerHTML = '';
@@ -60,17 +66,55 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Custom "área de interesse" dropdown
+  const areaTrigger = document.getElementById('areaTrigger');
+  const areaTriggerLabel = document.getElementById('areaTriggerLabel');
+  const areaOptions = document.getElementById('areaOptions');
+  if (areaTrigger && areaOptions && areaSelect) {
+    const openList = function() {
+      areaOptions.hidden = false;
+      areaTrigger.setAttribute('aria-expanded', 'true');
+    };
+    const closeList = function() {
+      areaOptions.hidden = true;
+      areaTrigger.setAttribute('aria-expanded', 'false');
+    };
+    areaTrigger.addEventListener('click', function() {
+      if (areaOptions.hidden) openList(); else closeList();
+    });
+    areaOptions.querySelectorAll('li').forEach(function(li) {
+      li.addEventListener('click', function() {
+        const val = this.getAttribute('data-value');
+        areaSelect.value = val;
+        areaTriggerLabel.textContent = this.textContent;
+        areaTrigger.classList.add('has-value');
+        areaOptions.querySelectorAll('li').forEach(function(el) { el.classList.remove('active'); });
+        this.classList.add('active');
+        closeList();
+        areaSelect.dispatchEvent(new Event('change'));
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!document.getElementById('areaCustomSelect').contains(e.target)) closeList();
+    });
+  }
+
   // WhatsApp form submit
   const btnEnviar = document.getElementById('btn-enviar');
   if (btnEnviar) {
     btnEnviar.addEventListener('click', function(e) {
       e.preventDefault();
-      const nome = document.getElementById('nome').value || '';
+      const nome = document.getElementById('nome').value.trim();
       const area = document.getElementById('area').value || 'performance';
-      const msg = document.getElementById('mensagem').value || '';
+      const msg = document.getElementById('mensagem').value.trim();
       const numero = WHATSAPP_NUMBERS[area] || WHATSAPP_NUMBERS.performance;
-      const texto = encodeURIComponent('Olá! Meu nome é ' + nome + '. ' + msg);
-      window.open('https://wa.me/' + numero + '?text=' + texto, '_blank');
+      const greeting = AREA_GREETINGS[area] || AREA_GREETINGS.performance;
+
+      let texto = greeting + ' Me chamo ' + (nome || '(não informado)') + ' e vi o site.';
+      if (msg) texto += ' ' + msg;
+      else texto += ' Podemos conversar? 🙂';
+
+      window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(texto), '_blank');
     });
   }
 });
